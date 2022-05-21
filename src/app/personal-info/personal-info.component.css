@@ -1,0 +1,74 @@
+.banner {
+  height: 50vh;
+  background-image: url("../../assets/code.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-attachment: fixed;
+  background-position: bottom;
+}
+
+.profile-pic {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-image: url("../../assets/me.jpg");
+  background-position-x: 50%;
+  background-position-y: 20%;
+  position: absolute;
+  top: -150px;
+}
+
+.info-container {
+  font-family: 'Macondo', cursive;
+  position: relative;
+}
+
+.info-container .name {
+  margin-top: 160px;
+  padding: 0;
+}
+
+.info-container .name h2 {
+  font-size: 4rem;
+  text-align: center;
+  color: black;
+  text-shadow: 0px 0px 2px rgb(13, 202, 240);
+}
+
+.name-absolute {
+  width: 300px;
+  font-size: 4.3rem;
+  text-align: center;
+  position: absolute;
+  top: 170px;
+  color: black;
+  text-shadow: 0px 0px 2px rgb(13, 202, 240);
+}
+
+h3 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.sobre-mi, .sobre-mi .accordion-item, .sobre-mi .accordion-item .accordion-header, .accordion-button {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.5rem;
+  background-color: transparent;
+}
+
+@media (max-width: 992px) {
+  .profile-pic {
+    left: calc(50% - 150px);
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .sobre-mi, .sobre-mi .accordion-item, .sobre-mi .accordion-item .accordion-header, .accordion-button {
+    font-size: 1.2rem;
+  }
+}
+
