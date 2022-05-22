@@ -12,6 +12,7 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var personal_info_component_1 = require("./personal-info/personal-info.component");
+var educacion_component_1 = require("./educacion/educacion.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -19,14 +20,15 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [
                 app_component_1.AppComponent,
-                personal_info_component_1.PersonalInfoComponent
+                personal_info_component_1.PersonalInfoComponent,
+                educacion_component_1.EducacionComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule
             ],
             providers: [],
-            bootstrap: [app_component_1.AppComponent, personal_info_component_1.PersonalInfoComponent]
+            bootstrap: [app_component_1.AppComponent, personal_info_component_1.PersonalInfoComponent, educacion_component_1.EducacionComponent]
         })
     ], AppModule);
     return AppModule;

@@ -4,17 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
+import { EducacionComponent } from './educacion/educacion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonalInfoComponent
+    PersonalInfoComponent,
+    EducacionComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent, PersonalInfoComponent]
+  bootstrap: [AppComponent, PersonalInfoComponent, EducacionComponent]
 })
 export class AppModule { }
