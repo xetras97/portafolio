@@ -1,0 +1,105 @@
+<section>
+  <div class="container-fluid border-top border-bottom border-info mt-4">
+    <h2 class="mt-2 mb-2 text-uppercase text-center titulo">Habilidades</h2>
+  </div>
+
+  <div class="container mt-4">
+    <div class="row mb-2 mb-md-4">
+      <div class="col">
+        <h3 class="text-center text-middle year" [class.active]="skills === 'hard'" (click)="skills = 'hard'">DURAS</h3>
+      </div>
+      <div class="col">
+        <h3 class="text-center text-middle year" [class.active]="skills === 'soft'" (click)="skills = 'soft'">BLANDAS</h3>
+      </div>
+      <div class="col">
+        <h3 class="text-center text-middle year" [class.active]="skills === 'languages'" (click)="skills = 'languages'">IDIOMAS</h3>
+      </div>
+    </div>
+
+    <!-- HABILIDADES DURAS -->
+    <div class="row justify-content-center" *ngIf="skills === 'hard'">
+      <div class="col-12 col-md-6 col-md-6 col-lg-4 d-flex justify-content-center">
+        <svg style="background-image: url('../../assets/html-round.png');">
+          <circle #circle class="meter-100" cx="114" cy="114" r="104" />
+        </svg>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <svg style="background-image: url('../../assets/css-round.png');">
+          <circle class="meter-75" cx="114" cy="114" r="104" />
+        </svg>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <svg style="background-image: url('../../assets/js-round.png');">
+          <circle class="meter-75" cx="114" cy="114" r="104" />
+        </svg>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <svg style="background-image: url('../../assets/angular-round.png');">
+          <circle class="meter-50" cx="114" cy="114" r="104" />
+        </svg>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <svg style="background-image: url('../../assets/node-round.png');">
+          <circle class="meter-25" cx="114" cy="114" r="104" />
+        </svg>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <svg style="background-image: url('../../assets/java-round.png');">
+          <circle class="meter-50" cx="114" cy="114" r="104" />
+        </svg>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <svg style="background-image: url('../../assets/mysql-round.png');">
+          <circle class="meter-50" cx="114" cy="114" r="104" />
+        </svg>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <svg style="background-image: url('../../assets/ts-round.png');">
+          <circle class="meter-50" cx="114" cy="114" r="104" />
+        </svg>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <svg style="background-image: url('../../assets/git-round.png');">
+          <circle class="meter-75" cx="114" cy="114" r="104" />
+        </svg>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <svg style="background-image: url('../../assets/github-round.png');">
+          <circle class="meter-75" cx="114" cy="114" r="104" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- HABILIDADES BLANDAS -->
+    <div class="row justify-content-center mt-4" *ngIf="skills === 'soft'">
+      <div class="col-12 col-lg-6">
+        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">Comunicación</p>
+      </div>
+      <div class="col-12 col-lg-6">
+        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">Trabajo en equipo</p>
+      </div>
+      <div class="col-12 col-lg-6">
+        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">Gestión del tiempo</p>
+      </div>
+      <div class="col-12 col-lg-6">
+        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">Resolución de problemas</p>
+      </div>
+      <div class="col-12 col-lg-6">
+        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">Pensamiento crítico</p>
+      </div>
+      <div class="col-12 col-lg-6">
+        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">Inteligencia emocional</p>
+      </div>
+    </div>
+    <!-- IDIOMAS -->
+    <div class="row justify-content-center mt-4" *ngIf="skills === 'languages'">
+      <div class="col-12">
+        <p class="text-uppercase text-center languages">Español <span class="badge bg-info text-dark">Nativo</span></p>
+      </div>
+      <div class="col-12">
+        <p class="text-uppercase text-center languages">Inglés <span class="badge bg-info text-dark">C1</span></p>
+      </div>
+    </div>
+  </div>
+
+</section>

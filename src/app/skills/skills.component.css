@@ -1,0 +1,112 @@
+.year {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #747d87;
+  cursor: pointer;
+}
+
+.active {
+  text-shadow: 0px 0px 2px rgb(13 202 240);
+  font-size: 1.8rem;
+  color: rgb(33, 37, 41);
+}
+
+.soft-skills {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.6rem;
+}
+
+.languages {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2rem;
+}
+
+
+svg {
+  width: 228px;
+  height: 228px;
+  margin: 1em;
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+
+[class^="meter-"] {
+  fill: none;
+  stroke-width: 20px;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+
+}
+
+.meter-100 {
+  stroke: #3ccf59;
+  stroke-dasharray: 720;
+  stroke-dashoffset: 0;
+  animation: progress-100 1s ease-out;
+}
+.meter-75 {
+  stroke: #3ccbcf;
+  stroke-dasharray: 720;
+  stroke-dashoffset: 230;
+  animation: progress-75 .75s ease-out;
+}
+.meter-50 {
+  stroke: #ecf526;
+  stroke-dasharray: 720;
+  stroke-dashoffset: 390;
+  animation: progress-50 .75s ease-out;
+}
+.meter-25 {
+  stroke: #d73434;
+  stroke-dasharray: 720;
+  stroke-dashoffset: 560;
+  animation: progress-25 .5s ease-out;
+}
+
+@keyframes progress-100 {
+    from {
+        stroke-dashoffset: 720;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes progress-75 {
+  from {
+    stroke-dashoffset: 720;
+  }
+  to {
+    stroke-dashoffset: 230;
+  }
+}
+
+@keyframes progress-50 {
+  from {
+    stroke-dashoffset: 720;
+  }
+  to {
+    stroke-dashoffset: 390;
+  }
+}
+
+@keyframes progress-25 {
+  from {
+    stroke-dashoffset: 720;
+  }
+  to {
+    stroke-dashoffset: 560;
+  }
+}
+
+@media (min-width: 768px) {
+  .year {
+    font-size: 1.8rem;
+  }
+
+  .active {
+    font-size: 2.3rem;
+  }
+}
