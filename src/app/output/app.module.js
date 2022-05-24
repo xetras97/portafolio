@@ -14,6 +14,7 @@ var app_component_1 = require("./app.component");
 var personal_info_component_1 = require("./personal-info/personal-info.component");
 var educacion_component_1 = require("./educacion/educacion.component");
 var skills_component_1 = require("./skills/skills.component");
+var personal_projects_component_1 = require("./personal-projects/personal-projects.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -23,14 +24,15 @@ var AppModule = /** @class */ (function () {
                 app_component_1.AppComponent,
                 personal_info_component_1.PersonalInfoComponent,
                 educacion_component_1.EducacionComponent,
-                skills_component_1.SkillsComponent
+                skills_component_1.SkillsComponent,
+                personal_projects_component_1.PersonalProjectsComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule
             ],
             providers: [],
-            bootstrap: [app_component_1.AppComponent, personal_info_component_1.PersonalInfoComponent, educacion_component_1.EducacionComponent, skills_component_1.SkillsComponent]
+            bootstrap: [app_component_1.AppComponent, personal_info_component_1.PersonalInfoComponent, educacion_component_1.EducacionComponent, skills_component_1.SkillsComponent, personal_projects_component_1.PersonalProjectsComponent]
         })
     ], AppModule);
     return AppModule;
