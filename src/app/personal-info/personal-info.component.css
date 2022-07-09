@@ -1,6 +1,5 @@
 .banner {
   height: 50vh;
-  background-image: url("../../assets/code.jpg");
   background-repeat: no-repeat;
   background-size:cover;
   background-attachment: fixed;
@@ -11,7 +10,6 @@
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background-image: url("../../assets/me.jpg");
   background-position-x: 50%;
   background-position-y: 20%;
   position: absolute;

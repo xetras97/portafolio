@@ -1,0 +1,36 @@
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">MI PORTAFOLIO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="userName" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="userName" aria-describedby="user" placeholder="Nombre de usuario" required>
+            <div class="invalid-feedback">
+              Introduzca un nombre de usuario valido.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+            <div class="invalid-feedback">
+              Introduzca una contraseña valida.
+            </div>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="check" required>
+            <label class="form-check-label" for="check">No soy un dinosaurio robot</label>
+            <div class="invalid-feedback">
+              Dinosaurios robots no pueden iniciar sesión.
+            </div>
+          </div>
+          <button type="submit" class="btn btn-dark col-4 offset-4" (click)="validarFormulario()">Iniciar Sesión</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

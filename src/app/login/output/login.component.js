@@ -6,20 +6,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 exports.__esModule = true;
-exports.AppComponent = void 0;
+exports.LoginComponent = void 0;
 var core_1 = require("@angular/core");
-var AppComponent = /** @class */ (function () {
-    function AppComponent(socialNet) {
-        this.socialNet = socialNet;
-        this.title = 'naon-frontend';
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent() {
     }
-    AppComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.socialNet.obtenerDatosPersonales("desarrollador").subscribe(function (data) {
-            _this.mySocialNet = data[0];
-        });
+    LoginComponent.prototype.ngOnInit = function () {
     };
-    AppComponent.prototype.validarFormulario = function () {
+    LoginComponent.prototype.validarFormulario = function () {
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (function () {
             'use strict';
@@ -38,13 +32,13 @@ var AppComponent = /** @class */ (function () {
             });
         })();
     };
-    AppComponent = __decorate([
+    LoginComponent = __decorate([
         core_1.Component({
-            selector: 'app-root',
-            templateUrl: './app.component.html',
-            styleUrls: ['./app.component.css']
+            selector: 'app-login',
+            templateUrl: './login.component.html',
+            styleUrls: ['./login.component.css']
         })
-    ], AppComponent);
-    return AppComponent;
+    ], LoginComponent);
+    return LoginComponent;
 }());
-exports.AppComponent = AppComponent;
+exports.LoginComponent = LoginComponent;

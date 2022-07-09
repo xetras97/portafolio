@@ -10,11 +10,14 @@ exports.AppModule = void 0;
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
+var http_1 = require("@angular/common/http");
 var app_component_1 = require("./app.component");
 var personal_info_component_1 = require("./personal-info/personal-info.component");
 var educacion_component_1 = require("./educacion/educacion.component");
 var skills_component_1 = require("./skills/skills.component");
 var personal_projects_component_1 = require("./personal-projects/personal-projects.component");
+var app_routing_module_1 = require("./app-routing.module");
+var login_component_1 = require("./login/login.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -25,11 +28,14 @@ var AppModule = /** @class */ (function () {
                 personal_info_component_1.PersonalInfoComponent,
                 educacion_component_1.EducacionComponent,
                 skills_component_1.SkillsComponent,
-                personal_projects_component_1.PersonalProjectsComponent
+                personal_projects_component_1.PersonalProjectsComponent,
+                login_component_1.LoginComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
-                forms_1.FormsModule
+                forms_1.FormsModule,
+                http_1.HttpClientModule,
+                app_routing_module_1.AppRoutingModule
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent, personal_info_component_1.PersonalInfoComponent, educacion_component_1.EducacionComponent, skills_component_1.SkillsComponent, personal_projects_component_1.PersonalProjectsComponent]

@@ -1,21 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from './servicios/api.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'naon-frontend';
+export class LoginComponent implements OnInit {
 
-  mySocialNet:any;
-  constructor(private socialNet:ApiService ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.socialNet.obtenerDatosPersonales("desarrollador").subscribe(data =>{
-      this.mySocialNet=data[0];
-    });
   }
 
   validarFormulario(){

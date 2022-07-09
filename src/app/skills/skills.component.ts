@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { ApiService } from '../servicios/api.service';
 
 @Component({
   selector: 'app-skills',
@@ -7,9 +8,13 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 })
 export class SkillsComponent implements OnInit {
 
-  constructor() { }
+  mySkillsData:any;
+  constructor(private skillsData:ApiService ) { }
 
   ngOnInit(): void {
+    this.skillsData.obtenerDatosPersonales("habilidades").subscribe(data =>{
+      this.mySkillsData=data;
+    });
   }
 
   @ViewChild('circle')

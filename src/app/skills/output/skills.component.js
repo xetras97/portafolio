@@ -9,10 +9,15 @@ exports.__esModule = true;
 exports.SkillsComponent = void 0;
 var core_1 = require("@angular/core");
 var SkillsComponent = /** @class */ (function () {
-    function SkillsComponent() {
+    function SkillsComponent(skillsData) {
+        this.skillsData = skillsData;
         this.skills = "hard";
     }
     SkillsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.skillsData.obtenerDatosPersonales("habilidades").subscribe(function (data) {
+            _this.mySkillsData = data;
+        });
     };
     SkillsComponent.prototype.isVisible = function (element) {
         var rect = element.getBoundingClientRect();

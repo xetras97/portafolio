@@ -19,52 +19,52 @@
     <!-- HABILIDADES DURAS -->
     <div class="row justify-content-center" *ngIf="skills === 'hard'">
       <div class="col-12 col-md-6 col-md-6 col-lg-4 d-flex justify-content-center">
-        <svg style="background-image: url('../../assets/html-round.png');">
+        <svg style="background-image: url('{{mySkillsData[0].img}}');">
           <circle #circle class="meter-100" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-        <svg style="background-image: url('../../assets/css-round.png');">
+        <svg style="background-image: url('{{mySkillsData[1].img}}');">
           <circle class="meter-75" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-        <svg style="background-image: url('../../assets/js-round.png');">
+        <svg style="background-image: url('{{mySkillsData[2].img}}');">
           <circle class="meter-75" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-        <svg style="background-image: url('../../assets/angular-round.png');">
+        <svg style="background-image: url('{{mySkillsData[3].img}}');">
           <circle class="meter-50" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-        <svg style="background-image: url('../../assets/node-round.png');">
+        <svg style="background-image: url('{{mySkillsData[4].img}}');">
           <circle class="meter-25" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-        <svg style="background-image: url('../../assets/java-round.png');">
+        <svg style="background-image: url('{{mySkillsData[5].img}}');">
           <circle class="meter-50" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-        <svg style="background-image: url('../../assets/mysql-round.png');">
+        <svg style="background-image: url('{{mySkillsData[6].img}}');">
           <circle class="meter-50" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-        <svg style="background-image: url('../../assets/ts-round.png');">
+        <svg style="background-image: url('{{mySkillsData[7].img}}');">
           <circle class="meter-50" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-        <svg style="background-image: url('../../assets/git-round.png');">
+        <svg style="background-image: url('{{mySkillsData[8].img}}');">
           <circle class="meter-75" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-        <svg style="background-image: url('../../assets/github-round.png');">
+        <svg style="background-image: url('{{mySkillsData[9].img}}');">
           <circle class="meter-75" cx="114" cy="114" r="104" />
         </svg>
       </div>
@@ -73,31 +73,31 @@
     <!-- HABILIDADES BLANDAS -->
     <div class="row justify-content-center mt-4" *ngIf="skills === 'soft'">
       <div class="col-12 col-lg-6">
-        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">Comunicación</p>
+        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">{{mySkillsData[10].nombre}}</p>
       </div>
       <div class="col-12 col-lg-6">
-        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">Trabajo en equipo</p>
+        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">{{mySkillsData[11].nombre}}</p>
       </div>
       <div class="col-12 col-lg-6">
-        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">Gestión del tiempo</p>
+        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">{{mySkillsData[12].nombre}}</p>
       </div>
       <div class="col-12 col-lg-6">
-        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">Resolución de problemas</p>
+        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">{{mySkillsData[13].nombre}}</p>
       </div>
       <div class="col-12 col-lg-6">
-        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">Pensamiento crítico</p>
+        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">{{mySkillsData[14].nombre}}</p>
       </div>
       <div class="col-12 col-lg-6">
-        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">Inteligencia emocional</p>
+        <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">{{mySkillsData[15].nombre}}</p>
       </div>
     </div>
     <!-- IDIOMAS -->
     <div class="row justify-content-center mt-4" *ngIf="skills === 'languages'">
       <div class="col-12">
-        <p class="text-uppercase text-center languages">Español <span class="badge bg-info text-dark">Nativo</span></p>
+        <p class="text-uppercase text-center languages">{{mySkillsData[16].nombre}} <span class="badge bg-info text-dark">{{mySkillsData[16].otro}}</span></p>
       </div>
       <div class="col-12">
-        <p class="text-uppercase text-center languages">Inglés <span class="badge bg-info text-dark">C1</span></p>
+        <p class="text-uppercase text-center languages">{{mySkillsData[17].nombre}} <span class="badge bg-info text-dark">{{mySkillsData[17].otro}}</span></p>
       </div>
     </div>
   </div>

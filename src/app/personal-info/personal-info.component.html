@@ -1,21 +1,21 @@
-<div class="container-fluid p-0 banner">
+<div class="container-fluid p-0 banner" style='background-image: url({{miPersonalData.banner}})'>
   <div class="row">
   </div>
 </div>
 
 <div class="container info-container">
-  <div class="profile-pic"></div>
-  <h2 class="d-none d-lg-block text-uppercase fw-bold text-center name-absolute">Esteban Naón</h2>
+  <div class="profile-pic" style='background-image: url({{miPersonalData.img}})'></div>
+  <h2 class="d-none d-lg-block text-uppercase fw-bold text-center name-absolute">{{miPersonalData.nombre}} {{miPersonalData.apellido}}</h2>
 
   <div class="row">
     <div class="col-12 d-lg-none name">
-      <h2 class="text-uppercase fw-bold text-center">Esteban Naón</h2>
+      <h2 class="text-uppercase fw-bold text-center">{{miPersonalData.nombre}} {{miPersonalData.apellido}}</h2>
     </div>
   </div>
   <div class="row d-none d-lg-block" style="height: 170px;"></div>
   <div class="row mt-2">
-    <h3 class="col-12 col-lg-6 offset-lg-6 mt-lg-3 mb-lg-3">Desarrollador Full Stack JR</h3>
-    <h3 class="col-12 col-lg-6 offset-lg-6">Licenciado en Educación Física</h3>
+    <h3 class="col-12 col-lg-6 offset-lg-6 mt-lg-3 mb-lg-3">{{miPersonalData.titulo}}</h3>
+    <h3 class="col-12 col-lg-6 offset-lg-6">{{miPersonalData.tituloSecundario}}</h3>
   </div>
 
   <div class="row mt-2 mb-3 mt-lg-4">
@@ -28,7 +28,7 @@
         </h2>
         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#about-me">
           <div class="accordion-body">
-            Licenciado en educación física, egresado de la Universidad Nacional de la Matanza, que redescubrió su vocación profesional en el área de la programación. En 2020 comencé mi camino en el desarrollo web desde el front-end y actualmente evoco mi futuro hacia el desarrollo full-stack.
+            {{miPersonalData.descripcion}}
           </div>
         </div>
       </div>

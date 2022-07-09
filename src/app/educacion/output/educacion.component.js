@@ -9,10 +9,15 @@ exports.__esModule = true;
 exports.EducacionComponent = void 0;
 var core_1 = require("@angular/core");
 var EducacionComponent = /** @class */ (function () {
-    function EducacionComponent() {
+    function EducacionComponent(educacionData) {
+        this.educacionData = educacionData;
         this.year = 2022;
     }
     EducacionComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.educacionData.obtenerDatosPersonales("estudios").subscribe(function (data) {
+            _this.myEducacionData = data;
+        });
     };
     EducacionComponent = __decorate([
         core_1.Component({
