@@ -1,9 +1,15 @@
+
 <div class="container-fluid p-0 banner" style='background-image: url({{miPersonalData.banner}})'>
   <div class="row">
   </div>
 </div>
-
 <div class="container info-container">
+  <div class="edit-form" *ngIf="logged.loggedIn">
+    <a class="btn btn-secondary text-dark d-inline-flex" data-bs-toggle="modal" data-bs-target="#editPersonal">
+      <p class="d-none d-md-flex mb-0 me-1">EDITAR</p>
+      <span class="material-icons align-self-center justify-self-center">edit</span>
+    </a>
+  </div>
   <div class="profile-pic" style='background-image: url({{miPersonalData.img}})'></div>
   <h2 class="d-none d-lg-block text-uppercase fw-bold text-center name-absolute">{{miPersonalData.nombre}} {{miPersonalData.apellido}}</h2>
 
@@ -35,3 +41,5 @@
     </div>
   </div>
 </div>
+
+

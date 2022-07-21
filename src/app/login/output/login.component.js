@@ -8,29 +8,52 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.LoginComponent = void 0;
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent() {
+    function LoginComponent(formBuilder, autenticacionService, ruta, appcomponent) {
+        this.formBuilder = formBuilder;
+        this.autenticacionService = autenticacionService;
+        this.ruta = ruta;
+        this.appcomponent = appcomponent;
+        this.checked = true;
+        this.form = this.formBuilder.group({
+            "username": ['', [forms_1.Validators.required]],
+            "password": ['', [forms_1.Validators.required]]
+        });
     }
     LoginComponent.prototype.ngOnInit = function () {
     };
-    LoginComponent.prototype.validarFormulario = function () {
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
-            'use strict';
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.querySelectorAll('.needs-validation');
-            // Loop over them and prevent submission
-            Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        })();
+    Object.defineProperty(LoginComponent.prototype, "Username", {
+        get: function () {
+            return this.form.get("username");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(LoginComponent.prototype, "Password", {
+        get: function () {
+            return this.form.get("password");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    LoginComponent.prototype.onEnviar = function (event) {
+        event.preventDefault;
+        this.autenticacionService.iniciarSesion(this.form.value).subscribe(function (data) {
+            console.log("DATA:" + JSON.stringify(data));
+            window.location.reload();
+        });
+    };
+    LoginComponent.prototype.checkLogIn = function () {
+        var _this = this;
+        setTimeout(function () {
+            if (sessionStorage.getItem("currentUser")) {
+                _this.checked = true;
+            }
+            else {
+                _this.checked = false;
+            }
+        }, 3000);
     };
     LoginComponent = __decorate([
         core_1.Component({

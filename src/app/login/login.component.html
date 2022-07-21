@@ -6,29 +6,25 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="needs-validation" novalidate>
+        <form [formGroup]="form" class="needs-validation" novalidate (ngSubmit)="onEnviar($event)">
           <div class="mb-3">
             <label for="userName" class="form-label">Usuario</label>
-            <input type="text" class="form-control" id="userName" aria-describedby="user" placeholder="Nombre de usuario" required>
-            <div class="invalid-feedback">
-              Introduzca un nombre de usuario valido.
+            <input type="text" formControlName="username" class="form-control" id="userName" aria-describedby="user" placeholder="Nombre de usuario" required [ngClass]="{'is-invalid': Username?.errors && Username?.touched, 'is-valid': Username?.errors && Username?.touched}">
+            <div *ngIf="Username?.errors && Username?.touched">
+              <p *ngIf="Username?.hasError('required')" class="text-danger">Introduzca un nombre de usuario valido.</p>
             </div>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
-            <div class="invalid-feedback">
-              Introduzca una contraseña valida.
+            <input #mypass type="password" formControlName="password" class="form-control" id="password" placeholder="Contraseña" required [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': Password?.errors && Password?.touched}">
+            <div *ngIf="Password?.errors && Password?.touched">
+              <p *ngIf="Username?.hasError('required')" class="text-danger">Introduzca una contraseña valida.</p>
             </div>
           </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="check" required>
-            <label class="form-check-label" for="check">No soy un dinosaurio robot</label>
-            <div class="invalid-feedback">
-              Dinosaurios robots no pueden iniciar sesión.
-            </div>
+          <div *ngIf="checked == false">
+            <p class="text-danger">Credenciales incorrectas</p>
           </div>
-          <button type="submit" class="btn btn-dark col-4 offset-4" (click)="validarFormulario()">Iniciar Sesión</button>
+          <button type="submit" class="btn btn-dark col-4 offset-4" (click)="checkLogIn()">Iniciar Sesión</button>
         </form>
       </div>
     </div>

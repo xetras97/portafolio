@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from '../servicios/api.service';
+import { LoggedService } from '../servicios/logged.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-personal-info',
@@ -8,8 +10,7 @@ import { ApiService } from '../servicios/api.service';
 })
 export class PersonalInfoComponent implements OnInit {
   miPersonalData:any;
-  constructor(private personalData:ApiService ) { }
-
+  constructor(private personalData:ApiService, public logged:LoggedService) { }
   ngOnInit(): void {
     this.personalData.obtenerDatosPersonales("desarrollador").subscribe(data =>{
       console.log("Desarrollador" + JSON.stringify(data));

@@ -7,6 +7,18 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url=
-  constructor(private http:HttpClient) { }
+  url="http://localhost:8080/user"
+  currentUserSubject: BehaviorSubject<any>;
+  constructor(private http:HttpClient) {
+    console.log("esta corriendo");
+    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser')||'{}'))
+  }
+
+  iniciarSesion(credenciales:any):Observable<any> {
+    return this.http.post(this.url, credenciales).pipe(map(data =>{
+      sessionStorage.setItem('currentUser', JSON.stringify(data));
+      return data;
+    }))
+  }
+
 }

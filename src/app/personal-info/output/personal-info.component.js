@@ -9,8 +9,9 @@ exports.__esModule = true;
 exports.PersonalInfoComponent = void 0;
 var core_1 = require("@angular/core");
 var PersonalInfoComponent = /** @class */ (function () {
-    function PersonalInfoComponent(personalData) {
+    function PersonalInfoComponent(personalData, logged) {
         this.personalData = personalData;
+        this.logged = logged;
     }
     PersonalInfoComponent.prototype.ngOnInit = function () {
         var _this = this;

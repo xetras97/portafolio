@@ -8,11 +8,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.AutenticacionService = void 0;
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/common/http");
+var rxjs_1 = require("rxjs");
+var operators_1 = require("rxjs/operators");
 var AutenticacionService = /** @class */ (function () {
-    function AutenticacionService() {
-        this.url = constructor(private, http, http_1.HttpClient);
+    function AutenticacionService(http) {
+        this.http = http;
+        this.url = "http://localhost:8080/user";
+        console.log("esta corriendo");
+        this.currentUserSubject = new rxjs_1.BehaviorSubject(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
     }
+    AutenticacionService.prototype.iniciarSesion = function (credenciales) {
+        return this.http.post(this.url, credenciales).pipe(operators_1.map(function (data) {
+            sessionStorage.setItem('currentUser', JSON.stringify(data));
+            return data;
+        }));
+    };
     AutenticacionService = __decorate([
         core_1.Injectable({
             providedIn: 'root'
@@ -21,4 +31,3 @@ var AutenticacionService = /** @class */ (function () {
     return AutenticacionService;
 }());
 exports.AutenticacionService = AutenticacionService;
-{ }

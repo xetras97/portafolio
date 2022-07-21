@@ -35,7 +35,8 @@ var AppModule = /** @class */ (function () {
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 http_1.HttpClientModule,
-                app_routing_module_1.AppRoutingModule
+                app_routing_module_1.AppRoutingModule,
+                forms_1.ReactiveFormsModule
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent, personal_info_component_1.PersonalInfoComponent, educacion_component_1.EducacionComponent, skills_component_1.SkillsComponent, personal_projects_component_1.PersonalProjectsComponent]

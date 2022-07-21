@@ -56,6 +56,13 @@ h3 {
   background-color: transparent;
 }
 
+.info-container  .edit-form {
+  font-family: 'Roboto Slab', serif;
+  position: absolute;
+  right: 0;
+  top: 10%;
+}
+
 @media (max-width: 992px) {
   .profile-pic {
     left: calc(50% - 150px);

@@ -9,8 +9,9 @@ exports.__esModule = true;
 exports.EducacionComponent = void 0;
 var core_1 = require("@angular/core");
 var EducacionComponent = /** @class */ (function () {
-    function EducacionComponent(educacionData) {
+    function EducacionComponent(educacionData, loggedService) {
         this.educacionData = educacionData;
+        this.loggedService = loggedService;
         this.year = 2022;
     }
     EducacionComponent.prototype.ngOnInit = function () {

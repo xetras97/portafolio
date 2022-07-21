@@ -17,6 +17,16 @@
   color: rgb(33, 37, 41);
 }
 
+.edit-educacion {
+  position: absolute;
+  right: 0;
+  top: 5%;
+}
+
+.edit-educacion .edit, .edit-educacion .delete {
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
   .year {
     font-size: 1.8rem;

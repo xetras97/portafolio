@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from './servicios/api.service';
+import { LoggedService } from './servicios/logged.service';
 
 @Component({
   selector: 'app-root',
@@ -9,35 +10,13 @@ import { ApiService } from './servicios/api.service';
 export class AppComponent implements OnInit {
   title = 'naon-frontend';
 
-  mySocialNet:any;
-  constructor(private socialNet:ApiService ) { }
+  desarrollador:any;
+  constructor(private socialNet:ApiService, public logged:LoggedService) { }
 
   ngOnInit(): void {
     this.socialNet.obtenerDatosPersonales("desarrollador").subscribe(data =>{
-      this.mySocialNet=data[0];
+      this.desarrollador=data[0];
     });
-  }
-
-  validarFormulario(){
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-(function () {
-  'use strict'
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation')
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event:Event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-
-        form.classList.add('was-validated')
-      }, false)
-    })
-})()
+    this.logged.isLoggedIn();
   }
 }

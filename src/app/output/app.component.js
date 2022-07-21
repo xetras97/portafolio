@@ -9,34 +9,17 @@ exports.__esModule = true;
 exports.AppComponent = void 0;
 var core_1 = require("@angular/core");
 var AppComponent = /** @class */ (function () {
-    function AppComponent(socialNet) {
+    function AppComponent(socialNet, logged) {
         this.socialNet = socialNet;
+        this.logged = logged;
         this.title = 'naon-frontend';
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.socialNet.obtenerDatosPersonales("desarrollador").subscribe(function (data) {
-            _this.mySocialNet = data[0];
+            _this.desarrollador = data[0];
         });
-    };
-    AppComponent.prototype.validarFormulario = function () {
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
-            'use strict';
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.querySelectorAll('.needs-validation');
-            // Loop over them and prevent submission
-            Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        })();
+        this.logged.isLoggedIn();
     };
     AppComponent = __decorate([
         core_1.Component({
