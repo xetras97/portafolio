@@ -9,10 +9,19 @@ exports.__esModule = true;
 exports.AppComponent = void 0;
 var core_1 = require("@angular/core");
 var AppComponent = /** @class */ (function () {
-    function AppComponent(socialNet, logged) {
+    function AppComponent(socialNet, logged, formBuilder) {
         this.socialNet = socialNet;
         this.logged = logged;
+        this.formBuilder = formBuilder;
         this.title = 'naon-frontend';
+        this.titulo = "";
+        this.prueba = this.formBuilder.group({
+            "titulo": [null, null],
+            "año": [null, null],
+            "institucion": [null, null],
+            "imagen": [null, null],
+            "periodo": [null, null]
+        });
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -20,6 +29,20 @@ var AppComponent = /** @class */ (function () {
             _this.desarrollador = data[0];
         });
         this.logged.isLoggedIn();
+    };
+    AppComponent.prototype.obtenerModal = function (id) {
+        var _this = this;
+        this.socialNet.obtenerPorId("estudios", id).subscribe(function (data) {
+            _this.titulo = data.titulo;
+        });
+        //ABRIR MODAL;
+    };
+    AppComponent.prototype.cambiarModal = function () {
+        this.prueba.patchValue({
+            "periodo": "DALE GATO"
+        });
+        console.log("se ejecuto");
+        console.log(this.prueba.value);
     };
     AppComponent = __decorate([
         core_1.Component({

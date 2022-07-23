@@ -12,9 +12,17 @@ var ApiService = /** @class */ (function () {
     function ApiService(http) {
         this.http = http;
         this.url = "http://localhost:8080/ver/";
+        this.id = 1;
     }
     ApiService.prototype.obtenerDatosPersonales = function (componente) {
         return this.http.get(this.url + componente);
+    };
+    ApiService.prototype.obtenerPorId = function (componente, id) {
+        return this.http.get(this.url + componente + "/" + id);
+    };
+    ApiService.prototype.obtenerId = function (idNumber) {
+        this.id = idNumber;
+        console.log(this.id);
     };
     ApiService = __decorate([
         core_1.Injectable({

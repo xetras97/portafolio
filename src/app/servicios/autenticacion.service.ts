@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url="http://localhost:8080/user"
+  url="http://localhost:8080/auth/login"
   currentUserSubject: BehaviorSubject<any>;
   constructor(private http:HttpClient) {
     console.log("esta corriendo");

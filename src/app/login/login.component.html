@@ -9,7 +9,7 @@
         <form [formGroup]="form" class="needs-validation" novalidate (ngSubmit)="onEnviar($event)">
           <div class="mb-3">
             <label for="userName" class="form-label">Usuario</label>
-            <input type="text" formControlName="username" class="form-control" id="userName" aria-describedby="user" placeholder="Nombre de usuario" required [ngClass]="{'is-invalid': Username?.errors && Username?.touched, 'is-valid': Username?.errors && Username?.touched}">
+            <input type="text" formControlName="nombreUsuario" class="form-control" id="userName" aria-describedby="user" placeholder="Nombre de usuario" required [ngClass]="{'is-invalid': Username?.errors && Username?.touched, 'is-valid': Username?.errors && Username?.touched}">
             <div *ngIf="Username?.errors && Username?.touched">
               <p *ngIf="Username?.hasError('required')" class="text-danger">Introduzca un nombre de usuario valido.</p>
             </div>

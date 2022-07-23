@@ -10,6 +10,8 @@ import { SkillsComponent } from './skills/skills.component';
 import { PersonalProjectsComponent } from './personal-projects/personal-projects.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
+import { EducacionModalComponent } from './educacion-modal/educacion-modal.component';
+import {NgbModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,16 +20,18 @@ import { LoginComponent } from './login/login.component';
     EducacionComponent,
     SkillsComponent,
     PersonalProjectsComponent,
-    LoginComponent
+    LoginComponent,
+    EducacionModalComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
-  providers: [],
-  bootstrap: [AppComponent, PersonalInfoComponent, EducacionComponent, SkillsComponent, PersonalProjectsComponent]
+  providers: [AppComponent, EducacionModalComponent, NgbActiveModal],
+  bootstrap: [AppComponent, PersonalInfoComponent, EducacionComponent, SkillsComponent, PersonalProjectsComponent, EducacionModalComponent]
 })
 export class AppModule { }

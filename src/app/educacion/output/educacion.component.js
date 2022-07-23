@@ -8,10 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.EducacionComponent = void 0;
 var core_1 = require("@angular/core");
+var educacion_modal_component_1 = require("../educacion-modal/educacion-modal.component");
 var EducacionComponent = /** @class */ (function () {
-    function EducacionComponent(educacionData, loggedService) {
+    function EducacionComponent(educacionData, loggedService, appComponent, educacionModal, modalService) {
         this.educacionData = educacionData;
         this.loggedService = loggedService;
+        this.appComponent = appComponent;
+        this.educacionModal = educacionModal;
+        this.modalService = modalService;
         this.year = 2022;
     }
     EducacionComponent.prototype.ngOnInit = function () {
@@ -19,6 +23,12 @@ var EducacionComponent = /** @class */ (function () {
         this.educacionData.obtenerDatosPersonales("estudios").subscribe(function (data) {
             _this.myEducacionData = data;
         });
+    };
+    EducacionComponent.prototype.setId = function (id) {
+        this.educacionData.obtenerId(id);
+    };
+    EducacionComponent.prototype.open = function () {
+        var modalRef = this.modalService.open(educacion_modal_component_1.EducacionModalComponent);
     };
     EducacionComponent = __decorate([
         core_1.Component({

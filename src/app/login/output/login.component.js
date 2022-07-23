@@ -17,7 +17,7 @@ var LoginComponent = /** @class */ (function () {
         this.appcomponent = appcomponent;
         this.checked = true;
         this.form = this.formBuilder.group({
-            "username": ['', [forms_1.Validators.required]],
+            "nombreUsuario": ['', [forms_1.Validators.required]],
             "password": ['', [forms_1.Validators.required]]
         });
     }
@@ -25,7 +25,7 @@ var LoginComponent = /** @class */ (function () {
     };
     Object.defineProperty(LoginComponent.prototype, "Username", {
         get: function () {
-            return this.form.get("username");
+            return this.form.get("nombreUsuario");
         },
         enumerable: false,
         configurable: true

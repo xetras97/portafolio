@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private autenticacionService:AutenticacionService, private ruta:Router, private appcomponent:AppComponent) {
     this.form=this.formBuilder.group(
       {
-        "username":['', [Validators.required]],
+        "nombreUsuario":['', [Validators.required]],
         "password":['', [Validators.required]]
       }
     )
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   get Username(){
-    return this.form.get("username");
+    return this.form.get("nombreUsuario");
   }
 
   get Password(){

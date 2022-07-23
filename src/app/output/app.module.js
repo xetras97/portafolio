@@ -18,6 +18,8 @@ var skills_component_1 = require("./skills/skills.component");
 var personal_projects_component_1 = require("./personal-projects/personal-projects.component");
 var app_routing_module_1 = require("./app-routing.module");
 var login_component_1 = require("./login/login.component");
+var educacion_modal_component_1 = require("./educacion-modal/educacion-modal.component");
+var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -29,17 +31,19 @@ var AppModule = /** @class */ (function () {
                 educacion_component_1.EducacionComponent,
                 skills_component_1.SkillsComponent,
                 personal_projects_component_1.PersonalProjectsComponent,
-                login_component_1.LoginComponent
+                login_component_1.LoginComponent,
+                educacion_modal_component_1.EducacionModalComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 http_1.HttpClientModule,
                 app_routing_module_1.AppRoutingModule,
-                forms_1.ReactiveFormsModule
+                forms_1.ReactiveFormsModule,
+                ng_bootstrap_1.NgbModule
             ],
-            providers: [],
-            bootstrap: [app_component_1.AppComponent, personal_info_component_1.PersonalInfoComponent, educacion_component_1.EducacionComponent, skills_component_1.SkillsComponent, personal_projects_component_1.PersonalProjectsComponent]
+            providers: [app_component_1.AppComponent, educacion_modal_component_1.EducacionModalComponent, ng_bootstrap_1.NgbActiveModal],
+            bootstrap: [app_component_1.AppComponent, personal_info_component_1.PersonalInfoComponent, educacion_component_1.EducacionComponent, skills_component_1.SkillsComponent, personal_projects_component_1.PersonalProjectsComponent, educacion_modal_component_1.EducacionModalComponent]
         })
     ], AppModule);
     return AppModule;
