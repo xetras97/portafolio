@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { EducacionModalComponent } from './educacion-modal/educacion-modal.component';
 import {NgbModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { EditModalsComponent } from './edit-modals/edit-modals.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {NgbModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
     SkillsComponent,
     PersonalProjectsComponent,
     LoginComponent,
-    EducacionModalComponent
+    EducacionModalComponent,
+    EditModalsComponent
   ],
   imports: [
     BrowserModule,

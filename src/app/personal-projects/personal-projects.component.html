@@ -60,6 +60,16 @@
           </a>
         </div>
       </div>
+      <div class="col-12 d-flex justify-content-center mt-3" *ngIf="loggedService.loggedIn">
+        <a class="btn btn-secondary text-dark d-inline-flex me-2" data-bs-toggle="modal" data-bs-target="#projectsModal" (click)="setId(0)">
+          <p class="d-none d-md-flex mb-0 me-1">EDITAR</p>
+          <span class="material-icons align-self-center justify-self-center">edit</span>
+        </a>
+        <a class="btn btn-secondary text-dark d-inline-flex">
+          <p class="d-none d-md-flex mb-0 me-1">ELIMINAR</p>
+          <span class="material-icons align-self-center justify-self-center">close</span>
+        </a>
+      </div>
     </div>
 
     <div class="row batatabit">
@@ -110,6 +120,16 @@
             </svg>
           </a>
         </div>
+      </div>
+      <div class="col-12 d-flex justify-content-center mt-3 order-lg-3" *ngIf="loggedService.loggedIn">
+        <a class="btn btn-secondary text-dark d-inline-flex me-2" data-bs-toggle="modal" data-bs-target="#projectsModal" (click)="setId(1)">
+          <p class="d-none d-md-flex mb-0 me-1">EDITAR</p>
+          <span class="material-icons align-self-center justify-self-center">edit</span>
+        </a>
+        <a class="btn btn-secondary text-dark d-inline-flex">
+          <p class="d-none d-md-flex mb-0 me-1">ELIMINAR</p>
+          <span class="material-icons align-self-center justify-self-center">close</span>
+        </a>
       </div>
     </div>
 
@@ -167,6 +187,16 @@
             </svg>
           </a>
         </div>
+      </div>
+      <div class="col-12 d-flex justify-content-center mt-3 mb-3" *ngIf="loggedService.loggedIn">
+        <a class="btn btn-secondary text-dark d-inline-flex me-2" data-bs-toggle="modal" data-bs-target="#projectsModal" (click)="setId(2)">
+          <p class="d-none d-md-flex mb-0 me-1">EDITAR</p>
+          <span class="material-icons align-self-center justify-self-center">edit</span>
+        </a>
+        <a class="btn btn-secondary text-dark d-inline-flex">
+          <p class="d-none d-md-flex mb-0 me-1">ELIMINAR</p>
+          <span class="material-icons align-self-center justify-self-center">close</span>
+        </a>
       </div>
     </div>
   </div>

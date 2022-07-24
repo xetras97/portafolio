@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../servicios/api.service';
+import { LoggedService } from '../servicios/logged.service';
 
 @Component({
   selector: 'app-personal-projects',
@@ -9,7 +10,7 @@ import { ApiService } from '../servicios/api.service';
 export class PersonalProjectsComponent implements OnInit {
 
   myProjectsData:any;
-  constructor(private projectsData:ApiService ) { }
+  constructor(private projectsData:ApiService, public loggedService:LoggedService ) { }
 
   ngOnInit(): void {
     this.projectsData.obtenerDatosPersonales("proyectos").subscribe(data =>{
@@ -18,4 +19,8 @@ export class PersonalProjectsComponent implements OnInit {
     });
   }
 
+  setId(id:number){
+    this.projectsData.obtenerId(id);
+    console.log(id);
+  }
 }

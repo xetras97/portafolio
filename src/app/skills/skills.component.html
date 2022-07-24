@@ -18,52 +18,92 @@
 
     <!-- HABILIDADES DURAS -->
     <div class="row justify-content-center" *ngIf="skills === 'hard'">
-      <div class="col-12 col-md-6 col-md-6 col-lg-4 d-flex justify-content-center">
+      <div class="col-12 col-md-6 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
+        <div class="col-12 d-flex align-items-center justify-content-around edit-educacion" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(0)">edit</span>
+        </div>
         <svg style="background-image: url('{{mySkillsData[0].img}}');">
           <circle #circle class="meter-100" cx="114" cy="114" r="104" />
         </svg>
       </div>
-      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
+        <div class="col-12 d-flex align-items-center justify-content-around edit-educacion" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(1)">edit</span>
+        </div>
         <svg style="background-image: url('{{mySkillsData[1].img}}');">
           <circle class="meter-75" cx="114" cy="114" r="104" />
         </svg>
       </div>
-      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
+        <div class="col-12 d-flex align-items-center justify-content-around edit-educacion" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(2)">edit</span>
+        </div>
         <svg style="background-image: url('{{mySkillsData[2].img}}');">
           <circle class="meter-75" cx="114" cy="114" r="104" />
         </svg>
       </div>
-      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
+        <div class="col-12 d-flex align-items-center justify-content-around edit-educacion" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(3)">edit</span>
+        </div>
         <svg style="background-image: url('{{mySkillsData[3].img}}');">
           <circle class="meter-50" cx="114" cy="114" r="104" />
         </svg>
       </div>
-      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
+        <div class="col-12 d-flex align-items-center justify-content-around edit-educacion" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(4)">edit</span>
+        </div>
         <svg style="background-image: url('{{mySkillsData[4].img}}');">
           <circle class="meter-25" cx="114" cy="114" r="104" />
         </svg>
       </div>
-      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
+        <div class="col-12 d-flex align-items-center justify-content-around edit-educacion" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(5)">edit</span>
+        </div>
         <svg style="background-image: url('{{mySkillsData[5].img}}');">
           <circle class="meter-50" cx="114" cy="114" r="104" />
         </svg>
       </div>
-      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
+        <div class="col-12 d-flex align-items-center justify-content-around edit-educacion" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(6)">edit</span>
+        </div>
         <svg style="background-image: url('{{mySkillsData[6].img}}');">
           <circle class="meter-50" cx="114" cy="114" r="104" />
         </svg>
       </div>
-      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
+        <div class="col-12 d-flex align-items-center justify-content-around edit-educacion" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(7)">edit</span>
+        </div>
         <svg style="background-image: url('{{mySkillsData[7].img}}');">
           <circle class="meter-50" cx="114" cy="114" r="104" />
         </svg>
       </div>
-      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
+        <div class="col-12 d-flex align-items-center justify-content-around edit-educacion" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(8)">edit</span>
+        </div>
         <svg style="background-image: url('{{mySkillsData[8].img}}');">
           <circle class="meter-75" cx="114" cy="114" r="104" />
         </svg>
       </div>
-      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
+        <div class="col-12 d-flex align-items-center justify-content-around edit-educacion" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(9)">edit</span>
+        </div>
         <svg style="background-image: url('{{mySkillsData[9].img}}');">
           <circle class="meter-75" cx="114" cy="114" r="104" />
         </svg>
@@ -72,31 +112,63 @@
 
     <!-- HABILIDADES BLANDAS -->
     <div class="row justify-content-center mt-4" *ngIf="skills === 'soft'">
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6 habilidad">
+        <div class="d-flex align-items-center justify-content-center edit-educacion soft" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#softSkillsModal" (click)="setId(10)">edit</span>
+        </div>
         <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">{{mySkillsData[10].nombre}}</p>
       </div>
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6 habilidad">
+        <div class="d-flex align-items-center justify-content-center edit-educacion soft" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#softSkillsModal" (click)="setId(11)">edit</span>
+        </div>
         <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">{{mySkillsData[11].nombre}}</p>
       </div>
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6 habilidad">
+        <div class="d-flex align-items-center justify-content-center edit-educacion soft" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#softSkillsModal" (click)="setId(12)">edit</span>
+        </div>
         <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">{{mySkillsData[12].nombre}}</p>
       </div>
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6 habilidad">
+        <div class="d-flex align-items-center justify-content-center edit-educacion soft" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#softSkillsModal" (click)="setId(13)">edit</span>
+        </div>
         <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">{{mySkillsData[13].nombre}}</p>
       </div>
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6 habilidad">
+        <div class="d-flex align-items-center justify-content-center edit-educacion soft" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#softSkillsModal" (click)="setId(14)">edit</span>
+        </div>
         <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">{{mySkillsData[14].nombre}}</p>
       </div>
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6 habilidad">
+        <div class="d-flex align-items-center justify-content-center edit-educacion soft" *ngIf="loggedService.loggedIn">
+          <span class="material-icons delete">close</span>
+          <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#softSkillsModal" (click)="setId(15)">edit</span>
+        </div>
         <p class="alert alert-info text-uppercase text-center soft-skills" role="alert">{{mySkillsData[15].nombre}}</p>
       </div>
     </div>
     <!-- IDIOMAS -->
     <div class="row justify-content-center mt-4" *ngIf="skills === 'languages'">
-      <div class="col-12">
+      <div class="col-12 habilidad">
+        <div class="col-12 d-flex align-items-center justify-content-center" *ngIf="loggedService.loggedIn">
+          <span class="material-icons edit me-3" data-bs-toggle="modal" data-bs-target="#languagesModal" (click)="setId(16)">edit</span>
+          <span class="material-icons delete">close</span>
+        </div>
         <p class="text-uppercase text-center languages">{{mySkillsData[16].nombre}} <span class="badge bg-info text-dark">{{mySkillsData[16].otro}}</span></p>
       </div>
       <div class="col-12">
+        <div class="col-12 d-flex align-items-center justify-content-center" *ngIf="loggedService.loggedIn">
+          <span class="material-icons edit me-3" data-bs-toggle="modal" data-bs-target="#languagesModal" (click)="setId(17)">edit</span>
+          <span class="material-icons delete">close</span>
+        </div>
         <p class="text-uppercase text-center languages">{{mySkillsData[17].nombre}} <span class="badge bg-info text-dark">{{mySkillsData[17].otro}}</span></p>
       </div>
     </div>

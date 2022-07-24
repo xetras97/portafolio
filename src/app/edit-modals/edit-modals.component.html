@@ -1,0 +1,147 @@
+<!-- MODAL HABILIDADES DURAS -->
+<div class="modal" id="skillsModal" tabindex="-1" aria-labelledby="skillsModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editSkillsLabel">EDITAR HABILIDAD</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="skillsModal" class="form-floating">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre"  formControlName="nombre">
+            <label for="nombre">Nombre</label>
+          </div>
+          <div class="form-floating mb-3">
+            <select type="select" class="form-control" id="nivel" placeholder="Nivel" formControlName="nivel">
+              <option value="Experto">Experto</option>
+              <option value="Avanzado">Avanzado</option>
+              <option value="Intermedio">Intermedio</option>
+              <option value="Basico">Basico</option>
+            </select>
+            <label for="nivel">Nivel</label>
+          </div>
+          <div class="mb-3">
+            <label for="skillImg" class="form-label">Imagen</label>
+            <input class="form-control" type="file" id="skillImg">
+          </div>
+        </form>
+        <button type="button" class="btn btn-outline-dark col-4 offset-4" (click)="setDefaultForm()">Auto-rellenado</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm()">Descartar Cambios</button>
+        <button type="button" class="btn btn-success">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL HABILIDADES BLANDAS -->
+<div class="modal" id="softSkillsModal" tabindex="-1" aria-labelledby="softSkillsModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editSkillsLabel">EDITAR HABILIDAD</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="softSkillsModal" class="form-floating">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="softName" placeholder="softName"  formControlName="nombre">
+            <label for="softName">Nombre</label>
+          </div>
+        </form>
+        <button type="button" class="btn btn-outline-dark col-4 offset-4" (click)="setSoftDefaultForm()">Auto-rellenado</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm()">Descartar Cambios</button>
+        <button type="button" class="btn btn-success">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL IDIOMAS -->
+<div class="modal" id="languagesModal" tabindex="-1" aria-labelledby="languagesModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editSkillsLabel">EDITAR LENGUAJES</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="languagesModal" class="form-floating">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="languagesName" placeholder="languagesName"  formControlName="nombre">
+            <label for="languagesName">Nombre</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="languagesLevel" placeholder="languagesLevel"  formControlName="nivel">
+            <label for="languagesLevel">Nivel</label>
+          </div>
+        </form>
+        <button type="button" class="btn btn-outline-dark col-4 offset-4" (click)="setLanguageForm()">Auto-rellenado</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm()">Descartar Cambios</button>
+        <button type="button" class="btn btn-success">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PROYECTOS -->
+<div class="modal" id="projectsModal" tabindex="-1" aria-labelledby="projectsModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProjectsLabel">EDITAR PROYECTO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="projectsModal" class="form-floating">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="projectName" placeholder="Nombre"  formControlName="nombre">
+            <label for="projectName">Nombre</label>
+          </div>
+          <div class="mb-3">
+            <label for="projectImg" class="form-label">Imagen Principal</label>
+            <input class="form-control" type="file" id="projectImg">
+          </div>
+          <div class="mb-3">
+            <label for="projectDescription" class="form-label">Descripcion</label>
+            <textarea class="form-control" id="projectDescription" rows="2" formControlName="descripcion"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="projectStack" class="form-label">Stack</label>
+            <textarea class="form-control" id="projectStack" rows="2" formControlName="stack"></textarea>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="projectWeb" placeholder="Web"  formControlName="web">
+            <label for="projectWeb">Sitio Web</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="projectGithub" placeholder="GitHub"  formControlName="github">
+            <label for="projectGithub">GitHub</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="projectYear" placeholder="Año"  formControlName="año">
+            <label for="projectYear">Año</label>
+          </div>
+          <div class="mb-3">
+            <label for="projectObservation" class="form-label">Observaciones</label>
+            <textarea class="form-control" id="projectObservation" rows="2" formControlName="observaciones"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="projectImgExtra" class="form-label">Imagenes Extra</label>
+            <input class="form-control" type="file" id="projectImgExtra" multiple>
+          </div>
+        </form>
+        <button type="button" class="btn btn-outline-dark col-4 offset-4" (click)="setProjectDefaultForm()">Auto-rellenado</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm()">Descartar Cambios</button>
+        <button type="button" class="btn btn-success">GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>

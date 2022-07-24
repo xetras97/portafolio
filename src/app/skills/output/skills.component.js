@@ -9,8 +9,9 @@ exports.__esModule = true;
 exports.SkillsComponent = void 0;
 var core_1 = require("@angular/core");
 var SkillsComponent = /** @class */ (function () {
-    function SkillsComponent(skillsData) {
+    function SkillsComponent(skillsData, loggedService) {
         this.skillsData = skillsData;
+        this.loggedService = loggedService;
         this.skills = "hard";
     }
     SkillsComponent.prototype.ngOnInit = function () {
@@ -25,6 +26,9 @@ var SkillsComponent = /** @class */ (function () {
             rect.left >= 0 &&
             rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
             rect.right <= (window.innerWidth || document.documentElement.clientWidth));
+    };
+    SkillsComponent.prototype.setId = function (id) {
+        this.skillsData.obtenerId(id);
     };
     __decorate([
         core_1.ViewChild('circle')

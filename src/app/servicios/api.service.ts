@@ -25,7 +25,6 @@ export class ApiService {
 
   obtenerId(idNumber:number){
     this.id=idNumber;
-    console.log(this.id);
   }
 
 }

@@ -9,8 +9,9 @@ exports.__esModule = true;
 exports.PersonalProjectsComponent = void 0;
 var core_1 = require("@angular/core");
 var PersonalProjectsComponent = /** @class */ (function () {
-    function PersonalProjectsComponent(projectsData) {
+    function PersonalProjectsComponent(projectsData, loggedService) {
         this.projectsData = projectsData;
+        this.loggedService = loggedService;
     }
     PersonalProjectsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -18,6 +19,10 @@ var PersonalProjectsComponent = /** @class */ (function () {
             _this.myProjectsData = data;
             console.log(_this.myProjectsData);
         });
+    };
+    PersonalProjectsComponent.prototype.setId = function (id) {
+        this.projectsData.obtenerId(id);
+        console.log(id);
     };
     PersonalProjectsComponent = __decorate([
         core_1.Component({

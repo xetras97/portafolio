@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ApiService } from '../servicios/api.service';
+import { LoggedService } from '../servicios/logged.service';
 
 @Component({
   selector: 'app-skills',
@@ -9,7 +10,7 @@ import { ApiService } from '../servicios/api.service';
 export class SkillsComponent implements OnInit {
 
   mySkillsData:any;
-  constructor(private skillsData:ApiService ) { }
+  constructor(private skillsData:ApiService, public loggedService:LoggedService) { }
 
   ngOnInit(): void {
     this.skillsData.obtenerDatosPersonales("habilidades").subscribe(data =>{
@@ -29,5 +30,9 @@ export class SkillsComponent implements OnInit {
         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
-}
+  }
+
+  setId(id:number){
+    this.skillsData.obtenerId(id);
+  }
 }

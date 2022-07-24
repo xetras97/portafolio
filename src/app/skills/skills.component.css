@@ -31,6 +31,24 @@ svg {
   background-repeat: no-repeat;
 }
 
+.edit-educacion {
+  position: absolute;
+  z-index: 10;
+}
+
+.soft {
+  right: 5%;
+  top: 5%;
+}
+
+.edit-educacion .edit, .edit-educacion .delete, .edit, .delete{
+  cursor: pointer;
+}
+
+.habilidad {
+  position: relative;
+}
+
 [class^="meter-"] {
   fill: none;
   stroke-width: 20px;
