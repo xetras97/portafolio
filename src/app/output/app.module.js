@@ -20,6 +20,8 @@ var app_routing_module_1 = require("./app-routing.module");
 var login_component_1 = require("./login/login.component");
 var educacion_modal_component_1 = require("./educacion-modal/educacion-modal.component");
 var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
+var edit_modals_component_1 = require("./edit-modals/edit-modals.component");
+var angular_file_uploader_1 = require("angular-file-uploader");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -32,7 +34,8 @@ var AppModule = /** @class */ (function () {
                 skills_component_1.SkillsComponent,
                 personal_projects_component_1.PersonalProjectsComponent,
                 login_component_1.LoginComponent,
-                educacion_modal_component_1.EducacionModalComponent
+                educacion_modal_component_1.EducacionModalComponent,
+                edit_modals_component_1.EditModalsComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -40,7 +43,8 @@ var AppModule = /** @class */ (function () {
                 http_1.HttpClientModule,
                 app_routing_module_1.AppRoutingModule,
                 forms_1.ReactiveFormsModule,
-                ng_bootstrap_1.NgbModule
+                ng_bootstrap_1.NgbModule,
+                angular_file_uploader_1.AngularFileUploaderModule
             ],
             providers: [app_component_1.AppComponent, educacion_modal_component_1.EducacionModalComponent, ng_bootstrap_1.NgbActiveModal],
             bootstrap: [app_component_1.AppComponent, personal_info_component_1.PersonalInfoComponent, educacion_component_1.EducacionComponent, skills_component_1.SkillsComponent, personal_projects_component_1.PersonalProjectsComponent, educacion_modal_component_1.EducacionModalComponent]

@@ -13,6 +13,56 @@ var EditModalsComponent = /** @class */ (function () {
         this.educacion = educacion;
         this.formBuilder = formBuilder;
         this.activeModal = activeModal;
+        this.multipleConfig = {
+            uploadAPI: {
+                url: "http://localhost:8080/upload",
+                headers: {
+                    "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcmdwcm9ncmFtYSIsImlhdCI6MTY1ODY4NjY5NSwiZXhwIjoxNjU4NzI5ODk1fQ.e3DqTd4o3ax2jhUWEX9HuMy4DiXnB2wZqSCWe-4Hl_Rzkw_pw-muPCKOuXgdk2K-Sm2zmvON-Ds0tk1BMZhRLQ"
+                }
+            },
+            multiple: true,
+            formatsAllowed: ".jpg,.png",
+            maxSize: 5,
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            fileNameIndex: false,
+            autoUpload: true,
+            replaceTexts: {
+                selectFileBtn: 'Seleccionar Imagenes',
+                afterUploadMsg_success: 'Cargado correctamente',
+                afterUploadMsg_error: 'Fallo la carga',
+                sizeLimit: 'Tamaño maximo'
+            }
+        };
+        this.afuConfig = {
+            uploadAPI: {
+                url: "http://localhost:8080/upload",
+                headers: {
+                    "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcmdwcm9ncmFtYSIsImlhdCI6MTY1ODY4NjY5NSwiZXhwIjoxNjU4NzI5ODk1fQ.e3DqTd4o3ax2jhUWEX9HuMy4DiXnB2wZqSCWe-4Hl_Rzkw_pw-muPCKOuXgdk2K-Sm2zmvON-Ds0tk1BMZhRLQ"
+                }
+            },
+            theme: "dragNDrop",
+            multiple: false,
+            formatsAllowed: ".jpg,.png",
+            maxSize: 1,
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            fileNameIndex: false,
+            autoUpload: true,
+            replaceTexts: {
+                selectFileBtn: 'Seleccionar Imagenes',
+                uploadBtn: 'Cargar',
+                dragNDropBox: 'Arrastra aqui',
+                afterUploadMsg_success: 'Cargado correctamente',
+                afterUploadMsg_error: 'Fallo la carga',
+                sizeLimit: 'Tamaño maximo'
+            }
+        };
+        this.multiple = false;
+        this.single = false;
+        this.filesNameList = [];
         this.skillsModal = this.formBuilder.group({
             "nombre": [null, null],
             "nivel": [null, null]
@@ -90,6 +140,28 @@ var EditModalsComponent = /** @class */ (function () {
         this.softSkillsModal.reset();
         this.languagesModal.reset();
         this.projectsModal.reset();
+    };
+    EditModalsComponent.prototype.resetFiles = function () {
+        this.single = true;
+        this.fileName = undefined;
+        console.log(this.fileName);
+    };
+    EditModalsComponent.prototype.resetMultipleFiles = function () {
+        this.multiple = true;
+        this.filesNameList = [];
+        console.log(this.filesNameList);
+    };
+    EditModalsComponent.prototype.fileSelected = function (evento) {
+        this.single = false;
+        this.fileName = evento.target.files[0].name;
+        console.log(this.fileName);
+    };
+    EditModalsComponent.prototype.multipleFileSelected = function (evento) {
+        this.multiple = false;
+        for (var index = 0; index < evento.target.files.length; index++) {
+            this.filesNameList.push(evento.target.files[index].name);
+        }
+        console.log(this.filesNameList);
     };
     EditModalsComponent = __decorate([
         core_1.Component({

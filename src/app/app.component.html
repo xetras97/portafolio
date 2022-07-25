@@ -75,12 +75,13 @@
           <div class="row">
             <div class="mb-3 col-6">
               <label for="profileImg" class="form-label">Foto de Perfil</label>
-              <input class="form-control" type="file" id="profileImg">
+              <angular-file-uploader [config]="afuConfig" (fileSelected)="picSelected($event)"[resetUpload]=single></angular-file-uploader>
             </div>
             <div class="mb-3 col-6">
               <label for="banner" class="form-label">Banner</label>
-              <input class="form-control" type="file" id="banner">
+              <angular-file-uploader [config]="afuConfig" (fileSelected)="bannerSelected($event)"[resetUpload]=single></angular-file-uploader>
             </div>
+            <button type="button" class="col-12 btn btn-secondary" (click)="resetFiles()">Eliminar Imagenes</button>
           </div>
         </form>
       </div>

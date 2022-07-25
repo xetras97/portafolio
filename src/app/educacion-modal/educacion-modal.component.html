@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="editEducacionLabel">EDITAR DATOS PERSONALES</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm()"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm(); resetFiles()"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="test" class="form-floating">
@@ -25,7 +25,8 @@
           </div>
           <div class="mb-3">
             <label for="instituteImg" class="form-label">Imagen</label>
-            <input class="form-control" type="file" id="instituteImg">
+            <angular-file-uploader [config]="afuConfig" (fileSelected)="resetFiles(); fileSelected($event)"[resetUpload]=single></angular-file-uploader>
+            <button type="button" class="col-12 btn btn-secondary" (click)="resetFiles()">Eliminar Imagen</button>
           </div>
           <div class="mb-3">
             <label for="time" class="form-label">Periodo</label>
@@ -35,7 +36,7 @@
         <button type="button" class="btn btn-outline-dark col-4 offset-4" (click)="setDefaultForm()">Auto-rellenado</button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm()">Descartar Cambios</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm(); resetFiles()">Descartar Cambios</button>
         <button type="button" class="btn btn-success">GUARDAR</button>
       </div>
     </div>

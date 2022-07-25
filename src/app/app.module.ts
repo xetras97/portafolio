@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { EducacionModalComponent } from './educacion-modal/educacion-modal.component';
 import {NgbModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { EditModalsComponent } from './edit-modals/edit-modals.component';
+import { AngularFileUploaderModule } from "angular-file-uploader";
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { EditModalsComponent } from './edit-modals/edit-modals.component';
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    AngularFileUploaderModule
   ],
   providers: [AppComponent, EducacionModalComponent, NgbActiveModal],
   bootstrap: [AppComponent, PersonalInfoComponent, EducacionComponent, SkillsComponent, PersonalProjectsComponent, EducacionModalComponent]

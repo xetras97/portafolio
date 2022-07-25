@@ -48,4 +48,56 @@ export class AppComponent implements OnInit {
     console.log("se ejecuto");
     console.log(this.prueba.value);
   }
+
+  afuConfig = {
+    uploadAPI: {
+      url:"http://localhost:8080/upload",
+      headers: {
+        "Authorization" : `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcmdwcm9ncmFtYSIsImlhdCI6MTY1ODY4NjY5NSwiZXhwIjoxNjU4NzI5ODk1fQ.e3DqTd4o3ax2jhUWEX9HuMy4DiXnB2wZqSCWe-4Hl_Rzkw_pw-muPCKOuXgdk2K-Sm2zmvON-Ds0tk1BMZhRLQ`
+         },
+    },
+    multiple: false,
+    formatsAllowed: ".jpg,.png",
+    maxSize: 1,
+    hideProgressBar: false,
+    hideResetBtn: true,
+    hideSelectBtn: false,
+    fileNameIndex: false,
+    autoUpload: true,
+    replaceTexts: {
+      selectFileBtn: 'Seleccionar Imagenes',
+      uploadBtn: 'Cargar',
+      dragNDropBox: 'Arrastra aqui',
+      afterUploadMsg_success: 'Cargado correctamente',
+      afterUploadMsg_error: 'Fallo la carga',
+      sizeLimit: 'Tamaño maximo'
+    }
+};
+
+  multiple:boolean=false;
+  single:boolean=false;
+
+  filesNameList: string[] = [];
+  filePic:string|undefined;
+  fileBanner:string|undefined;
+
+  resetFiles(){
+    this.single = true;
+    this.filePic=undefined;
+    this.fileBanner=undefined;
+    console.log(this.filePic);
+    console.log(this.fileBanner);
+  }
+
+  picSelected(evento:any): void{
+    this.single = false;
+    this.filePic = evento.target.files[0].name;
+    console.log(this.filePic);
+  }
+
+  bannerSelected(evento:any): void{
+    this.single = false;
+    this.fileBanner = evento.target.files[0].name;
+    console.log(this.fileBanner);
+  }
 }
