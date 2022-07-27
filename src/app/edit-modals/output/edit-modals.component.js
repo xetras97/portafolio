@@ -9,16 +9,13 @@ exports.__esModule = true;
 exports.EditModalsComponent = void 0;
 var core_1 = require("@angular/core");
 var EditModalsComponent = /** @class */ (function () {
-    function EditModalsComponent(educacion, formBuilder, activeModal) {
-        this.educacion = educacion;
+    function EditModalsComponent(apiService, formBuilder, activeModal) {
+        this.apiService = apiService;
         this.formBuilder = formBuilder;
         this.activeModal = activeModal;
         this.multipleConfig = {
             uploadAPI: {
-                url: "http://localhost:8080/upload",
-                headers: {
-                    "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcmdwcm9ncmFtYSIsImlhdCI6MTY1ODY4NjY5NSwiZXhwIjoxNjU4NzI5ODk1fQ.e3DqTd4o3ax2jhUWEX9HuMy4DiXnB2wZqSCWe-4Hl_Rzkw_pw-muPCKOuXgdk2K-Sm2zmvON-Ds0tk1BMZhRLQ"
-                }
+                url: "http://localhost:8080/upload"
             },
             multiple: true,
             formatsAllowed: ".jpg,.png",
@@ -37,10 +34,7 @@ var EditModalsComponent = /** @class */ (function () {
         };
         this.afuConfig = {
             uploadAPI: {
-                url: "http://localhost:8080/upload",
-                headers: {
-                    "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcmdwcm9ncmFtYSIsImlhdCI6MTY1ODY4NjY5NSwiZXhwIjoxNjU4NzI5ODk1fQ.e3DqTd4o3ax2jhUWEX9HuMy4DiXnB2wZqSCWe-4Hl_Rzkw_pw-muPCKOuXgdk2K-Sm2zmvON-Ds0tk1BMZhRLQ"
-                }
+                url: "http://localhost:8080/upload"
             },
             theme: "dragNDrop",
             multiple: false,
@@ -63,7 +57,7 @@ var EditModalsComponent = /** @class */ (function () {
         this.multiple = false;
         this.single = false;
         this.filesNameList = [];
-        this.skillsModal = this.formBuilder.group({
+        this.skillsModals = this.formBuilder.group({
             "nombre": [null, null],
             "nivel": [null, null]
         });
@@ -86,23 +80,23 @@ var EditModalsComponent = /** @class */ (function () {
     }
     EditModalsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.educacion.obtenerDatosPersonales("habilidades").subscribe(function (data) {
+        this.apiService.obtenerDatosPersonales("habilidades").subscribe(function (data) {
             _this.dataForm = data;
         });
-        this.educacion.obtenerDatosPersonales("proyectos").subscribe(function (data) {
+        this.apiService.obtenerDatosPersonales("proyectos").subscribe(function (data) {
             _this.projectsForm = data;
         });
     };
     EditModalsComponent.prototype.setDefaultForm = function () {
-        var id = this.educacion.id;
+        var id = this.apiService.id;
         return this.setForm(this.dataForm[id].nombre, this.dataForm[id].nivel);
     };
     EditModalsComponent.prototype.setLanguageForm = function () {
-        var id = this.educacion.id;
+        var id = this.apiService.id;
         return this.setForm(this.dataForm[id].nombre, this.dataForm[id].otro);
     };
     EditModalsComponent.prototype.setForm = function (nombre, nivel) {
-        this.skillsModal.setValue({
+        this.skillsModals.setValue({
             "nombre": nombre,
             "nivel": nivel
         });
@@ -117,7 +111,7 @@ var EditModalsComponent = /** @class */ (function () {
         });
     };
     EditModalsComponent.prototype.setSoftDefaultForm = function () {
-        var id = this.educacion.id;
+        var id = this.apiService.id;
         return this.setSoft(this.dataForm[id].nombre);
     };
     EditModalsComponent.prototype.setProject = function (nombre, descripcion, stack, web, github, año, observaciones) {
@@ -132,11 +126,11 @@ var EditModalsComponent = /** @class */ (function () {
         });
     };
     EditModalsComponent.prototype.setProjectDefaultForm = function () {
-        var id = this.educacion.id;
+        var id = this.apiService.id;
         return this.setProject(this.projectsForm[id].nombre, this.projectsForm[id].descripcion, this.projectsForm[id].stack, this.projectsForm[id].web, this.projectsForm[id].github, this.projectsForm[id].año, this.projectsForm[id].observaciones);
     };
     EditModalsComponent.prototype.resetForm = function () {
-        this.skillsModal.reset();
+        this.skillsModals.reset();
         this.softSkillsModal.reset();
         this.languagesModal.reset();
         this.projectsModal.reset();
@@ -162,6 +156,90 @@ var EditModalsComponent = /** @class */ (function () {
             this.filesNameList.push(evento.target.files[index].name);
         }
         console.log(this.filesNameList);
+    };
+    EditModalsComponent.prototype.postSkillsBd = function () {
+        var id = this.apiService.id;
+        var formData = this.skillsModals.value;
+        var data = {
+            "idHabilidades": id,
+            "nombre": formData.nombre,
+            "tipo": "Dura",
+            "nivel": formData.nivel,
+            "img": this.dataForm[id].img,
+            "otro": null
+        };
+        if (this.fileName != undefined) {
+            data.img = 'http://localhost:8080/files/' + this.fileName;
+        }
+        var dataToSend = data;
+        return this.apiService.enviarDatos("habilidad", dataToSend).subscribe(function (xd) { return console.log(xd); });
+    };
+    EditModalsComponent.prototype.postSoftBd = function () {
+        var id = this.apiService.id;
+        var formData = this.softSkillsModal.value;
+        var data = {
+            "idHabilidades": id,
+            "nombre": formData.nombre,
+            "tipo": "Blanda"
+        };
+        var dataToSend = data;
+        return this.apiService.enviarDatos("habilidad", dataToSend).subscribe(function (xd) { return console.log(xd); });
+    };
+    EditModalsComponent.prototype.postLanguagesBd = function () {
+        var id = this.apiService.id;
+        var formData = this.languagesModal.value;
+        var data = {
+            "idHabilidades": id,
+            "nombre": formData.nombre,
+            "tipo": "Idioma",
+            "otro": formData.nivel
+        };
+        var dataToSend = data;
+        return this.apiService.enviarDatos("habilidad", dataToSend).subscribe(function (xd) { return console.log(xd); });
+    };
+    EditModalsComponent.prototype.postProjectsBd = function () {
+        var id = this.apiService.id;
+        var formData = this.projectsModal.value;
+        var data = {
+            "idProyectos": id,
+            "nombre": formData.nombre,
+            "imagen": this.projectsForm[id].imagen,
+            "descripcion": formData.descripcion,
+            "stack": formData.stack,
+            "web": formData.web,
+            "github": formData.github,
+            "año": formData.año,
+            "observaciones": formData.observaciones,
+            "img2": this.projectsForm[id].img2,
+            "img3": this.projectsForm[id].img3,
+            "img4": this.projectsForm[id].img4,
+            "img5": this.projectsForm[id].img5,
+            "img6": this.projectsForm[id].img6
+        };
+        if (this.fileName != undefined) {
+            data.imagen = 'http://localhost:8080/files/' + this.fileName;
+        }
+        if (this.filesNameList.length != 0) {
+            if (this.filesNameList[0] != undefined) {
+                data.img2 = 'http://localhost:8080/files/' + this.filesNameList[0];
+            }
+            if (this.filesNameList[1] != undefined) {
+                data.img3 = 'http://localhost:8080/files/' + this.filesNameList[1];
+            }
+            if (this.filesNameList[2] != undefined) {
+                data.img4 = 'http://localhost:8080/files/' + this.filesNameList[2];
+            }
+            if (this.filesNameList[3] != undefined) {
+                data.img5 = 'http://localhost:8080/files/' + this.filesNameList[3];
+            }
+            if (this.filesNameList[4] != undefined) {
+                data.img6 = 'http://localhost:8080/files/' + this.filesNameList[4];
+            }
+        }
+        var dataToSend = data;
+        console.log(dataToSend);
+        console.log(this.filesNameList[4]);
+        return this.apiService.enviarDatos("proyectos", dataToSend).subscribe(function (xd) { return console.log(xd); });
     };
     EditModalsComponent = __decorate([
         core_1.Component({

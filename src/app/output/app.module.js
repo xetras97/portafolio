@@ -22,6 +22,7 @@ var educacion_modal_component_1 = require("./educacion-modal/educacion-modal.com
 var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var edit_modals_component_1 = require("./edit-modals/edit-modals.component");
 var angular_file_uploader_1 = require("angular-file-uploader");
+var interceptor_service_1 = require("./servicios/interceptor.service");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -46,7 +47,7 @@ var AppModule = /** @class */ (function () {
                 ng_bootstrap_1.NgbModule,
                 angular_file_uploader_1.AngularFileUploaderModule
             ],
-            providers: [app_component_1.AppComponent, educacion_modal_component_1.EducacionModalComponent, ng_bootstrap_1.NgbActiveModal],
+            providers: [app_component_1.AppComponent, educacion_modal_component_1.EducacionModalComponent, ng_bootstrap_1.NgbActiveModal, { provide: http_1.HTTP_INTERCEPTORS, useClass: interceptor_service_1.InterceptorService, multi: true }],
             bootstrap: [app_component_1.AppComponent, personal_info_component_1.PersonalInfoComponent, educacion_component_1.EducacionComponent, skills_component_1.SkillsComponent, personal_projects_component_1.PersonalProjectsComponent, educacion_modal_component_1.EducacionModalComponent]
         })
     ], AppModule);

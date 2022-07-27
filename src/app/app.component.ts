@@ -10,16 +10,19 @@ import { LoggedService } from './servicios/logged.service';
 })
 export class AppComponent implements OnInit {
   title = 'naon-frontend';
-  prueba:FormGroup;
+  desarrolladorForm:FormGroup;
   desarrollador:any;
   constructor(private socialNet:ApiService, public logged:LoggedService, private formBuilder:FormBuilder) {
-    this.prueba=this.formBuilder.group(
+    this.desarrolladorForm=this.formBuilder.group(
       {
-        "titulo":[null, null],
-        "año":[null, null],
-        "institucion":[null, null],
-        "imagen":[null, null],
-        "periodo":[null, null],
+        "nombreDesarrollador": [null, null],
+        "apellido": [null, null],
+        "titulo": [null, null],
+        "descripcion": [null, null],
+        "tituloSecundario": [null, null],
+        "github": [null, null],
+        "linkedin": [null, null],
+        "instagram": [null, null],
       }
     )
    }
@@ -27,26 +30,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.socialNet.obtenerDatosPersonales("desarrollador").subscribe(data =>{
       this.desarrollador=data[0];
+      this.rellenar()
     });
     this.logged.isLoggedIn();
-  }
-
-  titulo:string = "";
-
-
-  obtenerModal (id:number){
-    this.socialNet.obtenerPorId("estudios", id).subscribe(data =>{
-      this.titulo=data.titulo;
-    });
-    //ABRIR MODAL;
-  }
-
-  cambiarModal(){
-    this.prueba.patchValue({
-      "periodo": "DALE GATO"
-    })
-    console.log("se ejecuto");
-    console.log(this.prueba.value);
   }
 
   afuConfig = {
@@ -99,5 +85,44 @@ export class AppComponent implements OnInit {
     this.single = false;
     this.fileBanner = evento.target.files[0].name;
     console.log(this.fileBanner);
+  }
+
+  postEducacionBd(){
+    let formData = this.desarrolladorForm.value;
+    let data = {
+      "idDesarrollador": 1,
+      "nombre": formData.nombreDesarrollador,
+      "apellido": formData.apellido,
+      "titulo": formData.titulo,
+      "img": this.desarrollador.img,
+      "descripcion": formData.descripcion,
+      "tituloSecundario": formData.tituloSecundario,
+      "github": formData.github,
+      "linkedin": formData.linkedin,
+      "instagram": formData.instagram,
+      "banner": this.desarrollador.banner
+    };
+    if(this.filePic!=undefined){
+      data.img = 'http://localhost:8080/files/'+this.filePic;
+    }
+    if(this.fileBanner!=undefined){
+      data.banner = 'http://localhost:8080/files/'+this.fileBanner;
+    }
+    let dataToSend = data;
+    console.log(dataToSend);
+    return this.socialNet.enviarDatos("desarrollador", dataToSend).subscribe(xd=>console.log(xd));
+  }
+
+  rellenar(){
+    this.desarrolladorForm.setValue({
+      "nombreDesarrollador": this.desarrollador.nombre,
+      "apellido": this.desarrollador.apellido,
+      "titulo": this.desarrollador.titulo,
+      "descripcion": this.desarrollador.descripcion,
+      "tituloSecundario": this.desarrollador.tituloSecundario,
+      "github": this.desarrollador.github,
+      "linkedin": this.desarrollador.linkedin,
+      "instagram": this.desarrollador.instagram
+  })
   }
 }

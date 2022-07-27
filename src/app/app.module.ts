@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
@@ -14,6 +14,7 @@ import { EducacionModalComponent } from './educacion-modal/educacion-modal.compo
 import {NgbModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { EditModalsComponent } from './edit-modals/edit-modals.component';
 import { AngularFileUploaderModule } from "angular-file-uploader";
+import { InterceptorService } from './servicios/interceptor.service';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
     NgbModule,
     AngularFileUploaderModule
   ],
-  providers: [AppComponent, EducacionModalComponent, NgbActiveModal],
+  providers: [AppComponent, EducacionModalComponent, NgbActiveModal, {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}],
   bootstrap: [AppComponent, PersonalInfoComponent, EducacionComponent, SkillsComponent, PersonalProjectsComponent, EducacionModalComponent]
 })
 export class AppModule { }

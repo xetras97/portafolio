@@ -25,11 +25,13 @@ export class EducacionComponent implements OnInit {
     this.educacionData.obtenerId(id);
   }
 
+  setModal(){
+    this.educacionModal.setDefaultForm();
+  }
+
   year:number = 2022;
 
   open() {
     const modalRef = this.modalService.open(EducacionModalComponent);
   }
-
-
 }

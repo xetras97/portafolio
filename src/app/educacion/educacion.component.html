@@ -18,7 +18,7 @@
 
     <div class="row">
 
-      <div class="col-12 col-md-8 offset-md-2" *ngIf="year === 2022">
+      <div class="col-12 col-md-8 offset-md-2" *ngIf="myEducacionData[0].anio === year">
         <div class="card mb-3">
           <div class="row g-0">
             <div class="col-2 d-flex align-items-center justify-content-center edit-educacion" *ngIf="loggedService.loggedIn">
@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <div class="col-12 col-md-8 offset-md-2" *ngIf="year === 2022">
+      <div class="col-12 col-md-8 offset-md-2" *ngIf="myEducacionData[1].anio === year">
         <div class="card mb-3">
           <div class="row g-0">
             <div class="col-2 d-flex align-items-center justify-content-center edit-educacion" *ngIf="loggedService.loggedIn">
@@ -59,7 +59,7 @@
         </div>
       </div>
 
-      <div class="col-12 col-md-8 offset-md-2" *ngIf="year === 2021">
+      <div class="col-12 col-md-8 offset-md-2" *ngIf="myEducacionData[2].anio === year">
         <div class="card mb-3">
           <div class="row g-0">
             <div class="col-2 d-flex align-items-center justify-content-center edit-educacion" *ngIf="loggedService.loggedIn">
@@ -79,7 +79,7 @@
         </div>
       </div>
 
-      <div class="col-12 col-md-8 offset-md-2" *ngIf="year === 2015">
+      <div class="col-12 col-md-8 offset-md-2" *ngIf="myEducacionData[3].anio === year">
         <div class="card mb-3">
           <div class="row g-0">
             <div class="col-2 d-flex align-items-center justify-content-center edit-educacion" *ngIf="loggedService.loggedIn">

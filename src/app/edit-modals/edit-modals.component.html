@@ -7,7 +7,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm(); resetFiles()"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="skillsModal" class="form-floating">
+        <form [formGroup]="skillsModals" class="form-floating">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="nombre" placeholder="Nombre"  formControlName="nombre">
             <label for="nombre">Nombre</label>
@@ -32,7 +32,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm(); resetFiles()">Descartar Cambios</button>
-        <button type="button" class="btn btn-success" >GUARDAR</button>
+        <button type="button" class="btn btn-success" (click)="postSkillsBd()">GUARDAR</button>
       </div>
     </div>
   </div>
@@ -57,7 +57,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm()">Descartar Cambios</button>
-        <button type="button" class="btn btn-success">GUARDAR</button>
+        <button type="button" class="btn btn-success" (click)="postSoftBd()">GUARDAR</button>
       </div>
     </div>
   </div>
@@ -85,7 +85,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm()">Descartar Cambios</button>
-        <button type="button" class="btn btn-success">GUARDAR</button>
+        <button type="button" class="btn btn-success" (click)="postLanguagesBd()">GUARDAR</button>
       </div>
     </div>
   </div>
@@ -144,7 +144,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm(); resetMultipleFiles(); resetFiles()">Descartar Cambios</button>
-        <button type="button" class="btn btn-success">GUARDAR</button>
+        <button type="button" class="btn btn-success" (click)="postProjectsBd()">GUARDAR</button>
       </div>
     </div>
   </div>

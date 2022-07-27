@@ -18,11 +18,21 @@ var AutenticacionService = /** @class */ (function () {
         this.currentUserSubject = new rxjs_1.BehaviorSubject(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
     }
     AutenticacionService.prototype.iniciarSesion = function (credenciales) {
+        var _this = this;
         return this.http.post(this.url, credenciales).pipe(operators_1.map(function (data) {
             sessionStorage.setItem('currentUser', JSON.stringify(data));
+            _this.currentUserSubject.next(data);
+            console.log(_this.currentUserSubject);
             return data;
         }));
     };
+    Object.defineProperty(AutenticacionService.prototype, "UsuarioAutenticado", {
+        get: function () {
+            return this.currentUserSubject.value;
+        },
+        enumerable: false,
+        configurable: true
+    });
     AutenticacionService = __decorate([
         core_1.Injectable({
             providedIn: 'root'

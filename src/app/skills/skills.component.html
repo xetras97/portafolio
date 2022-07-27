@@ -24,7 +24,7 @@
           <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(0)">edit</span>
         </div>
         <svg style="background-image: url('{{mySkillsData[0].img}}');">
-          <circle #circle class="meter-100" cx="114" cy="114" r="104" />
+          <circle #circle class="meter-{{mySkillsData[0].nivel}}" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
@@ -33,7 +33,7 @@
           <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(1)">edit</span>
         </div>
         <svg style="background-image: url('{{mySkillsData[1].img}}');">
-          <circle class="meter-75" cx="114" cy="114" r="104" />
+          <circle class="meter-{{mySkillsData[1].nivel}}" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
@@ -42,7 +42,7 @@
           <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(2)">edit</span>
         </div>
         <svg style="background-image: url('{{mySkillsData[2].img}}');">
-          <circle class="meter-75" cx="114" cy="114" r="104" />
+          <circle class="meter-{{mySkillsData[2].nivel}}" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
@@ -51,7 +51,7 @@
           <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(3)">edit</span>
         </div>
         <svg style="background-image: url('{{mySkillsData[3].img}}');">
-          <circle class="meter-50" cx="114" cy="114" r="104" />
+          <circle class="meter-{{mySkillsData[3].nivel}}" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
@@ -60,7 +60,7 @@
           <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(4)">edit</span>
         </div>
         <svg style="background-image: url('{{mySkillsData[4].img}}');">
-          <circle class="meter-25" cx="114" cy="114" r="104" />
+          <circle class="meter-{{mySkillsData[4].nivel}}" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
@@ -69,7 +69,7 @@
           <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(5)">edit</span>
         </div>
         <svg style="background-image: url('{{mySkillsData[5].img}}');">
-          <circle class="meter-50" cx="114" cy="114" r="104" />
+          <circle class="meter-{{mySkillsData[5].nivel}}" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
@@ -78,7 +78,7 @@
           <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(6)">edit</span>
         </div>
         <svg style="background-image: url('{{mySkillsData[6].img}}');">
-          <circle class="meter-50" cx="114" cy="114" r="104" />
+          <circle class="meter-{{mySkillsData[6].nivel}}" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
@@ -87,7 +87,7 @@
           <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(7)">edit</span>
         </div>
         <svg style="background-image: url('{{mySkillsData[7].img}}');">
-          <circle class="meter-50" cx="114" cy="114" r="104" />
+          <circle class="meter-{{mySkillsData[7].nivel}}" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
@@ -96,7 +96,7 @@
           <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(8)">edit</span>
         </div>
         <svg style="background-image: url('{{mySkillsData[8].img}}');">
-          <circle class="meter-75" cx="114" cy="114" r="104" />
+          <circle class="meter-{{mySkillsData[8].nivel}}" cx="114" cy="114" r="104" />
         </svg>
       </div>
       <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center habilidad">
@@ -105,7 +105,7 @@
           <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#skillsModal" (click)="setId(9)">edit</span>
         </div>
         <svg style="background-image: url('{{mySkillsData[9].img}}');">
-          <circle class="meter-75" cx="114" cy="114" r="104" />
+          <circle class="meter-{{mySkillsData[9].nivel}}" cx="114" cy="114" r="104" />
         </svg>
       </div>
     </div>

@@ -14,7 +14,6 @@ var AppComponent = /** @class */ (function () {
         this.logged = logged;
         this.formBuilder = formBuilder;
         this.title = 'naon-frontend';
-        this.titulo = "";
         this.afuConfig = {
             uploadAPI: {
                 url: "http://localhost:8080/upload",
@@ -42,34 +41,24 @@ var AppComponent = /** @class */ (function () {
         this.multiple = false;
         this.single = false;
         this.filesNameList = [];
-        this.prueba = this.formBuilder.group({
+        this.desarrolladorForm = this.formBuilder.group({
+            "nombreDesarrollador": [null, null],
+            "apellido": [null, null],
             "titulo": [null, null],
-            "año": [null, null],
-            "institucion": [null, null],
-            "imagen": [null, null],
-            "periodo": [null, null]
+            "descripcion": [null, null],
+            "tituloSecundario": [null, null],
+            "github": [null, null],
+            "linkedin": [null, null],
+            "instagram": [null, null]
         });
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.socialNet.obtenerDatosPersonales("desarrollador").subscribe(function (data) {
             _this.desarrollador = data[0];
+            _this.rellenar();
         });
         this.logged.isLoggedIn();
-    };
-    AppComponent.prototype.obtenerModal = function (id) {
-        var _this = this;
-        this.socialNet.obtenerPorId("estudios", id).subscribe(function (data) {
-            _this.titulo = data.titulo;
-        });
-        //ABRIR MODAL;
-    };
-    AppComponent.prototype.cambiarModal = function () {
-        this.prueba.patchValue({
-            "periodo": "DALE GATO"
-        });
-        console.log("se ejecuto");
-        console.log(this.prueba.value);
     };
     AppComponent.prototype.resetFiles = function () {
         this.single = true;
@@ -87,6 +76,43 @@ var AppComponent = /** @class */ (function () {
         this.single = false;
         this.fileBanner = evento.target.files[0].name;
         console.log(this.fileBanner);
+    };
+    AppComponent.prototype.postEducacionBd = function () {
+        var formData = this.desarrolladorForm.value;
+        var data = {
+            "idDesarrollador": 1,
+            "nombre": formData.nombreDesarrollador,
+            "apellido": formData.apellido,
+            "titulo": formData.titulo,
+            "img": this.desarrollador.img,
+            "descripcion": formData.descripcion,
+            "tituloSecundario": formData.tituloSecundario,
+            "github": formData.github,
+            "linkedin": formData.linkedin,
+            "instagram": formData.instagram,
+            "banner": this.desarrollador.banner
+        };
+        if (this.filePic != undefined) {
+            data.img = 'http://localhost:8080/files/' + this.filePic;
+        }
+        if (this.fileBanner != undefined) {
+            data.banner = 'http://localhost:8080/files/' + this.fileBanner;
+        }
+        var dataToSend = data;
+        console.log(dataToSend);
+        return this.socialNet.enviarDatos("desarrollador", dataToSend).subscribe(function (xd) { return console.log(xd); });
+    };
+    AppComponent.prototype.rellenar = function () {
+        this.desarrolladorForm.setValue({
+            "nombreDesarrollador": this.desarrollador.nombre,
+            "apellido": this.desarrollador.apellido,
+            "titulo": this.desarrollador.titulo,
+            "descripcion": this.desarrollador.descripcion,
+            "tituloSecundario": this.desarrollador.tituloSecundario,
+            "github": this.desarrollador.github,
+            "linkedin": this.desarrollador.linkedin,
+            "instagram": this.desarrollador.instagram
+        });
     };
     AppComponent = __decorate([
         core_1.Component({

@@ -58,25 +58,25 @@ svg {
 
 }
 
-.meter-100 {
+.meter-Experto {
   stroke: #3ccf59;
   stroke-dasharray: 720;
   stroke-dashoffset: 0;
   animation: progress-100 1s ease-out;
 }
-.meter-75 {
+.meter-Avanzado {
   stroke: #3ccbcf;
   stroke-dasharray: 720;
   stroke-dashoffset: 230;
   animation: progress-75 .75s ease-out;
 }
-.meter-50 {
+.meter-Intermedio {
   stroke: #ecf526;
   stroke-dasharray: 720;
   stroke-dashoffset: 390;
   animation: progress-50 .75s ease-out;
 }
-.meter-25 {
+.meter-Basico {
   stroke: #d73434;
   stroke-dasharray: 720;
   stroke-dashoffset: 560;

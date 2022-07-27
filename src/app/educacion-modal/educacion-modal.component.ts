@@ -27,9 +27,9 @@ export class EducacionModalComponent implements OnInit {
     });
   }
 
-  async setDefaultForm (){
+  setDefaultForm (){
     let id = this.educacion.id;
-    return this.setForm(this.dataForm[id].titulo, this.dataForm[id].año, this.dataForm[id].institucion, this.dataForm[id].periodo)
+    return this.setForm(this.dataForm[id].titulo, this.dataForm[id].anio, this.dataForm[id].institucion, this.dataForm[id].periodo)
   }
 
   setForm(titulo:string, año:number, institucion:string, periodo:string){
@@ -48,10 +48,7 @@ export class EducacionModalComponent implements OnInit {
 //Imagen Upload
   afuConfig = {
     uploadAPI: {
-      url:"http://localhost:8080/upload",
-      headers: {
-        "Authorization" : `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcmdwcm9ncmFtYSIsImlhdCI6MTY1ODY4NjY5NSwiZXhwIjoxNjU4NzI5ODk1fQ.e3DqTd4o3ax2jhUWEX9HuMy4DiXnB2wZqSCWe-4Hl_Rzkw_pw-muPCKOuXgdk2K-Sm2zmvON-Ds0tk1BMZhRLQ`
-         },
+      url:"http://localhost:8080/upload"
     },
     theme: "dragNDrop",
     multiple: false,
@@ -88,4 +85,24 @@ fileSelected(evento:any): void{
   this.fileName = evento.target.files[0].name;
   console.log(this.fileName);
 }
+
+postEducacionBd(){
+  let id = this.educacion.id;
+  let formData = this.test.value;
+  let data = {
+    "idEducacion": id,
+    "titulo":formData.title,
+    "anio": formData.year,
+    "institucion": formData.institute,
+    "img": this.dataForm[id].img,
+    "periodo": formData.time
+  };
+  if(this.fileName!=undefined){
+    data.img = 'http://localhost:8080/files/'+this.fileName;
+  }
+  let dataToSend = data;
+  console.log(dataToSend);
+  return this.educacion.enviarDatos("estudios", dataToSend).subscribe(xd=>console.log(xd));
+}
+
 }

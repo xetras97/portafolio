@@ -23,4 +23,5 @@ export class PersonalProjectsComponent implements OnInit {
     this.projectsData.obtenerId(id);
     console.log(id);
   }
+
 }

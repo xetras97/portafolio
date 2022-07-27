@@ -11,12 +11,12 @@ import { ApiService } from '../servicios/api.service';
 })
 export class EditModalsComponent implements OnInit {
 
-  skillsModal:FormGroup;
+  skillsModals:FormGroup;
   softSkillsModal:FormGroup;
   languagesModal:FormGroup;
   projectsModal:FormGroup;
-  constructor(private educacion:ApiService, private formBuilder:FormBuilder, public activeModal:NgbActiveModal) {
-    this.skillsModal=this.formBuilder.group(
+  constructor(private apiService:ApiService, private formBuilder:FormBuilder, public activeModal:NgbActiveModal) {
+    this.skillsModals=this.formBuilder.group(
       {
         "nombre": [null, null],
         "nivel": [null, null]
@@ -53,26 +53,26 @@ export class EditModalsComponent implements OnInit {
   dataForm:any;
   projectsForm:any;
   ngOnInit(): void {
-    this.educacion.obtenerDatosPersonales("habilidades").subscribe(data =>{
+    this.apiService.obtenerDatosPersonales("habilidades").subscribe(data =>{
       this.dataForm=data;
     });
-    this.educacion.obtenerDatosPersonales("proyectos").subscribe(data =>{
+    this.apiService.obtenerDatosPersonales("proyectos").subscribe(data =>{
       this.projectsForm=data;
     });
   }
 
   setDefaultForm (){
-    let id = this.educacion.id;
+    let id = this.apiService.id;
     return this.setForm(this.dataForm[id].nombre, this.dataForm[id].nivel)
   }
 
   setLanguageForm (){
-    let id = this.educacion.id;
+    let id = this.apiService.id;
     return this.setForm(this.dataForm[id].nombre, this.dataForm[id].otro)
   }
 
   setForm(nombre:string, nivel:string){
-    this.skillsModal.setValue({
+    this.skillsModals.setValue({
       "nombre":nombre,
       "nivel":nivel
     })
@@ -89,7 +89,7 @@ export class EditModalsComponent implements OnInit {
   }
 
   setSoftDefaultForm (){
-    let id = this.educacion.id;
+    let id = this.apiService.id;
     return this.setSoft(this.dataForm[id].nombre)
   }
 
@@ -106,11 +106,11 @@ export class EditModalsComponent implements OnInit {
   }
 
   setProjectDefaultForm (){
-    let id = this.educacion.id;
+    let id = this.apiService.id;
     return this.setProject(this.projectsForm[id].nombre, this.projectsForm[id].descripcion, this.projectsForm[id].stack, this.projectsForm[id].web, this.projectsForm[id].github, this.projectsForm[id].año, this.projectsForm[id].observaciones)
   }
   resetForm(){
-    this.skillsModal.reset();
+    this.skillsModals.reset();
     this.softSkillsModal.reset();
     this.languagesModal.reset();
     this.projectsModal.reset();
@@ -118,10 +118,7 @@ export class EditModalsComponent implements OnInit {
 
   multipleConfig = {
     uploadAPI: {
-      url:"http://localhost:8080/upload",
-      headers: {
-        "Authorization" : `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcmdwcm9ncmFtYSIsImlhdCI6MTY1ODY4NjY5NSwiZXhwIjoxNjU4NzI5ODk1fQ.e3DqTd4o3ax2jhUWEX9HuMy4DiXnB2wZqSCWe-4Hl_Rzkw_pw-muPCKOuXgdk2K-Sm2zmvON-Ds0tk1BMZhRLQ`
-         },
+      url:"http://localhost:8080/upload"
     },
     multiple: true,
     formatsAllowed: ".jpg,.png",
@@ -140,10 +137,7 @@ export class EditModalsComponent implements OnInit {
   }
   afuConfig = {
     uploadAPI: {
-      url:"http://localhost:8080/upload",
-      headers: {
-        "Authorization" : `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcmdwcm9ncmFtYSIsImlhdCI6MTY1ODY4NjY5NSwiZXhwIjoxNjU4NzI5ODk1fQ.e3DqTd4o3ax2jhUWEX9HuMy4DiXnB2wZqSCWe-4Hl_Rzkw_pw-muPCKOuXgdk2K-Sm2zmvON-Ds0tk1BMZhRLQ`
-         },
+      url:"http://localhost:8080/upload"
     },
     theme: "dragNDrop",
     multiple: false,
@@ -196,4 +190,93 @@ multipleFileSelected(evento:any): void{
   }
   console.log(this.filesNameList);
 }
+
+postSkillsBd(){
+  let id = this.apiService.id;
+  let formData = this.skillsModals.value;
+  let data = {
+    "idHabilidades": id,
+    "nombre": formData.nombre,
+    "tipo": "Dura",
+    "nivel": formData.nivel,
+    "img": this.dataForm[id].img,
+    "otro": null
+  };
+  if(this.fileName!=undefined){
+    data.img = 'http://localhost:8080/files/'+this.fileName;
+  }
+  let dataToSend = data;
+  return this.apiService.enviarDatos("habilidad", dataToSend).subscribe(xd=>console.log(xd));
+}
+
+postSoftBd(){
+  let id = this.apiService.id;
+  let formData = this.softSkillsModal.value;
+  let data = {
+    "idHabilidades": id,
+    "nombre": formData.nombre,
+    "tipo": "Blanda"
+  };
+  let dataToSend = data;
+  return this.apiService.enviarDatos("habilidad", dataToSend).subscribe(xd=>console.log(xd));
+}
+
+postLanguagesBd(){
+  let id = this.apiService.id;
+  let formData = this.languagesModal.value;
+  let data = {
+    "idHabilidades": id,
+    "nombre": formData.nombre,
+    "tipo": "Idioma",
+    "otro": formData.nivel
+  };
+  let dataToSend = data;
+  return this.apiService.enviarDatos("habilidad", dataToSend).subscribe(xd=>console.log(xd));
+}
+
+postProjectsBd(){
+  let id = this.apiService.id;
+  let formData = this.projectsModal.value;
+  let data =  {
+    "idProyectos": id,
+    "nombre": formData.nombre,
+    "imagen": this.projectsForm[id].imagen,
+    "descripcion": formData.descripcion,
+    "stack": formData.stack,
+    "web": formData.web,
+    "github": formData.github,
+    "año": formData.año,
+    "observaciones": formData.observaciones,
+    "img2": this.projectsForm[id].img2,
+    "img3": this.projectsForm[id].img3,
+    "img4": this.projectsForm[id].img4,
+    "img5": this.projectsForm[id].img5,
+    "img6": this.projectsForm[id].img6,
+  }
+  if(this.fileName!=undefined){
+  data.imagen = 'http://localhost:8080/files/'+this.fileName;
+  }
+  if(this.filesNameList.length!=0){
+    if(this.filesNameList[0]!=undefined){
+      data.img2='http://localhost:8080/files/'+this.filesNameList[0]
+    }
+    if(this.filesNameList[1]!=undefined){
+      data.img3='http://localhost:8080/files/'+this.filesNameList[1]
+    }
+    if(this.filesNameList[2]!=undefined){
+      data.img4='http://localhost:8080/files/'+this.filesNameList[2]
+    }
+    if(this.filesNameList[3]!=undefined){
+      data.img5='http://localhost:8080/files/'+this.filesNameList[3]
+    }
+    if(this.filesNameList[4]!=undefined){
+      data.img6='http://localhost:8080/files/'+this.filesNameList[4]
+    }
+  }
+  let dataToSend = data;
+  console.log(dataToSend)
+  console.log(this.filesNameList[4])
+  return this.apiService.enviarDatos("proyectos", dataToSend).subscribe(xd=>console.log(xd));
+}
+
 }

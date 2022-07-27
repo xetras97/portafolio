@@ -27,6 +27,9 @@ var EducacionComponent = /** @class */ (function () {
     EducacionComponent.prototype.setId = function (id) {
         this.educacionData.obtenerId(id);
     };
+    EducacionComponent.prototype.setModal = function () {
+        this.educacionModal.setDefaultForm();
+    };
     EducacionComponent.prototype.open = function () {
         var modalRef = this.modalService.open(educacion_modal_component_1.EducacionModalComponent);
     };

@@ -26,7 +26,7 @@
       </a>
 
 
-      <div *ngIf="logged.loggedIn === false; then login; else logout" ></div>
+      <div *ngIf="logged.loggedIn === false; then login; else logout"></div>
 
       <ng-template #login>
         <a class="nav-link d-flex active" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -55,22 +55,38 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="form-floating">
+        <form [formGroup]="desarrolladorForm" class="form-floating">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nombreCompleto" placeholder="Esteban Ariel Naon" value="{{desarrollador.nombre}} {{desarrollador.apellido}}">
-            <label for="nombreCompleto">Nombre Completo</label>
+            <input type="text" class="form-control" id="nombreDesarrollador" placeholder="Esteban Ariel Naon" value="{{desarrollador.nombre}}" formControlName="nombreDesarrollador">
+            <label for="nombreDesarrollador">Nombre</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="tituloPrincipal" placeholder="Web Developer" value="{{desarrollador.titulo}}">
+            <input type="text" class="form-control" id="apellido" placeholder="Esteban Ariel Naon" value="{{desarrollador.apellido}}" formControlName="apellido">
+            <label for="apellido">Apellido</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="tituloPrincipal" placeholder="Web Developer" value="{{desarrollador.titulo}}" formControlName="titulo">
             <label for="tituloPrincipal">Titulo Principal</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="tituloSecundario" placeholder="Educacion Fisica" value="{{desarrollador.tituloSecundario}}">
+            <input type="text" class="form-control" id="tituloSecundario" placeholder="Educacion Fisica" value="{{desarrollador.tituloSecundario}}" formControlName="tituloSecundario">
             <label for="tituloSecundario">Titulo Secundario</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="github" placeholder="Educacion Fisica" value="{{desarrollador.github}}" formControlName="github">
+            <label for="github">GitHub</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="linkedin" placeholder="Educacion Fisica" value="{{desarrollador.linkedin}}" formControlName="linkedin">
+            <label for="linkedin">LinkedIn</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="instagram" placeholder="Educacion Fisica" value="{{desarrollador.instagram}}" formControlName="instagram">
+            <label for="instagram">Instagram</label>
           </div>
           <div class="mb-3">
             <label for="descripcionPersonal" class="form-label">Descripcion Personal</label>
-            <textarea class="form-control" id="descripcionPersonal" rows="3" value="{{desarrollador.descripcion}}"></textarea>
+            <textarea class="form-control" id="descripcionPersonal" rows="3" value="{{desarrollador.descripcion}}" formControlName="descripcion"></textarea>
           </div>
           <div class="row">
             <div class="mb-3 col-6">
@@ -87,7 +103,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Descartar</button>
-        <button type="button" class="btn btn-success">GUARDAR</button>
+        <button type="button" class="btn btn-success" (click)="postEducacionBd()">GUARDAR</button>
       </div>
     </div>
   </div>
