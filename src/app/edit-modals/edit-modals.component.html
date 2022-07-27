@@ -7,13 +7,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm(); resetFiles()"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="skillsModals" class="form-floating">
+        <form id="skillsModals" [formGroup]="skillsModals" class="form-floating needs-validation" novalidate (ngSubmit)="postSkillsBd()">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nombre" placeholder="Nombre"  formControlName="nombre">
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreSkill?.errors && NombreSkill?.touched, 'is-valid': NombreSkill?.errors && NombreSkill?.touched}">
             <label for="nombre">Nombre</label>
           </div>
           <div class="form-floating mb-3">
-            <select type="select" class="form-control" id="nivel" placeholder="Nivel" formControlName="nivel">
+            <select type="select" class="form-control" id="nivel" placeholder="Nivel" formControlName="nivel" required [ngClass]="{'is-invalid': NivelSkill?.errors && NivelSkill?.touched, 'is-valid': NivelSkill?.errors && NivelSkill?.touched}">
               <option value="Experto">Experto</option>
               <option value="Avanzado">Avanzado</option>
               <option value="Intermedio">Intermedio</option>
@@ -32,7 +32,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm(); resetFiles()">Descartar Cambios</button>
-        <button type="button" class="btn btn-success" (click)="postSkillsBd()">GUARDAR</button>
+        <button type="submit" class="btn btn-success" form="skillsModals" [disabled]="skillsModals.invalid">GUARDAR</button>
       </div>
     </div>
   </div>
@@ -47,9 +47,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm()"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="softSkillsModal" class="form-floating">
+        <form id="softSkillsModal" [formGroup]="softSkillsModal" class="form-floating needs-validation" novalidate (ngSubmit)="postSoftBd()">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="softName" placeholder="softName"  formControlName="nombre">
+            <input type="text" class="form-control" id="softName" placeholder="softName"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreSoft?.errors && NombreSoft?.touched, 'is-valid': NombreSoft?.errors && NombreSoft?.touched}">
             <label for="softName">Nombre</label>
           </div>
         </form>
@@ -57,7 +57,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm()">Descartar Cambios</button>
-        <button type="button" class="btn btn-success" (click)="postSoftBd()">GUARDAR</button>
+        <button type="submit" class="btn btn-success" form="softSkillsModal" [disabled]="softSkillsModal.invalid">GUARDAR</button>
       </div>
     </div>
   </div>
@@ -71,21 +71,21 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm()"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="languagesModal" class="form-floating">
+        <form id="languagesModal" [formGroup]="languagesModal" class="form-floating needs-validation" novalidate (ngSubmit)="postLanguagesBd()">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="languagesName" placeholder="languagesName"  formControlName="nombre">
+            <input type="text" class="form-control" id="languagesName" placeholder="languagesName"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreLanguages?.errors && NombreLanguages?.touched, 'is-valid': NombreLanguages?.errors && NombreLanguages?.touched}">
             <label for="languagesName">Nombre</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="languagesLevel" placeholder="languagesLevel"  formControlName="nivel">
-            <label for="languagesLevel">Nivel</label>
+            <input type="text" class="form-control" id="languagesLevel" placeholder="languagesLevel"  formControlName="nivel" required [ngClass]="{'is-invalid': NivelLanguages?.errors && NivelLanguages?.touched, 'is-valid': NivelLanguages?.errors && NivelLanguages?.touched}">
+            <label for="languagesLevel">Nivel</label>NivelLanguages
           </div>
         </form>
         <button type="button" class="btn btn-outline-dark col-4 offset-4" (click)="setLanguageForm()">Auto-rellenado</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm()">Descartar Cambios</button>
-        <button type="button" class="btn btn-success" (click)="postLanguagesBd()">GUARDAR</button>
+        <button type="button" class="btn btn-success" form="languagesModal" [disabled]="languagesModal.invalid">GUARDAR</button>
       </div>
     </div>
   </div>
@@ -100,9 +100,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm(); resetMultipleFiles(); resetFiles()"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="projectsModal" class="form-floating">
+        <form id="projectsModal" [formGroup]="projectsModal" class="form-floating needs-validation" novalidate (ngSubmit)="postProjectsBd()">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="projectName" placeholder="Nombre"  formControlName="nombre">
+            <input type="text" class="form-control" id="projectName" placeholder="Nombre"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreProject?.errors && NombreProject?.touched, 'is-valid': NombreProject?.errors && NombreProject?.touched}">
             <label for="projectName">Nombre</label>
           </div>
           <div class="mb-3">
@@ -112,22 +112,22 @@
           </div>
           <div class="mb-3">
             <label for="projectDescription" class="form-label">Descripcion</label>
-            <textarea class="form-control" id="projectDescription" rows="2" formControlName="descripcion"></textarea>
+            <textarea class="form-control" id="projectDescription" rows="2" formControlName="descripcion" required [ngClass]="{'is-invalid': Descripcion?.errors && Descripcion?.touched, 'is-valid': Descripcion?.errors && Descripcion?.touched}"></textarea>
           </div>
           <div class="mb-3">
             <label for="projectStack" class="form-label">Stack</label>
-            <textarea class="form-control" id="projectStack" rows="2" formControlName="stack"></textarea>
+            <textarea class="form-control" id="projectStack" rows="2" formControlName="stack" required [ngClass]="{'is-invalid': Stack?.errors && Stack?.touched, 'is-valid': Stack?.errors && Stack?.touched}"></textarea>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="projectWeb" placeholder="Web"  formControlName="web">
+            <input type="text" class="form-control" id="projectWeb" placeholder="Web"  formControlName="web" required [ngClass]="{'is-invalid': Web?.errors && Web?.touched, 'is-valid': Web?.errors && Web?.touched}">
             <label for="projectWeb">Sitio Web</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="projectGithub" placeholder="GitHub"  formControlName="github">
+            <input type="text" class="form-control" id="projectGithub" placeholder="GitHub"  formControlName="github" required [ngClass]="{'is-invalid': Github?.errors && Github?.touched, 'is-valid': Github?.errors && Github?.touched}">
             <label for="projectGithub">GitHub</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="projectYear" placeholder="Año"  formControlName="año">
+            <input type="number" class="form-control" id="projectYear" placeholder="Año"  formControlName="año" required [ngClass]="{'is-invalid': Anio?.errors && Anio?.touched, 'is-valid': Anio?.errors && Anio?.touched}">
             <label for="projectYear">Año</label>
           </div>
           <div class="mb-3">
@@ -144,7 +144,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm(); resetMultipleFiles(); resetFiles()">Descartar Cambios</button>
-        <button type="button" class="btn btn-success" (click)="postProjectsBd()">GUARDAR</button>
+        <button type="submit" class="btn btn-success" form="projectsModal" [disabled]="projectsModal.invalid">GUARDAR</button>
       </div>
     </div>
   </div>

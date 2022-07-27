@@ -18,7 +18,7 @@
             <label for="password" class="form-label">Contraseña</label>
             <input #mypass type="password" formControlName="password" class="form-control" id="password" placeholder="Contraseña" required [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': Password?.errors && Password?.touched}">
             <div *ngIf="Password?.errors && Password?.touched">
-              <p *ngIf="Username?.hasError('required')" class="text-danger">Introduzca una contraseña valida.</p>
+              <p *ngIf="Password?.hasError('required')" class="text-danger">Introduzca una contraseña valida.</p>
             </div>
           </div>
           <div *ngIf="checked == false">

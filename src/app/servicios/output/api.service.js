@@ -13,6 +13,7 @@ var ApiService = /** @class */ (function () {
         this.http = http;
         this.url = "http://localhost:8080/ver/";
         this.urlPost = "http://localhost:8080/new/";
+        this.urlDelete = "http://localhost:8080/delete/";
         this.id = 1;
     }
     ApiService.prototype.obtenerDatosPersonales = function (componente) {
@@ -22,8 +23,10 @@ var ApiService = /** @class */ (function () {
         return this.http.get(this.url + componente + "/" + id);
     };
     ApiService.prototype.enviarDatos = function (componente, objeto) {
-        console.log("pasa por aca");
         return this.http.post(this.urlPost + componente, objeto);
+    };
+    ApiService.prototype.deleteFiles = function (fileName) {
+        return this.http.get(this.urlDelete + fileName);
     };
     ApiService.prototype.obtenerId = function (idNumber) {
         this.id = idNumber;

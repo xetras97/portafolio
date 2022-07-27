@@ -2,17 +2,17 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editEducacionLabel">EDITAR DATOS PERSONALES</h5>
+        <h5 class="modal-title" id="editEducacionLabel">EDITAR ESTUDIOS</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm(); resetFiles()"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="test" class="form-floating">
+        <form id="educacionForm" [formGroup]="test" class="form-floating needs-validation" (ngSubmit)="postEducacionBd()" novalidate>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="title" placeholder="Titulo"  formControlName="title">
+            <input type="text" class="form-control" id="title" placeholder="Titulo"  formControlName="title" required [ngClass]="{'is-invalid': Title?.errors && Title?.touched, 'is-valid': Title?.errors && Title?.touched}">
             <label for="title">Titulo</label>
           </div>
           <div class="form-floating mb-3">
-            <select type="select" class="form-control" id="year" placeholder="Año" formControlName="year">
+            <select type="select" class="form-control" id="year" placeholder="Año" formControlName="year" required [ngClass]="{'is-invalid': Year?.errors && Year?.touched, 'is-valid': Year?.errors && Year?.touched}">
               <option value="2022">2022</option>
               <option value="2021">2021</option>
               <option value="2015">2015</option>
@@ -20,7 +20,7 @@
             <label for="year">Año</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="institute" placeholder="institute" formControlName="institute">
+            <input type="text" class="form-control" id="institute" placeholder="institute" formControlName="institute" required [ngClass]="{'is-invalid': Institute?.errors && Institute?.touched, 'is-valid': Institute?.errors && Institute?.touched}">
             <label for="institute">Institucion</label>
           </div>
           <div class="mb-3">
@@ -37,7 +37,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm(); resetFiles()">Descartar Cambios</button>
-        <button type="button" class="btn btn-success" (click)="postEducacionBd()">GUARDAR</button>
+        <button type="submit" class="btn btn-success" form="educacionForm" [disabled]="test.invalid">GUARDAR</button>
       </div>
     </div>
   </div>

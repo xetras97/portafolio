@@ -52,58 +52,58 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="editPersonalLabel">EDITAR DATOS PERSONALES</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="rellenar(); resetFiles(); deletePic(); deleteBanner()"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="desarrolladorForm" class="form-floating">
+        <form id="desarrolladorForm" [formGroup]="desarrolladorForm" class="form-floating needs-validation" novalidate (ngSubmit)="postEducacionBd()">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nombreDesarrollador" placeholder="Esteban Ariel Naon" value="{{desarrollador.nombre}}" formControlName="nombreDesarrollador">
+            <input type="text" class="form-control" id="nombreDesarrollador" placeholder="Esteban Ariel Naon" formControlName="nombreDesarrollador" required [ngClass]="{'is-invalid': NombreDesarrollador?.errors && NombreDesarrollador?.touched, 'is-valid': NombreDesarrollador?.errors && NombreDesarrollador?.touched}">
             <label for="nombreDesarrollador">Nombre</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="apellido" placeholder="Esteban Ariel Naon" value="{{desarrollador.apellido}}" formControlName="apellido">
+            <input type="text" class="form-control" id="apellido" placeholder="Esteban Ariel Naon" formControlName="apellido" required [ngClass]="{'is-invalid': Apellido?.errors && Apellido?.touched, 'is-valid': Apellido?.errors && Apellido?.touched}">
             <label for="apellido">Apellido</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="tituloPrincipal" placeholder="Web Developer" value="{{desarrollador.titulo}}" formControlName="titulo">
+            <input type="text" class="form-control" id="tituloPrincipal" placeholder="Web Developer" formControlName="titulo" required [ngClass]="{'is-invalid': Titulo?.errors && Titulo?.touched, 'is-valid': Titulo?.errors && Titulo?.touched}">
             <label for="tituloPrincipal">Titulo Principal</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="tituloSecundario" placeholder="Educacion Fisica" value="{{desarrollador.tituloSecundario}}" formControlName="tituloSecundario">
+            <input type="text" class="form-control" id="tituloSecundario" placeholder="Educacion Fisica" formControlName="tituloSecundario" required [ngClass]="{'is-invalid': TituloSecundario?.errors && TituloSecundario?.touched, 'is-valid': TituloSecundario?.errors && TituloSecundario?.touched}">
             <label for="tituloSecundario">Titulo Secundario</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="github" placeholder="Educacion Fisica" value="{{desarrollador.github}}" formControlName="github">
+            <input type="text" class="form-control" id="github" placeholder="Educacion Fisica" formControlName="github" required [ngClass]="{'is-invalid': Github?.errors && Github?.touched, 'is-valid': Github?.errors && Github?.touched}">
             <label for="github">GitHub</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="linkedin" placeholder="Educacion Fisica" value="{{desarrollador.linkedin}}" formControlName="linkedin">
+            <input type="text" class="form-control" id="linkedin" placeholder="Educacion Fisica" formControlName="linkedin" required [ngClass]="{'is-invalid': Linkedin?.errors && Linkedin?.touched, 'is-valid': Linkedin?.errors && Linkedin?.touched}">
             <label for="linkedin">LinkedIn</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="instagram" placeholder="Educacion Fisica" value="{{desarrollador.instagram}}" formControlName="instagram">
+            <input type="text" class="form-control" id="instagram" placeholder="Educacion Fisica" formControlName="instagram" required [ngClass]="{'is-invalid': Instagram?.errors && Instagram?.touched, 'is-valid': Instagram?.errors && Instagram?.touched}">
             <label for="instagram">Instagram</label>
           </div>
           <div class="mb-3">
             <label for="descripcionPersonal" class="form-label">Descripcion Personal</label>
-            <textarea class="form-control" id="descripcionPersonal" rows="3" value="{{desarrollador.descripcion}}" formControlName="descripcion"></textarea>
+            <textarea class="form-control" id="descripcionPersonal" rows="3" formControlName="descripcion" required [ngClass]="{'is-invalid': Descripcion?.errors && Descripcion?.touched, 'is-valid': Descripcion?.errors && Descripcion?.touched}"></textarea>
           </div>
           <div class="row">
             <div class="mb-3 col-6">
               <label for="profileImg" class="form-label">Foto de Perfil</label>
-              <angular-file-uploader [config]="afuConfig" (fileSelected)="picSelected($event)"[resetUpload]=single></angular-file-uploader>
+              <angular-file-uploader [config]="afuConfig" (fileSelected)="resetPic();picSelected($event)"[resetUpload]=single></angular-file-uploader>
             </div>
             <div class="mb-3 col-6">
               <label for="banner" class="form-label">Banner</label>
-              <angular-file-uploader [config]="afuConfig" (fileSelected)="bannerSelected($event)"[resetUpload]=single></angular-file-uploader>
+              <angular-file-uploader [config]="afuConfig" (fileSelected)="resetBanner();bannerSelected($event)"[resetUpload]=single></angular-file-uploader>
             </div>
-            <button type="button" class="col-12 btn btn-secondary" (click)="resetFiles()">Eliminar Imagenes</button>
+            <button type="button" class="col-12 btn btn-secondary" (click)="resetFiles(); deletePic(); deleteBanner()">Eliminar Imagenes</button>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Descartar</button>
-        <button type="button" class="btn btn-success" (click)="postEducacionBd()">GUARDAR</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="rellenar(); resetFiles(); deletePic(); deleteBanner()">Descartar</button>
+        <button type="submit" class="btn btn-success" form="desarrolladorForm" [disabled]="desarrolladorForm.invalid">GUARDAR</button>
       </div>
     </div>
   </div>

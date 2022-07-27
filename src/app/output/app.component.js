@@ -8,12 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.AppComponent = void 0;
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var AppComponent = /** @class */ (function () {
     function AppComponent(socialNet, logged, formBuilder) {
         this.socialNet = socialNet;
         this.logged = logged;
         this.formBuilder = formBuilder;
         this.title = 'naon-frontend';
+        this.multiple = false;
+        this.single = false;
+        this.filesDeletePic = [];
+        this.filesDeleteBanner = [];
         this.afuConfig = {
             uploadAPI: {
                 url: "http://localhost:8080/upload",
@@ -38,18 +43,15 @@ var AppComponent = /** @class */ (function () {
                 sizeLimit: 'Tamaño maximo'
             }
         };
-        this.multiple = false;
-        this.single = false;
-        this.filesNameList = [];
         this.desarrolladorForm = this.formBuilder.group({
-            "nombreDesarrollador": [null, null],
-            "apellido": [null, null],
-            "titulo": [null, null],
-            "descripcion": [null, null],
-            "tituloSecundario": [null, null],
-            "github": [null, null],
-            "linkedin": [null, null],
-            "instagram": [null, null]
+            "nombreDesarrollador": [null, [forms_1.Validators.required]],
+            "apellido": [null, [forms_1.Validators.required]],
+            "titulo": [null, [forms_1.Validators.required]],
+            "descripcion": [null, [forms_1.Validators.required]],
+            "tituloSecundario": [null, [forms_1.Validators.required]],
+            "github": [null, [forms_1.Validators.required]],
+            "linkedin": [null, [forms_1.Validators.required]],
+            "instagram": [null, [forms_1.Validators.required]]
         });
     }
     AppComponent.prototype.ngOnInit = function () {
@@ -60,22 +62,103 @@ var AppComponent = /** @class */ (function () {
         });
         this.logged.isLoggedIn();
     };
+    Object.defineProperty(AppComponent.prototype, "NombreDesarrollador", {
+        get: function () {
+            return this.desarrolladorForm.get("nombreDesarrollador");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(AppComponent.prototype, "Apellido", {
+        get: function () {
+            return this.desarrolladorForm.get("apellido");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(AppComponent.prototype, "Titulo", {
+        get: function () {
+            return this.desarrolladorForm.get("titulo");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(AppComponent.prototype, "Descripcion", {
+        get: function () {
+            return this.desarrolladorForm.get("descripcion");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(AppComponent.prototype, "TituloSecundario", {
+        get: function () {
+            return this.desarrolladorForm.get("tituloSecundario");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(AppComponent.prototype, "Github", {
+        get: function () {
+            return this.desarrolladorForm.get("github");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(AppComponent.prototype, "Linkedin", {
+        get: function () {
+            return this.desarrolladorForm.get("linkedin");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(AppComponent.prototype, "Instagram", {
+        get: function () {
+            return this.desarrolladorForm.get("instagram");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    AppComponent.prototype.deletePic = function () {
+        var _this = this;
+        if (this.filesDeletePic.length > 0) {
+            this.filesDeletePic.forEach(function (file) {
+                _this.socialNet.deleteFiles(file).subscribe();
+            });
+            this.filesDeletePic = [];
+        }
+    };
+    AppComponent.prototype.deleteBanner = function () {
+        var _this = this;
+        if (this.filesDeleteBanner.length > 0) {
+            this.filesDeleteBanner.forEach(function (file) {
+                _this.socialNet.deleteFiles(file).subscribe();
+            });
+            this.filesDeleteBanner = [];
+        }
+    };
     AppComponent.prototype.resetFiles = function () {
         this.single = true;
+        this.resetPic();
+        this.resetBanner();
+    };
+    AppComponent.prototype.resetPic = function () {
         this.filePic = undefined;
+    };
+    AppComponent.prototype.resetBanner = function () {
         this.fileBanner = undefined;
-        console.log(this.filePic);
-        console.log(this.fileBanner);
     };
     AppComponent.prototype.picSelected = function (evento) {
         this.single = false;
+        this.deletePic();
         this.filePic = evento.target.files[0].name;
+        this.filesDeletePic.push(evento.target.files[0].name);
         console.log(this.filePic);
     };
     AppComponent.prototype.bannerSelected = function (evento) {
         this.single = false;
+        this.deleteBanner();
         this.fileBanner = evento.target.files[0].name;
-        console.log(this.fileBanner);
+        this.filesDeleteBanner.push(evento.target.files[0].name);
     };
     AppComponent.prototype.postEducacionBd = function () {
         var formData = this.desarrolladorForm.value;
@@ -100,6 +183,8 @@ var AppComponent = /** @class */ (function () {
         }
         var dataToSend = data;
         console.log(dataToSend);
+        this.filesDeleteBanner = [];
+        this.filesDeletePic = [];
         return this.socialNet.enviarDatos("desarrollador", dataToSend).subscribe(function (xd) { return console.log(xd); });
     };
     AppComponent.prototype.rellenar = function () {

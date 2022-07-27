@@ -8,11 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.EditModalsComponent = void 0;
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var EditModalsComponent = /** @class */ (function () {
     function EditModalsComponent(apiService, formBuilder, activeModal) {
         this.apiService = apiService;
         this.formBuilder = formBuilder;
         this.activeModal = activeModal;
+        this.multiple = false;
+        this.single = false;
+        this.filesNameList = [];
         this.multipleConfig = {
             uploadAPI: {
                 url: "http://localhost:8080/upload"
@@ -54,27 +58,24 @@ var EditModalsComponent = /** @class */ (function () {
                 sizeLimit: 'Tamaño maximo'
             }
         };
-        this.multiple = false;
-        this.single = false;
-        this.filesNameList = [];
         this.skillsModals = this.formBuilder.group({
-            "nombre": [null, null],
-            "nivel": [null, null]
+            "nombre": [null, [forms_1.Validators.required]],
+            "nivel": [null, [forms_1.Validators.required]]
         });
         this.softSkillsModal = this.formBuilder.group({
-            "nombre": [null, null]
+            "nombre": [null, [forms_1.Validators.required]]
         });
         this.languagesModal = this.formBuilder.group({
-            "nombre": [null, null],
-            "nivel": [null, null]
+            "nombre": [null, [forms_1.Validators.required]],
+            "nivel": [null, [forms_1.Validators.required]]
         });
         this.projectsModal = this.formBuilder.group({
-            "nombre": [null, null],
-            "descripcion": [null, null],
-            "stack": [null, null],
-            "web": [null, null],
-            "github": [null, null],
-            "año": [null, null],
+            "nombre": [null, [forms_1.Validators.required]],
+            "descripcion": [null, [forms_1.Validators.required]],
+            "stack": [null, [forms_1.Validators.required]],
+            "web": [null, [forms_1.Validators.required]],
+            "github": [null, [forms_1.Validators.required]],
+            "año": [null, [forms_1.Validators.required]],
             "observaciones": [null, null]
         });
     }
@@ -87,6 +88,83 @@ var EditModalsComponent = /** @class */ (function () {
             _this.projectsForm = data;
         });
     };
+    Object.defineProperty(EditModalsComponent.prototype, "NombreSkill", {
+        get: function () {
+            return this.skillsModals.get("nombre");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(EditModalsComponent.prototype, "NivelSkill", {
+        get: function () {
+            return this.skillsModals.get("nivel");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(EditModalsComponent.prototype, "NombreSoft", {
+        get: function () {
+            return this.softSkillsModal.get("nombre");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(EditModalsComponent.prototype, "NombreLanguages", {
+        get: function () {
+            return this.languagesModal.get("nombre");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(EditModalsComponent.prototype, "NivelLanguages", {
+        get: function () {
+            return this.languagesModal.get("nivel");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(EditModalsComponent.prototype, "NombreProject", {
+        get: function () {
+            return this.projectsModal.get("nombre");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(EditModalsComponent.prototype, "Descripcion", {
+        get: function () {
+            return this.projectsModal.get("descripcion");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(EditModalsComponent.prototype, "Stack", {
+        get: function () {
+            return this.projectsModal.get("stack");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(EditModalsComponent.prototype, "Web", {
+        get: function () {
+            return this.projectsModal.get("web");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(EditModalsComponent.prototype, "Github", {
+        get: function () {
+            return this.projectsModal.get("github");
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(EditModalsComponent.prototype, "Anio", {
+        get: function () {
+            return this.projectsModal.get("año");
+        },
+        enumerable: false,
+        configurable: true
+    });
     EditModalsComponent.prototype.setDefaultForm = function () {
         var id = this.apiService.id;
         return this.setForm(this.dataForm[id].nombre, this.dataForm[id].nivel);

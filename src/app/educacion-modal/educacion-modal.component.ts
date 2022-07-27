@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from '../servicios/api.service';
 
@@ -13,9 +13,9 @@ export class EducacionModalComponent implements OnInit {
   constructor(private educacion:ApiService, private formBuilder:FormBuilder, public activeModal:NgbActiveModal) {
     this.test=this.formBuilder.group(
       {
-        "title":[null, null],
-        "year":[null, null],
-        "institute":[null, null],
+        "title":[null, [Validators.required]],
+        "year":[null, [Validators.required]],
+        "institute":[null, [Validators.required]],
         "time":[null, null],
       }
     )
@@ -25,6 +25,16 @@ export class EducacionModalComponent implements OnInit {
     this.educacion.obtenerDatosPersonales("estudios").subscribe(data =>{
       this.dataForm=data;
     });
+  }
+
+  get Title(){
+    return this.test.get("title");
+  }
+  get Year(){
+    return this.test.get("year");
+  }
+  get Institute(){
+    return this.test.get("institute");
   }
 
   setDefaultForm (){
@@ -73,9 +83,16 @@ single:boolean=false;
 
 
 fileName:string|undefined;
+filesDeleteList: string[] = [];
 
 resetFiles(){
   this.single = true;
+  if (this.filesDeleteList.length>0){
+    this.filesDeleteList.forEach(file => {
+      this.educacion.deleteFiles(file).subscribe();
+    });
+    this.filesDeleteList = [];
+  }
   this.fileName=undefined;
   console.log(this.fileName);
 }
@@ -83,7 +100,8 @@ resetFiles(){
 fileSelected(evento:any): void{
   this.single = false;
   this.fileName = evento.target.files[0].name;
-  console.log(this.fileName);
+  this.filesDeleteList.push(evento.target.files[0].name)
+  console.log(this.filesDeleteList);
 }
 
 postEducacionBd(){
@@ -101,8 +119,9 @@ postEducacionBd(){
     data.img = 'http://localhost:8080/files/'+this.fileName;
   }
   let dataToSend = data;
+  this.filesDeleteList = [];
   console.log(dataToSend);
-  return this.educacion.enviarDatos("estudios", dataToSend).subscribe(xd=>console.log(xd));
+  return this.educacion.enviarDatos("estudios", dataToSend).subscribe();
 }
 
 }

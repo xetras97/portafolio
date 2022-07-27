@@ -9,6 +9,7 @@ export class ApiService {
 
   url:string = "http://localhost:8080/ver/";
   urlPost:string = "http://localhost:8080/new/";
+  urlDelete:string = "http://localhost:8080/delete/";
 
   constructor(private http:HttpClient) { }
 
@@ -24,8 +25,11 @@ export class ApiService {
 
   enviarDatos(componente:string, objeto:any):Observable<any>
   {
-    console.log("pasa por aca")
     return this.http.post<any>(this.urlPost+componente, objeto);
+  }
+
+  deleteFiles(fileName:string):Observable<any>{
+    return this.http.get<any>(this.urlDelete+fileName);
   }
 
   id:number=1;

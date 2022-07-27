@@ -12,29 +12,12 @@ export class AppComponent implements OnInit {
   title = 'naon-frontend';
   desarrolladorForm:FormGroup;
   desarrollador:any;
-  constructor(private socialNet:ApiService, public logged:LoggedService, private formBuilder:FormBuilder) {
-    this.desarrolladorForm=this.formBuilder.group(
-      {
-        "nombreDesarrollador": [null, null],
-        "apellido": [null, null],
-        "titulo": [null, null],
-        "descripcion": [null, null],
-        "tituloSecundario": [null, null],
-        "github": [null, null],
-        "linkedin": [null, null],
-        "instagram": [null, null],
-      }
-    )
-   }
-
-  ngOnInit(): void {
-    this.socialNet.obtenerDatosPersonales("desarrollador").subscribe(data =>{
-      this.desarrollador=data[0];
-      this.rellenar()
-    });
-    this.logged.isLoggedIn();
-  }
-
+  multiple:boolean=false;
+  single:boolean=false;
+  filesDeletePic:string[] = [];
+  filesDeleteBanner:string[] = [];
+  filePic:string|undefined;
+  fileBanner:string|undefined;
   afuConfig = {
     uploadAPI: {
       url:"http://localhost:8080/upload",
@@ -60,31 +43,99 @@ export class AppComponent implements OnInit {
     }
 };
 
-  multiple:boolean=false;
-  single:boolean=false;
+  constructor(private socialNet:ApiService, public logged:LoggedService, private formBuilder:FormBuilder) {
+    this.desarrolladorForm=this.formBuilder.group(
+      {
+        "nombreDesarrollador": [null, [Validators.required]],
+        "apellido": [null, [Validators.required]],
+        "titulo": [null, [Validators.required]],
+        "descripcion": [null, [Validators.required]],
+        "tituloSecundario": [null, [Validators.required]],
+        "github": [null, [Validators.required]],
+        "linkedin": [null, [Validators.required]],
+        "instagram": [null, [Validators.required]],
+      }
+    )
+   }
 
-  filesNameList: string[] = [];
-  filePic:string|undefined;
-  fileBanner:string|undefined;
+  ngOnInit(): void {
+    this.socialNet.obtenerDatosPersonales("desarrollador").subscribe(data =>{
+      this.desarrollador=data[0];
+      this.rellenar()
+    });
+    this.logged.isLoggedIn();
+  }
 
+  get NombreDesarrollador(){
+    return this.desarrolladorForm.get("nombreDesarrollador");
+  }
+  get Apellido(){
+    return this.desarrolladorForm.get("apellido");
+  }
+  get Titulo(){
+    return this.desarrolladorForm.get("titulo");
+  }
+  get Descripcion(){
+    return this.desarrolladorForm.get("descripcion");
+  }
+  get TituloSecundario(){
+    return this.desarrolladorForm.get("tituloSecundario");
+  }
+  get Github(){
+    return this.desarrolladorForm.get("github");
+  }
+  get Linkedin(){
+    return this.desarrolladorForm.get("linkedin");
+  }
+  get Instagram(){
+    return this.desarrolladorForm.get("instagram");
+  }
+
+
+  deletePic(){
+    if (this.filesDeletePic.length>0){
+      this.filesDeletePic.forEach(file => {
+        this.socialNet.deleteFiles(file).subscribe();
+      });
+      this.filesDeletePic = [];
+    }
+  }
+
+  deleteBanner(){
+    if (this.filesDeleteBanner.length>0){
+      this.filesDeleteBanner.forEach(file => {
+        this.socialNet.deleteFiles(file).subscribe();
+      });
+      this.filesDeleteBanner = [];
+    }
+  }
   resetFiles(){
     this.single = true;
+    this.resetPic();
+    this.resetBanner();
+  }
+
+  resetPic(){
     this.filePic=undefined;
+  }
+
+  resetBanner(){
     this.fileBanner=undefined;
-    console.log(this.filePic);
-    console.log(this.fileBanner);
   }
 
   picSelected(evento:any): void{
     this.single = false;
+    this.deletePic();
     this.filePic = evento.target.files[0].name;
+    this.filesDeletePic.push(evento.target.files[0].name);
     console.log(this.filePic);
   }
 
   bannerSelected(evento:any): void{
     this.single = false;
+    this.deleteBanner();
     this.fileBanner = evento.target.files[0].name;
-    console.log(this.fileBanner);
+    this.filesDeleteBanner.push(evento.target.files[0].name);
   }
 
   postEducacionBd(){
@@ -110,6 +161,8 @@ export class AppComponent implements OnInit {
     }
     let dataToSend = data;
     console.log(dataToSend);
+    this.filesDeleteBanner = [];
+    this.filesDeletePic = []
     return this.socialNet.enviarDatos("desarrollador", dataToSend).subscribe(xd=>console.log(xd));
   }
 
