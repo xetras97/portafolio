@@ -9,6 +9,11 @@
       <p class="d-none d-md-flex mb-0 me-1">EDITAR</p>
       <span class="material-icons align-self-center justify-self-center">edit</span>
     </a>
+    <br>
+    <a class="btn btn-success text-dark text-center d-inline-flex mt-2" (click)="actualizarDatosPersonales()">
+       <p class="d-none d-md-flex mb-0 me-1">ACTUALIZAR DATOS</p>
+       <span class="material-symbols-outlined align-self-center justify-self-center">refresh</span>
+    </a>
   </div>
   <div class="profile-pic" style='background-image: url({{miPersonalData.img}})'></div>
   <h2 class="d-none d-lg-block text-uppercase fw-bold text-center name-absolute">{{miPersonalData.nombre}} {{miPersonalData.apellido}}</h2>

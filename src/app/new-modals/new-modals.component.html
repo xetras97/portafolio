@@ -1,0 +1,239 @@
+<!-- NUEVA EXPERIENCIA -->
+<div class="modal" id="experienciaNewModal" tabindex="-1" aria-labelledby="experienciaNewModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editExperienciaLabel">NUEVA EXPERIENCIA</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetFiles(); resetForms()"></button>
+      </div>
+      <div class="modal-body">
+        <form id="experienciaNewForm" [formGroup]="experienciaNewModal" class="form-floating needs-validation" novalidate (ngSubmit)="postNewExperienciaBd(); resetForms()">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="empresa" placeholder="empresa"  formControlName="empresa" required [ngClass]="{'is-invalid': Empresa?.errors && Empresa?.touched, 'is-valid': Empresa?.errors && Empresa?.touched}">
+            <label for="empresa">Empresa</label>
+          </div>
+          <div class="mb-3">
+            <label for="skillImg" class="form-label">Imagen</label>
+            <angular-file-uploader [config]="afuConfig" (fileSelected)="resetFiles(); fileSelected($event)"[resetUpload]=single></angular-file-uploader>
+            <button type="button" class="col-12 btn btn-secondary" (click)="resetFiles()">Eliminar Imagenes</button>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="cargo" placeholder="cargo"  formControlName="cargo" required [ngClass]="{'is-invalid': Cargo?.errors && Cargo?.touched, 'is-valid': Cargo?.errors && Cargo?.touched}">
+            <label for="cargo">Cargo</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="funcion" placeholder="funcion"  formControlName="funcion" required [ngClass]="{'is-invalid': Funcion?.errors && Funcion?.touched, 'is-valid': Funcion?.errors && Funcion?.touched}">
+            <label for="funcion">Funcion</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="periodo" placeholder="periodo"  formControlName="periodo" required [ngClass]="{'is-invalid': Periodo?.errors && Periodo?.touched, 'is-valid': Periodo?.errors && Periodo?.touched}">
+            <label for="funcion">Periodo</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetFiles()">Descartar Cambios</button>
+        <button type="submit" class="btn btn-success" form="experienciaNewForm" [disabled]="experienciaNewModal.invalid" data-bs-dismiss="modal" aria-label="Close">GUARDAR</button>
+        <p class="fw-lighter fst-italic text-center">*Para visualizar los cambios debe actualizar la sección mediante el boton de actulizar*</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NUEVA HABILIDAD DURA -->
+<div class="modal" id="newSkillsModal" tabindex="-1" aria-labelledby="newSkillsModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editSkillsLabel">NUEVA HABILIDAD DURA</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetFiles(); resetForms()"></button>
+      </div>
+      <div class="modal-body">
+        <form id="skillsNewModal" [formGroup]="skillsNewModal" class="form-floating needs-validation" novalidate (ngSubmit)="postNewSkillsBd(); resetForms()">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreSkill?.errors && NombreSkill?.touched, 'is-valid': NombreSkill?.errors && NombreSkill?.touched}">
+            <label for="nombre">Nombre</label>
+          </div>
+          <div class="form-floating mb-3">
+            <select type="select" class="form-control" id="nivel" placeholder="Nivel" formControlName="nivel" required [ngClass]="{'is-invalid': NivelSkill?.errors && NivelSkill?.touched, 'is-valid': NivelSkill?.errors && NivelSkill?.touched}">
+              <option value="Experto">Experto</option>
+              <option value="Avanzado">Avanzado</option>
+              <option value="Intermedio">Intermedio</option>
+              <option value="Basico">Basico</option>
+            </select>
+            <label for="nivel">Nivel</label>
+          </div>
+          <div class="mb-3">
+            <label for="skillImg" class="form-label">Imagen</label>
+            <angular-file-uploader [config]="afuConfig" (fileSelected)="resetFiles(); fileSelected($event)"[resetUpload]=single></angular-file-uploader>
+            <button type="button" class="col-12 btn btn-secondary" (click)="resetFiles()">Eliminar Imagenes</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetFiles(); resetForms()">Descartar Cambios</button>
+        <button type="submit" class="btn btn-success" form="skillsNewModal" [disabled]="skillsNewModal.invalid" data-bs-dismiss="modal" aria-label="Close">GUARDAR</button>
+        <p class="fw-lighter fst-italic text-center">*Para visualizar los cambios debe actualizar la sección mediante el boton de actulizar*</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NUEVA HABILIDAD BLANDA -->
+<div class="modal" id="nuevaBlanda" tabindex="-1" aria-labelledby="nuevaBlandaLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editSkillsLabel">EDITAR HABILIDAD</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForms()"></button>
+      </div>
+      <div class="modal-body">
+        <form id="softSkillsNewModal" [formGroup]="softSkillsNewModal" class="form-floating needs-validation" novalidate (ngSubmit)="postNewSoftBd(); resetForms()">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="softName" placeholder="softName"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreSoft?.errors && NombreSoft?.touched, 'is-valid': NombreSoft?.errors && NombreSoft?.touched}">
+            <label for="softName">Nombre</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForms()">Descartar Cambios</button>
+        <button type="submit" class="btn btn-success" form="softSkillsNewModal" [disabled]="softSkillsNewModal.invalid" data-bs-dismiss="modal" aria-label="Close">GUARDAR</button>
+        <p class="fw-lighter fst-italic text-center">*Para visualizar los cambios debe actualizar la sección mediante el boton de actulizar*</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NUEVO IDIOMA -->
+<div class="modal" id="newLanguagesModal" tabindex="-1" aria-labelledby="newLanguagesModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editSkillsLabel">EDITAR LENGUAJES</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForms()"></button>
+      </div>
+      <div class="modal-body">
+        <form id="languagesNewModal" [formGroup]="languagesNewModal" class="form-floating needs-validation" novalidate (ngSubmit)="postNewLanguagesBd(); resetForms()">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="languagesName" placeholder="languagesName"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreLanguages?.errors && NombreLanguages?.touched, 'is-valid': NombreLanguages?.errors && NombreLanguages?.touched}">
+            <label for="languagesName">Nombre</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="languagesLevel" placeholder="languagesLevel"  formControlName="nivel" required [ngClass]="{'is-invalid': NivelLanguages?.errors && NivelLanguages?.touched, 'is-valid': NivelLanguages?.errors && NivelLanguages?.touched}">
+            <label for="languagesLevel">Nivel</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForms()">Descartar Cambios</button>
+        <button type="submit" class="btn btn-success" form="languagesNewModal" [disabled]="languagesNewModal.invalid" data-bs-dismiss="modal" aria-label="Close">GUARDAR</button>
+        <p class="fw-lighter fst-italic text-center">*Para visualizar los cambios debe actualizar la sección mediante el boton de actulizar*</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NUEVO PROYECTO -->
+<div class="modal" id="nuevoProyecto" tabindex="-1" aria-labelledby="nuevoProyectoLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProjectsLabel">NUEVO PROYECTO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForms(); resetMultipleFiles(); resetFiles()"></button>
+      </div>
+      <div class="modal-body">
+        <form id="newProjectsModal" [formGroup]="projectsNewModal" class="form-floating needs-validation" novalidate (ngSubmit)="postNewProjectsBd(); resetForms()">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="projectName" placeholder="Nombre"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreProject?.errors && NombreProject?.touched, 'is-valid': NombreProject?.errors && NombreProject?.touched}">
+            <label for="projectName">Nombre</label>
+          </div>
+          <div class="mb-3">
+            <label for="projectImg" class="form-label">Imagen Principal</label>
+            <angular-file-uploader [config]="afuConfig" (fileSelected)="resetFiles(); fileSelected($event)"[resetUpload]=single></angular-file-uploader>
+            <button type="button" class="col-12 btn btn-secondary" (click)="resetFiles()">Eliminar Imagen</button>
+          </div>
+          <div class="mb-3">
+            <label for="projectDescription" class="form-label">Descripcion</label>
+            <textarea class="form-control" id="projectDescription" rows="2" formControlName="descripcion" required [ngClass]="{'is-invalid': Descripcion?.errors && Descripcion?.touched, 'is-valid': Descripcion?.errors && Descripcion?.touched}"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="projectStack" class="form-label">Stack</label>
+            <textarea class="form-control" id="projectStack" rows="2" formControlName="stack" required [ngClass]="{'is-invalid': Stack?.errors && Stack?.touched, 'is-valid': Stack?.errors && Stack?.touched}"></textarea>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="projectWeb" placeholder="Web"  formControlName="web" required [ngClass]="{'is-invalid': Web?.errors && Web?.touched, 'is-valid': Web?.errors && Web?.touched}">
+            <label for="projectWeb">Sitio Web</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="projectGithub" placeholder="GitHub"  formControlName="github" required [ngClass]="{'is-invalid': Github?.errors && Github?.touched, 'is-valid': Github?.errors && Github?.touched}">
+            <label for="projectGithub">GitHub</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="projectYear" placeholder="Año"  formControlName="año" required [ngClass]="{'is-invalid': Anio?.errors && Anio?.touched, 'is-valid': Anio?.errors && Anio?.touched}">
+            <label for="projectYear">Año</label>
+          </div>
+          <div class="mb-3">
+            <label for="projectObservation" class="form-label">Observaciones</label>
+            <textarea class="form-control" id="projectObservation" rows="2" formControlName="observaciones"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="projectImgExtra" class="form-label">Imagenes Extra</label>
+            <angular-file-uploader [config]="multipleConfig" (fileSelected)="multipleFileSelected($event)"[resetUpload]=multiple></angular-file-uploader>
+            <button type="button" class="col-12 btn btn-secondary" (click)="resetMultipleFiles()">Eliminar Imagenes</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForms();resetMultipleFiles(); resetFiles()">Descartar Cambios</button>
+        <button type="submit" class="btn btn-success" form="newProjectsModal" [disabled]="projectsNewModal.invalid" data-bs-dismiss="modal" aria-label="Close">GUARDAR</button>
+        <p class="fw-lighter fst-italic text-center">*Para visualizar los cambios debe actualizar la sección mediante el boton de actulizar*</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NUEVO ESTUDIO -->
+<div class="modal" id="nuevoEstudio" tabindex="-1" aria-labelledby="nuevoEstudioLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editEducacionLabel">NUEVO ESTUDIOS</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForms(); resetFiles()"></button>
+      </div>
+      <div class="modal-body">
+        <form id="newEducacionForm" [formGroup]="estudiosNewModal" class="form-floating needs-validation" (ngSubmit)="postNewEducacionBd(); resetForms()" novalidate>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="title" placeholder="Titulo"  formControlName="title" required [ngClass]="{'is-invalid': Title?.errors && Title?.touched, 'is-valid': Title?.errors && Title?.touched}">
+            <label for="title">Titulo</label>
+          </div>
+          <div class="form-floating mb-3">
+            <select type="select" class="form-control" id="year" placeholder="Año" formControlName="year" required [ngClass]="{'is-invalid': Year?.errors && Year?.touched, 'is-valid': Year?.errors && Year?.touched}">
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+              <option value="2015">2015</option>
+            </select>
+            <label for="year">Año</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="institute" placeholder="institute" formControlName="institute" required [ngClass]="{'is-invalid': Institute?.errors && Institute?.touched, 'is-valid': Institute?.errors && Institute?.touched}">
+            <label for="institute">Institucion</label>
+          </div>
+          <div class="mb-3">
+            <label for="instituteImg" class="form-label">Imagen</label>
+            <angular-file-uploader [config]="afuConfig" (fileSelected)="resetFiles(); fileSelected($event)"[resetUpload]=single></angular-file-uploader>
+            <button type="button" class="col-12 btn btn-secondary" (click)="resetFiles()">Eliminar Imagen</button>
+          </div>
+          <div class="mb-3">
+            <label for="time" class="form-label">Periodo</label>
+            <input class="form-control" id="time" formControlName="time">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForms(); resetFiles()">Descartar Cambios</button>
+        <button type="submit" class="btn btn-success" form="newEducacionForm" [disabled]="estudiosNewModal.invalid" data-bs-dismiss="modal" aria-label="Close">GUARDAR</button>
+        <p class="fw-lighter fst-italic text-center">*Para visualizar los cambios debe actualizar la sección mediante el boton de actulizar*</p>
+      </div>
+    </div>
+  </div>
+</div>

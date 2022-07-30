@@ -23,6 +23,7 @@ var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var edit_modals_component_1 = require("./edit-modals/edit-modals.component");
 var angular_file_uploader_1 = require("angular-file-uploader");
 var interceptor_service_1 = require("./servicios/interceptor.service");
+var delete_modal_component_1 = require("./delete-modal/delete-modal.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -36,7 +37,8 @@ var AppModule = /** @class */ (function () {
                 personal_projects_component_1.PersonalProjectsComponent,
                 login_component_1.LoginComponent,
                 educacion_modal_component_1.EducacionModalComponent,
-                edit_modals_component_1.EditModalsComponent
+                edit_modals_component_1.EditModalsComponent,
+                delete_modal_component_1.DeleteModalComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,

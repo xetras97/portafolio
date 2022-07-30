@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
 import { ApiService } from '../servicios/api.service';
 import { LoggedService } from '../servicios/logged.service';
 
@@ -7,10 +8,10 @@ import { LoggedService } from '../servicios/logged.service';
   templateUrl: './personal-projects.component.html',
   styleUrls: ['./personal-projects.component.css']
 })
-export class PersonalProjectsComponent implements OnInit {
+export class PersonalProjectsComponent implements OnInit{
 
   myProjectsData:any;
-  constructor(private projectsData:ApiService, public loggedService:LoggedService ) { }
+  constructor(private projectsData:ApiService, public loggedService:LoggedService) { }
 
   ngOnInit(): void {
     this.projectsData.obtenerDatosPersonales("proyectos").subscribe(data =>{
@@ -24,4 +25,11 @@ export class PersonalProjectsComponent implements OnInit {
     console.log(id);
   }
 
+  setComponente(componente:string){
+    this.projectsData.obtenerComponente(componente);
+  }
+
+  actualizarProyectos(){
+    this.ngOnInit();
+  }
 }

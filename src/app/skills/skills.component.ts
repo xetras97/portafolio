@@ -10,12 +10,46 @@ import { LoggedService } from '../servicios/logged.service';
 export class SkillsComponent implements OnInit {
 
   mySkillsData:any;
+  hardSkills:any[]= [];
+  softSkills:any[]= [];
+  languagesSkills:any[]= [];
+
   constructor(private skillsData:ApiService, public loggedService:LoggedService) { }
 
   ngOnInit(): void {
     this.skillsData.obtenerDatosPersonales("habilidades").subscribe(data =>{
       this.mySkillsData=data;
+      for(let mySkillsData of this.mySkillsData){
+        if(mySkillsData.tipo=="Dura"){
+          this.hardSkills.push(mySkillsData);
+        }
+        if(mySkillsData.tipo=="Blanda"){
+          this.softSkills.push(mySkillsData);
+        }
+        if(mySkillsData.tipo=="Idioma"){
+          this.languagesSkills.push(mySkillsData);
+        }
+      }
+      console.log(this.hardSkills);
+      console.log(this.softSkills);
+      console.log(this.languagesSkills);
+      console.log(this.mySkillsData);
     });
+
+    // for(let mySkillsData of this.mySkillsData){
+    //   if(mySkillsData.tipo=="Dura"){
+    //     this.hardSkills.push(mySkillsData);
+    //   }
+    //   if(mySkillsData.tipo=="Blanda"){
+    //     this.softSkills.push(mySkillsData);
+    //   }
+    //   if(mySkillsData.tipo=="Idioma"){
+    //     this.languagesSkills.push(mySkillsData);
+    //   }
+    //   console.log(this.hardSkills);
+    //   console.log(this.softSkills);
+    //   console.log(this.languagesSkills);
+    // }
   }
 
   @ViewChild('circle')
@@ -34,5 +68,15 @@ export class SkillsComponent implements OnInit {
 
   setId(id:number){
     this.skillsData.obtenerId(id);
+  }
+
+  setComponente(componente:string){
+    this.skillsData.obtenerComponente(componente);
+  }
+  actualizarSkills(){
+    this.hardSkills = [];
+    this.softSkills = [];
+    this.languagesSkills = [];
+    return this.ngOnInit();
   }
 }

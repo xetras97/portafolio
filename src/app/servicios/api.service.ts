@@ -7,6 +7,8 @@ import { map, Observable } from 'rxjs';
 })
 export class ApiService {
 
+  id:number=1;
+  componente:string="";
   url:string = "http://localhost:8080/ver/";
   urlPost:string = "http://localhost:8080/new/";
   urlDelete:string = "http://localhost:8080/delete/";
@@ -32,10 +34,17 @@ export class ApiService {
     return this.http.get<any>(this.urlDelete+fileName);
   }
 
-  id:number=1;
+  deleteBd(componente:string, id:number){
+    return this.http.delete<any>(this.urlDelete+componente+'/'+id);
+  }
 
   obtenerId(idNumber:number){
     this.id=idNumber;
+    console.log(this.id)
   }
 
+  obtenerComponente(componente:string){
+    this.componente=componente;
+    console.log(this.componente);
+  }
 }

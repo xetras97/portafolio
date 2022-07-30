@@ -24,6 +24,12 @@ var PersonalProjectsComponent = /** @class */ (function () {
         this.projectsData.obtenerId(id);
         console.log(id);
     };
+    PersonalProjectsComponent.prototype.setComponente = function (componente) {
+        this.projectsData.obtenerComponente(componente);
+    };
+    PersonalProjectsComponent.prototype.actualizarProyectos = function () {
+        this.ngOnInit();
+    };
     PersonalProjectsComponent = __decorate([
         core_1.Component({
             selector: 'app-personal-projects',

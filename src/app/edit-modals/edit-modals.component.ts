@@ -15,14 +15,18 @@ export class EditModalsComponent implements OnInit {
   softSkillsModal:FormGroup;
   languagesModal:FormGroup;
   projectsModal:FormGroup;
+  experienciaModal:FormGroup;
 
   multiple:boolean=false;
   single:boolean=false;
 
   filesNameList: string[] = [];
   fileName:string|undefined;
+  filesDeleteList: string[] = [];
+  filesMultipleDeleteList: string[] = [];
   dataForm:any;
   projectsForm:any;
+  experienciaForm:any;
 
   multipleConfig = {
     uploadAPI: {
@@ -98,6 +102,13 @@ export class EditModalsComponent implements OnInit {
         "observaciones": [null, null]
       }
     )
+
+    this.experienciaModal=this.formBuilder.group({
+      "empresa": [null, [Validators.required]],
+      "cargo": [null, [Validators.required]],
+      "periodo": [null, [Validators.required]],
+      "funcion": [null, [Validators.required]],
+    })
    }
 
   ngOnInit(): void {
@@ -106,6 +117,9 @@ export class EditModalsComponent implements OnInit {
     });
     this.apiService.obtenerDatosPersonales("proyectos").subscribe(data =>{
       this.projectsForm=data;
+    });
+    this.apiService.obtenerDatosPersonales("experiencias").subscribe(data =>{
+      this.experienciaForm=data;
     });
   }
 
@@ -142,6 +156,19 @@ export class EditModalsComponent implements OnInit {
   }
   get Anio(){
     return this.projectsModal.get("año");
+  }
+
+  get Empresa(){
+    return this.experienciaModal.get("empresa");
+  }
+  get Cargo(){
+    return this.experienciaModal.get("cargo");
+  }
+  get Periodo(){
+    return this.experienciaModal.get("periodo");
+  }
+  get Funcion(){
+    return this.experienciaModal.get("funcion");
   }
 
   setDefaultForm (){
@@ -192,22 +219,52 @@ export class EditModalsComponent implements OnInit {
     let id = this.apiService.id;
     return this.setProject(this.projectsForm[id].nombre, this.projectsForm[id].descripcion, this.projectsForm[id].stack, this.projectsForm[id].web, this.projectsForm[id].github, this.projectsForm[id].año, this.projectsForm[id].observaciones)
   }
+
+  setExperiencia (empresa:string, cargo:string, periodo:string, funcion:string){
+    this.experienciaModal.setValue({
+      "empresa": empresa,
+      "cargo": cargo,
+      "periodo": periodo,
+      "funcion": funcion
+    })
+  }
+
+  setExperienciaDefaultForm (){
+    let id = this.apiService.id;
+    return this.setExperiencia(this.experienciaForm[id].empresa, this.experienciaForm[id].cargo, this.experienciaForm[id].periodo, this.experienciaForm[id].funcion)
+  }
+
   resetForm(){
     this.skillsModals.reset();
     this.softSkillsModal.reset();
     this.languagesModal.reset();
     this.projectsModal.reset();
+    this.experienciaModal.reset();
+    this.multiple = true;
+    this.single = true;
   }
 
 
   resetFiles(){
     this.single = true;
+    if (this.filesDeleteList.length>0){
+      this.filesDeleteList.forEach(file => {
+        this.apiService.deleteFiles(file).subscribe();
+      });
+      this.filesDeleteList = [];
+    }
     this.fileName=undefined;
     console.log(this.fileName);
   }
 
   resetMultipleFiles() {
     this.multiple = true;
+    if (this.filesMultipleDeleteList.length>0){
+      this.filesMultipleDeleteList.forEach(file => {
+        this.apiService.deleteFiles(file).subscribe();
+      });
+      this.filesMultipleDeleteList = [];
+    }
     this.filesNameList=[];
     console.log(this.filesNameList);
   }
@@ -215,6 +272,7 @@ export class EditModalsComponent implements OnInit {
   fileSelected(evento:any): void{
     this.single = false;
     this.fileName = evento.target.files[0].name;
+    this.filesDeleteList.push(evento.target.files[0].name);
     console.log(this.fileName);
   }
 
@@ -223,6 +281,7 @@ export class EditModalsComponent implements OnInit {
 
     for (let index = 0; index < evento.target.files.length; index++) {
       this.filesNameList.push(evento.target.files[index].name);
+      this.filesMultipleDeleteList.push(evento.target.files[index].name);
     }
     console.log(this.filesNameList);
   }
@@ -242,7 +301,7 @@ export class EditModalsComponent implements OnInit {
       data.img = 'http://localhost:8080/files/'+this.fileName;
     }
     let dataToSend = data;
-    return this.apiService.enviarDatos("habilidad", dataToSend).subscribe(xd=>console.log(xd));
+    return this.apiService.enviarDatos("habilidad", dataToSend).subscribe();
   }
 
   postSoftBd(){
@@ -254,7 +313,7 @@ export class EditModalsComponent implements OnInit {
       "tipo": "Blanda"
     };
     let dataToSend = data;
-    return this.apiService.enviarDatos("habilidad", dataToSend).subscribe(xd=>console.log(xd));
+    return this.apiService.enviarDatos("habilidad", dataToSend).subscribe();
   }
 
   postLanguagesBd(){
@@ -267,7 +326,7 @@ export class EditModalsComponent implements OnInit {
       "otro": formData.nivel
     };
     let dataToSend = data;
-    return this.apiService.enviarDatos("habilidad", dataToSend).subscribe(xd=>console.log(xd));
+    return this.apiService.enviarDatos("habilidad", dataToSend).subscribe();
   }
 
   postProjectsBd(){
@@ -312,7 +371,26 @@ export class EditModalsComponent implements OnInit {
     let dataToSend = data;
     console.log(dataToSend)
     console.log(this.filesNameList[4])
-    return this.apiService.enviarDatos("proyectos", dataToSend).subscribe(xd=>console.log(xd));
+    return this.apiService.enviarDatos("proyectos", dataToSend).subscribe();
+  }
+
+  postExperienciaBd(){
+    let id = this.apiService.id;
+    let formData = this.experienciaModal.value;
+    let data = {
+      "idExperiencia": id,
+      "empresa": formData.empresa,
+      "cargo": formData.cargo,
+      "periodo": formData.periodo,
+      "funcion": formData.funcion,
+      "img": this.experienciaForm[id].img
+    };
+    if(this.fileName!=undefined){
+      data.img = 'http://localhost:8080/files/'+this.fileName;
+    }
+    let dataToSend = data;
+    console.log(dataToSend);
+    return this.apiService.enviarDatos("experiencia", dataToSend).subscribe();
   }
 
 }

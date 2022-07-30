@@ -53,6 +53,7 @@ export class EducacionModalComponent implements OnInit {
 
   resetForm(){
     this.test.reset();
+    this.single=true;
   }
 
 //Imagen Upload

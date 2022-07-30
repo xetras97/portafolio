@@ -10,12 +10,13 @@ exports.EducacionComponent = void 0;
 var core_1 = require("@angular/core");
 var educacion_modal_component_1 = require("../educacion-modal/educacion-modal.component");
 var EducacionComponent = /** @class */ (function () {
-    function EducacionComponent(educacionData, loggedService, appComponent, educacionModal, modalService) {
+    function EducacionComponent(educacionData, loggedService, appComponent, educacionModal, modalService, renderer) {
         this.educacionData = educacionData;
         this.loggedService = loggedService;
         this.appComponent = appComponent;
         this.educacionModal = educacionModal;
         this.modalService = modalService;
+        this.renderer = renderer;
         this.year = 2022;
     }
     EducacionComponent.prototype.ngOnInit = function () {
@@ -27,11 +28,17 @@ var EducacionComponent = /** @class */ (function () {
     EducacionComponent.prototype.setId = function (id) {
         this.educacionData.obtenerId(id);
     };
+    EducacionComponent.prototype.setComponente = function (componente) {
+        this.educacionData.obtenerComponente(componente);
+    };
     EducacionComponent.prototype.setModal = function () {
         this.educacionModal.setDefaultForm();
     };
     EducacionComponent.prototype.open = function () {
         var modalRef = this.modalService.open(educacion_modal_component_1.EducacionModalComponent);
+    };
+    EducacionComponent.prototype.actualizarEstudios = function () {
+        this.ngOnInit();
     };
     EducacionComponent = __decorate([
         core_1.Component({

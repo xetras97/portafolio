@@ -103,7 +103,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="rellenar(); resetFiles(); deletePic(); deleteBanner()">Descartar</button>
-        <button type="submit" class="btn btn-success" form="desarrolladorForm" [disabled]="desarrolladorForm.invalid">GUARDAR</button>
+        <button type="submit" class="btn btn-success" form="desarrolladorForm" [disabled]="desarrolladorForm.invalid" data-bs-dismiss="modal" aria-label="Close">GUARDAR</button>
+        <p class="fw-lighter fst-italic text-center">*Para visualizar los cambios debe actualizar la sección mediante el boton de actulizar*</p>
       </div>
     </div>
   </div>
@@ -114,7 +115,10 @@
   <app-educacion></app-educacion>
   <app-skills></app-skills>
   <app-personal-projects></app-personal-projects>
+  <app-experiencia></app-experiencia>
 </div>
 
 <app-educacion-modal></app-educacion-modal>
 <app-edit-modals></app-edit-modals>
+<app-delete-modal></app-delete-modal>
+<app-new-modals></app-new-modals>

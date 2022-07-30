@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ApiService } from '../servicios/api.service';
 import { LoggedService } from '../servicios/logged.service';
 import { AppComponent } from '../app.component';
@@ -13,7 +13,7 @@ import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-b
 export class EducacionComponent implements OnInit {
 
   myEducacionData:any;
-  constructor(public educacionData:ApiService, public loggedService:LoggedService, public appComponent:AppComponent, private educacionModal:EducacionModalComponent, private modalService: NgbModal) { }
+  constructor(public educacionData:ApiService, public loggedService:LoggedService, public appComponent:AppComponent, private educacionModal:EducacionModalComponent, private modalService: NgbModal, private renderer:Renderer2) { }
 
   ngOnInit(): void {
     this.educacionData.obtenerDatosPersonales("estudios").subscribe(data =>{
@@ -25,6 +25,10 @@ export class EducacionComponent implements OnInit {
     this.educacionData.obtenerId(id);
   }
 
+  setComponente(componente:string){
+    this.educacionData.obtenerComponente(componente);
+  }
+
   setModal(){
     this.educacionModal.setDefaultForm();
   }
@@ -34,4 +38,9 @@ export class EducacionComponent implements OnInit {
   open() {
     const modalRef = this.modalService.open(EducacionModalComponent);
   }
+
+  actualizarEstudios(){
+    this.ngOnInit();
+  }
+
 }

@@ -15,6 +15,9 @@ import {NgbModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { EditModalsComponent } from './edit-modals/edit-modals.component';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { InterceptorService } from './servicios/interceptor.service';
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
+import { ExperienciaComponent } from './experiencia/experiencia.component';
+import { NewModalsComponent } from './new-modals/new-modals.component';
 
 
 @NgModule({
@@ -26,7 +29,10 @@ import { InterceptorService } from './servicios/interceptor.service';
     PersonalProjectsComponent,
     LoginComponent,
     EducacionModalComponent,
-    EditModalsComponent
+    EditModalsComponent,
+    DeleteModalComponent,
+    ExperienciaComponent,
+    NewModalsComponent
   ],
   imports: [
     BrowserModule,

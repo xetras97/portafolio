@@ -17,4 +17,7 @@ export class PersonalInfoComponent implements OnInit {
       this.miPersonalData=data[0];
     });
   }
+  actualizarDatosPersonales(){
+    this.ngOnInit()
+  }
 }

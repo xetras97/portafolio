@@ -11,10 +11,11 @@ var core_1 = require("@angular/core");
 var ApiService = /** @class */ (function () {
     function ApiService(http) {
         this.http = http;
+        this.id = 1;
+        this.componente = "";
         this.url = "http://localhost:8080/ver/";
         this.urlPost = "http://localhost:8080/new/";
         this.urlDelete = "http://localhost:8080/delete/";
-        this.id = 1;
     }
     ApiService.prototype.obtenerDatosPersonales = function (componente) {
         return this.http.get(this.url + componente);
@@ -28,8 +29,16 @@ var ApiService = /** @class */ (function () {
     ApiService.prototype.deleteFiles = function (fileName) {
         return this.http.get(this.urlDelete + fileName);
     };
+    ApiService.prototype.deleteBd = function (componente, id) {
+        return this.http["delete"](this.urlDelete + componente + '/' + id);
+    };
     ApiService.prototype.obtenerId = function (idNumber) {
         this.id = idNumber;
+        console.log(this.id);
+    };
+    ApiService.prototype.obtenerComponente = function (componente) {
+        this.componente = componente;
+        console.log(this.componente);
     };
     ApiService = __decorate([
         core_1.Injectable({

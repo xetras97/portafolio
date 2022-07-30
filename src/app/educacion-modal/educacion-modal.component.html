@@ -6,7 +6,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm(); resetFiles()"></button>
       </div>
       <div class="modal-body">
-        <form id="educacionForm" [formGroup]="test" class="form-floating needs-validation" (ngSubmit)="postEducacionBd()" novalidate>
+        <form id="educacionForm" [formGroup]="test" class="form-floating needs-validation" (ngSubmit)="postEducacionBd(); resetForm()" novalidate>
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="title" placeholder="Titulo"  formControlName="title" required [ngClass]="{'is-invalid': Title?.errors && Title?.touched, 'is-valid': Title?.errors && Title?.touched}">
             <label for="title">Titulo</label>
@@ -37,7 +37,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm(); resetFiles()">Descartar Cambios</button>
-        <button type="submit" class="btn btn-success" form="educacionForm" [disabled]="test.invalid">GUARDAR</button>
+        <button type="submit" class="btn btn-success" form="educacionForm" [disabled]="test.invalid" data-bs-dismiss="modal" aria-label="Close">GUARDAR</button>
+        <p class="fw-lighter fst-italic text-center">*Para visualizar los cambios debe actualizar la sección mediante el boton de actulizar*</p>
       </div>
     </div>
   </div>

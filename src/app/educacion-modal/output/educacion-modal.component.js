@@ -87,6 +87,7 @@ var EducacionModalComponent = /** @class */ (function () {
     };
     EducacionModalComponent.prototype.resetForm = function () {
         this.test.reset();
+        this.single = true;
     };
     EducacionModalComponent.prototype.resetFiles = function () {
         var _this = this;

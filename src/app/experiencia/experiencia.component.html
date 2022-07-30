@@ -1,0 +1,49 @@
+<section *ngIf="myExperienciaData.length>0 || loggedService.loggedIn">
+  <div class="container-fluid border-top border-bottom border-info mt-4 fuente">
+    <h2 class="mt-2 mb-2 text-uppercase text-center titulo">EXPERIENCIA</h2>
+    <div class="d-flex justify-content-center mb-2" *ngIf="loggedService.loggedIn">
+      <a class="btn btn-success text-dark text-center" (click)="actualizarExperiencia()">
+       <p class="d-flex mb-0 me-1">ACTUALIZAR EXPERIENCIA</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="container-fluid mt-4 fuente">
+    <div class="d-flex justify-content-center mb-2" *ngIf="loggedService.loggedIn">
+      <a class="btn btn-secondary text-dark text-" data-bs-toggle="modal" data-bs-target="#experienciaNewModal">
+       <p class="d-flex mb-0 me-1 text-dark">AGREGAR EXPERIENCIA</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <div class="row">
+
+      <div class="col-12 col-md-8 offset-md-2" *ngFor="let experiencia of myExperienciaData" style="position: relative;">
+        <div class="col-2 d-flex align-items-center justify-content-center edit-experiencia" *ngIf="loggedService.loggedIn">
+          <span class="material-icons edit me-2" data-bs-toggle="modal" data-bs-target="#experienciaModal" (click)="setId(experiencia.idExperiencia)">edit</span>
+          <span class="material-icons delete" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="setId(experiencia.idExperiencia); setComponente('experiencia')">close</span>
+        </div>
+
+        <div class="card text-center mb-3">
+          <div class="card-header fs-5 text-muted">
+            {{experiencia.periodo}}
+          </div>
+          <div class="row">
+            <div class="col-4">
+            <img src="{{experiencia.img}}" class="img-fluid rounded-start img-card" alt="{{experiencia.empresa}}" style="height: 100%;">
+            </div>
+            <div class="col-8 d-flex align-items-center">
+              <div class="card-body">
+                <h5 class="card-title">{{experiencia.empresa}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{experiencia.cargo}}</h6>
+              <p class="card-text">{{experiencia.funcion}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,6 +1,19 @@
 <section>
   <div class="container-fluid border-top border-bottom border-info mt-4">
     <h2 class="mt-2 mb-2 text-uppercase text-center titulo">Educación</h2>
+    <div class="d-flex justify-content-center mb-2" *ngIf="loggedService.loggedIn">
+      <a class="btn btn-success text-dark text-center" (click)="actualizarEstudios()">
+       <p class="d-flex mb-0 me-1">ACTUALIZAR ESTUDIOS</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="container-fluid mt-4 fuente">
+    <div class="d-flex justify-content-center mb-2" *ngIf="loggedService.loggedIn">
+      <a class="btn btn-secondary text-dark text-" data-bs-toggle="modal" data-bs-target="#nuevoEstudio">
+       <p class="d-flex mb-0 me-1 text-dark">AGREGAR ESTUDIO</p>
+      </a>
+    </div>
   </div>
 
   <div class="container mt-2 mb-4">
@@ -15,15 +28,36 @@
         <h3 class="text-center text-middle year" [class.active]="year === 2015" (click)="year = 2015">2015</h3>
       </div>
     </div>
+    <div #divPrueba></div>
 
     <div class="row">
+      <div class="col-12 col-md-8 offset-md-2"  *ngFor="let myEducacionData of myEducacionData">
+        <div class="card mb-3" *ngIf="myEducacionData.anio === year">
+          <div class="row g-0">
+            <div class="col-2 d-flex align-items-center justify-content-center edit-educacion" *ngIf="loggedService.loggedIn">
+              <span class="material-icons edit me-2" data-bs-toggle="modal" data-bs-target="#testModal" (click)="setId(myEducacionData.idEducacion)">edit</span>
+              <span class="material-icons delete" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="setId(myEducacionData.idEducacion); setComponente('estudios')">close</span>
+            </div>
+            <div class="col-4">
+              <img src="{{myEducacionData.img}}" class="img-fluid rounded-start img-card" alt="{{myEducacionData.institucion}}" style="height: 100%;">
+            </div>
+            <div class="col-8 d-flex align-items-center">
+              <div class="card-body">
+                <h5 class="card-title">{{myEducacionData.titulo}}</h5>
+                <p class="card-text">{{myEducacionData.institucion}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div class="col-12 col-md-8 offset-md-2" *ngIf="myEducacionData[0].anio === year">
+
+      <!-- <div class="col-12 col-md-8 offset-md-2"  *ngIf="myEducacionData[0].anio === year">
         <div class="card mb-3">
           <div class="row g-0">
             <div class="col-2 d-flex align-items-center justify-content-center edit-educacion" *ngIf="loggedService.loggedIn">
-              <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#testModal" (click)="setId(myEducacionData[0].idEducacion)">edit</span>
-              <span class="material-icons delete">close</span>
+              <span class="material-icons edit me-2" data-bs-toggle="modal" data-bs-target="#testModal" (click)="setId(myEducacionData[0].idEducacion)">edit</span>
+              <span class="material-icons delete" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="setId(myEducacionData[0].idEducacion); setComponente('estudios')">close</span>
             </div>
             <div class="col-4">
               <img src="{{myEducacionData[0].img}}" class="img-fluid rounded-start img-card" alt="{{myEducacionData[0].institucion}}" style="height: 100%;">
@@ -36,14 +70,14 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="col-12 col-md-8 offset-md-2" *ngIf="myEducacionData[1].anio === year">
+      <!-- <div class="col-12 col-md-8 offset-md-2" *ngIf="myEducacionData[1].anio === year">
         <div class="card mb-3">
           <div class="row g-0">
             <div class="col-2 d-flex align-items-center justify-content-center edit-educacion" *ngIf="loggedService.loggedIn">
-              <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#testModal" (click)="setId(myEducacionData[1].idEducacion)">edit</span>
-              <span class="material-icons delete">close</span>
+              <span class="material-icons edit me-2" data-bs-toggle="modal" data-bs-target="#testModal" (click)="setId(myEducacionData[1].idEducacion)">edit</span>
+              <span class="material-icons delete" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="setId(myEducacionData[0].idEducacion); setComponente('estudios')">close</span>
             </div>
             <div class="col-4">
               <img src="{{myEducacionData[1].img}}" class="img-fluid rounded-start img-card" alt="{{myEducacionData[1].institucion}}" style="height: 100%;">
@@ -63,8 +97,8 @@
         <div class="card mb-3">
           <div class="row g-0">
             <div class="col-2 d-flex align-items-center justify-content-center edit-educacion" *ngIf="loggedService.loggedIn">
-              <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#testModal" (click)="setId(myEducacionData[2].idEducacion)">edit</span>
-              <span class="material-icons delete">close</span>
+              <span class="material-icons edit me-2" data-bs-toggle="modal" data-bs-target="#testModal" (click)="setId(myEducacionData[2].idEducacion)">edit</span>
+              <span class="material-icons delete" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="setId(myEducacionData[0].idEducacion); setComponente('estudios')">close</span>
             </div>
             <div class="col-4">
               <img src="{{myEducacionData[2].img}}" class="img-fluid rounded-start img-card" alt="{{myEducacionData[2].institucion}}" style="height: 100%;">
@@ -83,8 +117,8 @@
         <div class="card mb-3">
           <div class="row g-0">
             <div class="col-2 d-flex align-items-center justify-content-center edit-educacion" *ngIf="loggedService.loggedIn">
-              <span class="material-icons edit" data-bs-toggle="modal" data-bs-target="#testModal" (click)="setId(myEducacionData[3].idEducacion)">edit</span>
-              <span class="material-icons delete">close</span>
+              <span class="material-icons edit me-2" data-bs-toggle="modal" data-bs-target="#testModal" (click)="setId(myEducacionData[3].idEducacion)">edit</span>
+              <span class="material-icons delete" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="setId(myEducacionData[0].idEducacion); setComponente('estudios')">close</span>
             </div>
             <div class="col-4">
               <img src="{{myEducacionData[3].img}}" class="img-fluid rounded-start img-card" alt="{{myEducacionData[3].institucion}}" style="height: 100%;">
@@ -97,7 +131,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
 

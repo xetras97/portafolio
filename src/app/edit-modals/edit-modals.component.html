@@ -7,7 +7,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm(); resetFiles()"></button>
       </div>
       <div class="modal-body">
-        <form id="skillsModals" [formGroup]="skillsModals" class="form-floating needs-validation" novalidate (ngSubmit)="postSkillsBd()">
+        <form id="skillsModals" [formGroup]="skillsModals" class="form-floating needs-validation" novalidate (ngSubmit)="postSkillsBd(); resetForm()">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="nombre" placeholder="Nombre"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreSkill?.errors && NombreSkill?.touched, 'is-valid': NombreSkill?.errors && NombreSkill?.touched}">
             <label for="nombre">Nombre</label>
@@ -32,7 +32,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm(); resetFiles()">Descartar Cambios</button>
-        <button type="submit" class="btn btn-success" form="skillsModals" [disabled]="skillsModals.invalid">GUARDAR</button>
+        <button type="submit" class="btn btn-success" form="skillsModals" [disabled]="skillsModals.invalid" data-bs-dismiss="modal" aria-label="Close">GUARDAR</button>
+        <p class="fw-lighter fst-italic text-center">*Para visualizar los cambios debe actualizar la sección mediante el boton de actulizar*</p>
       </div>
     </div>
   </div>
@@ -47,7 +48,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm()"></button>
       </div>
       <div class="modal-body">
-        <form id="softSkillsModal" [formGroup]="softSkillsModal" class="form-floating needs-validation" novalidate (ngSubmit)="postSoftBd()">
+        <form id="softSkillsM" [formGroup]="softSkillsModal" class="form-floating needs-validation" novalidate (ngSubmit)="postSoftBd(); resetForm()">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="softName" placeholder="softName"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreSoft?.errors && NombreSoft?.touched, 'is-valid': NombreSoft?.errors && NombreSoft?.touched}">
             <label for="softName">Nombre</label>
@@ -57,7 +58,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm()">Descartar Cambios</button>
-        <button type="submit" class="btn btn-success" form="softSkillsModal" [disabled]="softSkillsModal.invalid">GUARDAR</button>
+        <button type="submit" class="btn btn-success" form="softSkillsM" [disabled]="softSkillsModal.invalid" data-bs-dismiss="modal" aria-label="Close">GUARDAR</button>
+        <p class="fw-lighter fst-italic text-center">*Para visualizar los cambios debe actualizar la sección mediante el boton de actulizar*</p>
       </div>
     </div>
   </div>
@@ -71,21 +73,22 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm()"></button>
       </div>
       <div class="modal-body">
-        <form id="languagesModal" [formGroup]="languagesModal" class="form-floating needs-validation" novalidate (ngSubmit)="postLanguagesBd()">
+        <form id="languagesM" [formGroup]="languagesModal" class="form-floating needs-validation" novalidate (ngSubmit)="postLanguagesBd(); resetForm()">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="languagesName" placeholder="languagesName"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreLanguages?.errors && NombreLanguages?.touched, 'is-valid': NombreLanguages?.errors && NombreLanguages?.touched}">
             <label for="languagesName">Nombre</label>
           </div>
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="languagesLevel" placeholder="languagesLevel"  formControlName="nivel" required [ngClass]="{'is-invalid': NivelLanguages?.errors && NivelLanguages?.touched, 'is-valid': NivelLanguages?.errors && NivelLanguages?.touched}">
-            <label for="languagesLevel">Nivel</label>NivelLanguages
+            <label for="languagesLevel">Nivel</label>
           </div>
         </form>
         <button type="button" class="btn btn-outline-dark col-4 offset-4" (click)="setLanguageForm()">Auto-rellenado</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm()">Descartar Cambios</button>
-        <button type="button" class="btn btn-success" form="languagesModal" [disabled]="languagesModal.invalid">GUARDAR</button>
+        <button type="submit" class="btn btn-success" form="languagesM" [disabled]="languagesModal.invalid" data-bs-dismiss="modal" aria-label="Close">GUARDAR</button>
+        <p class="fw-lighter fst-italic text-center">*Para visualizar los cambios debe actualizar la sección mediante el boton de actulizar*</p>
       </div>
     </div>
   </div>
@@ -100,7 +103,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm(); resetMultipleFiles(); resetFiles()"></button>
       </div>
       <div class="modal-body">
-        <form id="projectsModal" [formGroup]="projectsModal" class="form-floating needs-validation" novalidate (ngSubmit)="postProjectsBd()">
+        <form id="projectsM" [formGroup]="projectsModal" class="form-floating needs-validation" novalidate (ngSubmit)="postProjectsBd(); resetForm()">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="projectName" placeholder="Nombre"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreProject?.errors && NombreProject?.touched, 'is-valid': NombreProject?.errors && NombreProject?.touched}">
             <label for="projectName">Nombre</label>
@@ -144,7 +147,52 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm(); resetMultipleFiles(); resetFiles()">Descartar Cambios</button>
-        <button type="submit" class="btn btn-success" form="projectsModal" [disabled]="projectsModal.invalid">GUARDAR</button>
+        <button type="submit" class="btn btn-success" form="projectsM" [disabled]="projectsModal.invalid" data-bs-dismiss="modal" aria-label="Close">GUARDAR</button>
+        <p class="fw-lighter fst-italic text-center">*Para visualizar los cambios debe actualizar la sección mediante el boton de actulizar*</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EXPERIENCIA -->
+<div class="modal" id="experienciaModal" tabindex="-1" aria-labelledby="experienciaModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editExperienciaLabel">EDITAR EXPERIENCIA</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm(); resetFiles()"></button>
+      </div>
+      <div class="modal-body">
+        <form id="experienciaForm" [formGroup]="experienciaModal" class="form-floating needs-validation" novalidate (ngSubmit)="postExperienciaBd(); resetForm()">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="empresa" placeholder="empresa"  formControlName="empresa" required [ngClass]="{'is-invalid': Empresa?.errors && Empresa?.touched, 'is-valid': Empresa?.errors && Empresa?.touched}">
+            <label for="empresa">Empresa</label>
+          </div>
+          <div class="mb-3">
+            <label for="skillImg" class="form-label">Imagen</label>
+            <angular-file-uploader [config]="afuConfig" (fileSelected)="resetFiles(); fileSelected($event)"[resetUpload]=single></angular-file-uploader>
+            <button type="button" class="col-12 btn btn-secondary" (click)="resetFiles()">Eliminar Imagenes</button>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="cargo" placeholder="cargo"  formControlName="cargo" required [ngClass]="{'is-invalid': Cargo?.errors && Cargo?.touched, 'is-valid': Cargo?.errors && Cargo?.touched}">
+            <label for="cargo">Cargo</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="funcion" placeholder="funcion"  formControlName="funcion" required [ngClass]="{'is-invalid': Funcion?.errors && Funcion?.touched, 'is-valid': Funcion?.errors && Funcion?.touched}">
+            <label for="funcion">Funcion</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="periodo" placeholder="periodo"  formControlName="periodo" required [ngClass]="{'is-invalid': Periodo?.errors && Periodo?.touched, 'is-valid': Periodo?.errors && Periodo?.touched}">
+            <label for="funcion">Periodo</label>
+          </div>
+        </form>
+
+        <button type="button" class="btn btn-outline-dark col-4 offset-4" (click)="setExperienciaDefaultForm()">Auto-rellenado</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm(); resetFiles()">Descartar Cambios</button>
+        <button type="submit" class="btn btn-success" form="experienciaForm" [disabled]="experienciaModal.invalid" data-bs-dismiss="modal" aria-label="Close">GUARDAR</button>
+        <p class="fw-lighter fst-italic text-center">*Para visualizar los cambios debe actualizar la sección mediante el boton de actulizar*</p>
       </div>
     </div>
   </div>

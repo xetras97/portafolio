@@ -20,6 +20,9 @@ var PersonalInfoComponent = /** @class */ (function () {
             _this.miPersonalData = data[0];
         });
     };
+    PersonalInfoComponent.prototype.actualizarDatosPersonales = function () {
+        this.ngOnInit();
+    };
     PersonalInfoComponent = __decorate([
         core_1.Component({
             selector: 'app-personal-info',
