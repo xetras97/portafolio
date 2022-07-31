@@ -13,9 +13,9 @@ var ApiService = /** @class */ (function () {
         this.http = http;
         this.id = 1;
         this.componente = "";
-        this.url = "http://localhost:8080/ver/";
-        this.urlPost = "http://localhost:8080/new/";
-        this.urlDelete = "http://localhost:8080/delete/";
+        this.url = "https://portfolio-arg-programa-backend.herokuapp.com/ver/";
+        this.urlPost = "https://portfolio-arg-programa-backend.herokuapp.com/new/";
+        this.urlDelete = "https://portfolio-arg-programa-backend.herokuapp.com/delete/";
     }
     ApiService.prototype.obtenerDatosPersonales = function (componente) {
         return this.http.get(this.url + componente);

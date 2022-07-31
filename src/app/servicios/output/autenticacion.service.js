@@ -13,7 +13,7 @@ var operators_1 = require("rxjs/operators");
 var AutenticacionService = /** @class */ (function () {
     function AutenticacionService(http) {
         this.http = http;
-        this.url = "http://localhost:8080/auth/login";
+        this.url = "https://portfolio-arg-programa-backend.herokuapp.com/auth/login";
         console.log("esta corriendo");
         this.currentUserSubject = new rxjs_1.BehaviorSubject(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
     }

@@ -9,9 +9,9 @@ export class ApiService {
 
   id:number=1;
   componente:string="";
-  url:string = "http://localhost:8080/ver/";
-  urlPost:string = "http://localhost:8080/new/";
-  urlDelete:string = "http://localhost:8080/delete/";
+  url:string = "https://portfolio-arg-programa-backend.herokuapp.com/ver/";
+  urlPost:string = "https://portfolio-arg-programa-backend.herokuapp.com/new/";
+  urlDelete:string = "https://portfolio-arg-programa-backend.herokuapp.com/delete/";
 
   constructor(private http:HttpClient) { }
 
