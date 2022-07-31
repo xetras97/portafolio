@@ -16,7 +16,6 @@ var PersonalInfoComponent = /** @class */ (function () {
     PersonalInfoComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.personalData.obtenerDatosPersonales("desarrollador").subscribe(function (data) {
-            console.log("Desarrollador" + JSON.stringify(data));
             _this.miPersonalData = data[0];
         });
     };

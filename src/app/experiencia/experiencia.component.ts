@@ -14,7 +14,6 @@ export class ExperienciaComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.obtenerDatosPersonales("experiencias").subscribe(data =>{
       this.myExperienciaData=data;
-      console.log(this.myExperienciaData)
     });
   }
 

@@ -17,7 +17,6 @@ var ExperienciaComponent = /** @class */ (function () {
         var _this = this;
         this.apiService.obtenerDatosPersonales("experiencias").subscribe(function (data) {
             _this.myExperienciaData = data;
-            console.log(_this.myExperienciaData);
         });
     };
     ExperienciaComponent.prototype.setId = function (id) {

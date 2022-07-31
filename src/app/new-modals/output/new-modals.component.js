@@ -24,7 +24,7 @@ var NewModalsComponent = /** @class */ (function () {
         this.idEstudios = 0;
         this.multipleConfig = {
             uploadAPI: {
-                url: "http://localhost:8080/upload"
+                url: "https://portfolio-arg-programa-backend.herokuapp.com/upload"
             },
             multiple: true,
             formatsAllowed: ".jpg,.png",
@@ -43,7 +43,7 @@ var NewModalsComponent = /** @class */ (function () {
         };
         this.afuConfig = {
             uploadAPI: {
-                url: "http://localhost:8080/upload"
+                url: "https://portfolio-arg-programa-backend.herokuapp.com/upload"
             },
             theme: "dragNDrop",
             multiple: false,
@@ -247,7 +247,6 @@ var NewModalsComponent = /** @class */ (function () {
             this.filesDeleteList = [];
         }
         this.fileName = undefined;
-        console.log(this.fileName);
     };
     NewModalsComponent.prototype.resetMultipleFiles = function () {
         var _this = this;
@@ -259,13 +258,11 @@ var NewModalsComponent = /** @class */ (function () {
             this.filesMultipleDeleteList = [];
         }
         this.filesNameList = [];
-        console.log(this.filesNameList);
     };
     NewModalsComponent.prototype.fileSelected = function (evento) {
         this.single = false;
         this.fileName = evento.target.files[0].name;
         this.filesDeleteList.push(evento.target.files[0].name);
-        console.log(this.fileName);
     };
     NewModalsComponent.prototype.multipleFileSelected = function (evento) {
         this.multiple = false;
@@ -273,7 +270,6 @@ var NewModalsComponent = /** @class */ (function () {
             this.filesNameList.push(evento.target.files[index].name);
             this.filesMultipleDeleteList.push(evento.target.files[index].name);
         }
-        console.log(this.filesNameList);
     };
     NewModalsComponent.prototype.postNewExperienciaBd = function () {
         var _this = this;
@@ -287,10 +283,9 @@ var NewModalsComponent = /** @class */ (function () {
             "img": ""
         };
         if (this.fileName != undefined) {
-            data.img = 'http://localhost:8080/files/' + this.fileName;
+            data.img = 'https://portfolio-arg-programa-backend.herokuapp.com/files/' + this.fileName;
         }
         var dataToSend = data;
-        console.log(dataToSend);
         return this.apiService.enviarDatos("experiencia", dataToSend).subscribe(function (data) {
             _this.idExperiencia++;
         });
@@ -307,7 +302,7 @@ var NewModalsComponent = /** @class */ (function () {
             "otro": null
         };
         if (this.fileName != undefined) {
-            data.img = 'http://localhost:8080/files/' + this.fileName;
+            data.img = 'https://portfolio-arg-programa-backend.herokuapp.com/files/' + this.fileName;
         }
         var dataToSend = data;
         return this.apiService.enviarDatos("habilidad", dataToSend).subscribe(function (data) {
@@ -361,27 +356,26 @@ var NewModalsComponent = /** @class */ (function () {
             "img6": ""
         };
         if (this.fileName != undefined) {
-            data.imagen = 'http://localhost:8080/files/' + this.fileName;
+            data.imagen = 'https://portfolio-arg-programa-backend.herokuapp.com/files/' + this.fileName;
         }
         if (this.filesNameList.length != 0) {
             if (this.filesNameList[0] != undefined) {
-                data.img2 = 'http://localhost:8080/files/' + this.filesNameList[0];
+                data.img2 = 'https://portfolio-arg-programa-backend.herokuapp.com/files/' + this.filesNameList[0];
             }
             if (this.filesNameList[1] != undefined) {
-                data.img3 = 'http://localhost:8080/files/' + this.filesNameList[1];
+                data.img3 = 'https://portfolio-arg-programa-backend.herokuapp.com/files/' + this.filesNameList[1];
             }
             if (this.filesNameList[2] != undefined) {
-                data.img4 = 'http://localhost:8080/files/' + this.filesNameList[2];
+                data.img4 = 'https://portfolio-arg-programa-backend.herokuapp.com/files/' + this.filesNameList[2];
             }
             if (this.filesNameList[3] != undefined) {
-                data.img5 = 'http://localhost:8080/files/' + this.filesNameList[3];
+                data.img5 = 'https://portfolio-arg-programa-backend.herokuapp.com/files/' + this.filesNameList[3];
             }
             if (this.filesNameList[4] != undefined) {
-                data.img6 = 'http://localhost:8080/files/' + this.filesNameList[4];
+                data.img6 = 'https://portfolio-arg-programa-backend.herokuapp.com/files/' + this.filesNameList[4];
             }
         }
         var dataToSend = data;
-        console.log(dataToSend);
         return this.apiService.enviarDatos("proyectos", dataToSend).subscribe(function (data) {
             _this.idProyecto++;
         });
@@ -398,11 +392,10 @@ var NewModalsComponent = /** @class */ (function () {
             "periodo": formData.time
         };
         if (this.fileName != undefined) {
-            data.img = 'http://localhost:8080/files/' + this.fileName;
+            data.img = 'https://portfolio-arg-programa-backend.herokuapp.com/files/' + this.fileName;
         }
         var dataToSend = data;
         this.filesDeleteList = [];
-        console.log(dataToSend);
         return this.apiService.enviarDatos("estudios", dataToSend).subscribe(function (data) {
             _this.idEstudios++;
         });

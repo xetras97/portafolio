@@ -16,13 +16,11 @@ export class PersonalProjectsComponent implements OnInit{
   ngOnInit(): void {
     this.projectsData.obtenerDatosPersonales("proyectos").subscribe(data =>{
       this.myProjectsData=data;
-      console.log(this.myProjectsData);
     });
   }
 
   setId(id:number){
     this.projectsData.obtenerId(id);
-    console.log(id);
   }
 
   setComponente(componente:string){

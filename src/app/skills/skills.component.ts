@@ -30,26 +30,7 @@ export class SkillsComponent implements OnInit {
           this.languagesSkills.push(mySkillsData);
         }
       }
-      console.log(this.hardSkills);
-      console.log(this.softSkills);
-      console.log(this.languagesSkills);
-      console.log(this.mySkillsData);
     });
-
-    // for(let mySkillsData of this.mySkillsData){
-    //   if(mySkillsData.tipo=="Dura"){
-    //     this.hardSkills.push(mySkillsData);
-    //   }
-    //   if(mySkillsData.tipo=="Blanda"){
-    //     this.softSkills.push(mySkillsData);
-    //   }
-    //   if(mySkillsData.tipo=="Idioma"){
-    //     this.languagesSkills.push(mySkillsData);
-    //   }
-    //   console.log(this.hardSkills);
-    //   console.log(this.softSkills);
-    //   console.log(this.languagesSkills);
-    // }
   }
 
   @ViewChild('circle')

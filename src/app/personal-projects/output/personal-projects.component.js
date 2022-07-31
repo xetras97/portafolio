@@ -17,12 +17,10 @@ var PersonalProjectsComponent = /** @class */ (function () {
         var _this = this;
         this.projectsData.obtenerDatosPersonales("proyectos").subscribe(function (data) {
             _this.myProjectsData = data;
-            console.log(_this.myProjectsData);
         });
     };
     PersonalProjectsComponent.prototype.setId = function (id) {
         this.projectsData.obtenerId(id);
-        console.log(id);
     };
     PersonalProjectsComponent.prototype.setComponente = function (componente) {
         this.projectsData.obtenerComponente(componente);

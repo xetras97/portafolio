@@ -34,11 +34,9 @@ var ApiService = /** @class */ (function () {
     };
     ApiService.prototype.obtenerId = function (idNumber) {
         this.id = idNumber;
-        console.log(this.id);
     };
     ApiService.prototype.obtenerComponente = function (componente) {
         this.componente = componente;
-        console.log(this.componente);
     };
     ApiService = __decorate([
         core_1.Injectable({

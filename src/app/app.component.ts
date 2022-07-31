@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   fileBanner:string|undefined;
   afuConfig = {
     uploadAPI: {
-      url:"http://localhost:8080/upload",
+      url:"https://portfolio-arg-programa-backend.herokuapp.com/upload",
       headers: {
         "Authorization" : `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcmdwcm9ncmFtYSIsImlhdCI6MTY1ODY4NjY5NSwiZXhwIjoxNjU4NzI5ODk1fQ.e3DqTd4o3ax2jhUWEX9HuMy4DiXnB2wZqSCWe-4Hl_Rzkw_pw-muPCKOuXgdk2K-Sm2zmvON-Ds0tk1BMZhRLQ`
          },
@@ -128,7 +128,6 @@ export class AppComponent implements OnInit {
     this.deletePic();
     this.filePic = evento.target.files[0].name;
     this.filesDeletePic.push(evento.target.files[0].name);
-    console.log(this.filePic);
   }
 
   bannerSelected(evento:any): void{
@@ -154,16 +153,15 @@ export class AppComponent implements OnInit {
       "banner": this.desarrollador.banner
     };
     if(this.filePic!=undefined){
-      data.img = 'http://localhost:8080/files/'+this.filePic;
+      data.img = 'https://portfolio-arg-programa-backend.herokuapp.com/files/'+this.filePic;
     }
     if(this.fileBanner!=undefined){
-      data.banner = 'http://localhost:8080/files/'+this.fileBanner;
+      data.banner = 'https://portfolio-arg-programa-backend.herokuapp.com/files/'+this.fileBanner;
     }
     let dataToSend = data;
-    console.log(dataToSend);
     this.filesDeleteBanner = [];
     this.filesDeletePic = []
-    return this.socialNet.enviarDatos("desarrollador", dataToSend).subscribe(xd=>console.log(xd));
+    return this.socialNet.enviarDatos("desarrollador", dataToSend).subscribe();
   }
 
   rellenar(){

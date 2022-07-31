@@ -59,7 +59,7 @@ export class EducacionModalComponent implements OnInit {
 //Imagen Upload
   afuConfig = {
     uploadAPI: {
-      url:"http://localhost:8080/upload"
+      url:"https://portfolio-arg-programa-backend.herokuapp.com/upload"
     },
     theme: "dragNDrop",
     multiple: false,
@@ -95,14 +95,12 @@ resetFiles(){
     this.filesDeleteList = [];
   }
   this.fileName=undefined;
-  console.log(this.fileName);
 }
 
 fileSelected(evento:any): void{
   this.single = false;
   this.fileName = evento.target.files[0].name;
   this.filesDeleteList.push(evento.target.files[0].name)
-  console.log(this.filesDeleteList);
 }
 
 postEducacionBd(){
@@ -117,11 +115,10 @@ postEducacionBd(){
     "periodo": formData.time
   };
   if(this.fileName!=undefined){
-    data.img = 'http://localhost:8080/files/'+this.fileName;
+    data.img = 'https://portfolio-arg-programa-backend.herokuapp.com/files/'+this.fileName;
   }
   let dataToSend = data;
   this.filesDeleteList = [];
-  console.log(dataToSend);
   return this.educacion.enviarDatos("estudios", dataToSend).subscribe();
 }
 

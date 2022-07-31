@@ -15,7 +15,6 @@ export class LoggedService {
     } else {
       this.loggedIn = false
     }
-    console.log(this.loggedIn);
   }
 
   logOut(){

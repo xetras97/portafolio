@@ -13,7 +13,6 @@ export class PersonalInfoComponent implements OnInit {
   constructor(private personalData:ApiService, public logged:LoggedService) { }
   ngOnInit(): void {
     this.personalData.obtenerDatosPersonales("desarrollador").subscribe(data =>{
-      console.log("Desarrollador" + JSON.stringify(data));
       this.miPersonalData=data[0];
     });
   }

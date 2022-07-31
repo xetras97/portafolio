@@ -21,7 +21,6 @@ var InterceptorService = /** @class */ (function () {
                 }
             });
         }
-        console.log("interceptor esta corriendo " + JSON.stringify(currentUser));
         return next.handle(req);
     };
     InterceptorService = __decorate([

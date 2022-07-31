@@ -30,7 +30,7 @@ export class EditModalsComponent implements OnInit {
 
   multipleConfig = {
     uploadAPI: {
-      url:"http://localhost:8080/upload"
+      url:"https://portfolio-arg-programa-backend.herokuapp.com/upload"
     },
     multiple: true,
     formatsAllowed: ".jpg,.png",
@@ -49,7 +49,7 @@ export class EditModalsComponent implements OnInit {
   }
   afuConfig = {
     uploadAPI: {
-      url:"http://localhost:8080/upload"
+      url:"https://portfolio-arg-programa-backend.herokuapp.com/upload"
     },
     theme: "dragNDrop",
     multiple: false,
@@ -254,7 +254,6 @@ export class EditModalsComponent implements OnInit {
       this.filesDeleteList = [];
     }
     this.fileName=undefined;
-    console.log(this.fileName);
   }
 
   resetMultipleFiles() {
@@ -266,14 +265,12 @@ export class EditModalsComponent implements OnInit {
       this.filesMultipleDeleteList = [];
     }
     this.filesNameList=[];
-    console.log(this.filesNameList);
   }
 
   fileSelected(evento:any): void{
     this.single = false;
     this.fileName = evento.target.files[0].name;
     this.filesDeleteList.push(evento.target.files[0].name);
-    console.log(this.fileName);
   }
 
   multipleFileSelected(evento:any): void{
@@ -283,7 +280,6 @@ export class EditModalsComponent implements OnInit {
       this.filesNameList.push(evento.target.files[index].name);
       this.filesMultipleDeleteList.push(evento.target.files[index].name);
     }
-    console.log(this.filesNameList);
   }
 
   postSkillsBd(){
@@ -298,7 +294,7 @@ export class EditModalsComponent implements OnInit {
       "otro": null
     };
     if(this.fileName!=undefined){
-      data.img = 'http://localhost:8080/files/'+this.fileName;
+      data.img = 'https://portfolio-arg-programa-backend.herokuapp.com/files/'+this.fileName;
     }
     let dataToSend = data;
     return this.apiService.enviarDatos("habilidad", dataToSend).subscribe();
@@ -349,28 +345,26 @@ export class EditModalsComponent implements OnInit {
       "img6": this.projectsForm[id].img6,
     }
     if(this.fileName!=undefined){
-    data.imagen = 'http://localhost:8080/files/'+this.fileName;
+    data.imagen = 'https://portfolio-arg-programa-backend.herokuapp.com/files/'+this.fileName;
     }
     if(this.filesNameList.length!=0){
       if(this.filesNameList[0]!=undefined){
-        data.img2='http://localhost:8080/files/'+this.filesNameList[0]
+        data.img2='https://portfolio-arg-programa-backend.herokuapp.com/files/'+this.filesNameList[0]
       }
       if(this.filesNameList[1]!=undefined){
-        data.img3='http://localhost:8080/files/'+this.filesNameList[1]
+        data.img3='https://portfolio-arg-programa-backend.herokuapp.com/files/'+this.filesNameList[1]
       }
       if(this.filesNameList[2]!=undefined){
-        data.img4='http://localhost:8080/files/'+this.filesNameList[2]
+        data.img4='https://portfolio-arg-programa-backend.herokuapp.com/files/'+this.filesNameList[2]
       }
       if(this.filesNameList[3]!=undefined){
-        data.img5='http://localhost:8080/files/'+this.filesNameList[3]
+        data.img5='https://portfolio-arg-programa-backend.herokuapp.com/files/'+this.filesNameList[3]
       }
       if(this.filesNameList[4]!=undefined){
-        data.img6='http://localhost:8080/files/'+this.filesNameList[4]
+        data.img6='https://portfolio-arg-programa-backend.herokuapp.com/files/'+this.filesNameList[4]
       }
     }
     let dataToSend = data;
-    console.log(dataToSend)
-    console.log(this.filesNameList[4])
     return this.apiService.enviarDatos("proyectos", dataToSend).subscribe();
   }
 
@@ -386,10 +380,9 @@ export class EditModalsComponent implements OnInit {
       "img": this.experienciaForm[id].img
     };
     if(this.fileName!=undefined){
-      data.img = 'http://localhost:8080/files/'+this.fileName;
+      data.img = 'https://portfolio-arg-programa-backend.herokuapp.com/files/'+this.fileName;
     }
     let dataToSend = data;
-    console.log(dataToSend);
     return this.apiService.enviarDatos("experiencia", dataToSend).subscribe();
   }
 

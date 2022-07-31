@@ -33,25 +33,7 @@ var SkillsComponent = /** @class */ (function () {
                     _this.languagesSkills.push(mySkillsData);
                 }
             }
-            console.log(_this.hardSkills);
-            console.log(_this.softSkills);
-            console.log(_this.languagesSkills);
-            console.log(_this.mySkillsData);
         });
-        // for(let mySkillsData of this.mySkillsData){
-        //   if(mySkillsData.tipo=="Dura"){
-        //     this.hardSkills.push(mySkillsData);
-        //   }
-        //   if(mySkillsData.tipo=="Blanda"){
-        //     this.softSkills.push(mySkillsData);
-        //   }
-        //   if(mySkillsData.tipo=="Idioma"){
-        //     this.languagesSkills.push(mySkillsData);
-        //   }
-        //   console.log(this.hardSkills);
-        //   console.log(this.softSkills);
-        //   console.log(this.languagesSkills);
-        // }
     };
     SkillsComponent.prototype.isVisible = function (element) {
         var rect = element.getBoundingClientRect();

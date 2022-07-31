@@ -9,8 +9,8 @@
       <div class="modal-body">
         <form id="experienciaNewForm" [formGroup]="experienciaNewModal" class="form-floating needs-validation" novalidate (ngSubmit)="postNewExperienciaBd(); resetForms()">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="empresa" placeholder="empresa"  formControlName="empresa" required [ngClass]="{'is-invalid': Empresa?.errors && Empresa?.touched, 'is-valid': Empresa?.errors && Empresa?.touched}">
-            <label for="empresa">Empresa</label>
+            <input type="text" class="form-control" id="empresaNew" placeholder="empresa"  formControlName="empresa" required [ngClass]="{'is-invalid': Empresa?.errors && Empresa?.touched, 'is-valid': Empresa?.errors && Empresa?.touched}">
+            <label for="empresaNew">Empresa</label>
           </div>
           <div class="mb-3">
             <label for="skillImg" class="form-label">Imagen</label>
@@ -18,16 +18,16 @@
             <button type="button" class="col-12 btn btn-secondary" (click)="resetFiles()">Eliminar Imagenes</button>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="cargo" placeholder="cargo"  formControlName="cargo" required [ngClass]="{'is-invalid': Cargo?.errors && Cargo?.touched, 'is-valid': Cargo?.errors && Cargo?.touched}">
-            <label for="cargo">Cargo</label>
+            <input type="text" class="form-control" id="cargoNew" placeholder="cargo"  formControlName="cargo" required [ngClass]="{'is-invalid': Cargo?.errors && Cargo?.touched, 'is-valid': Cargo?.errors && Cargo?.touched}">
+            <label for="cargoNew">Cargo</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="funcion" placeholder="funcion"  formControlName="funcion" required [ngClass]="{'is-invalid': Funcion?.errors && Funcion?.touched, 'is-valid': Funcion?.errors && Funcion?.touched}">
-            <label for="funcion">Funcion</label>
+            <input type="text" class="form-control" id="funcionNew" placeholder="funcion"  formControlName="funcion" required [ngClass]="{'is-invalid': Funcion?.errors && Funcion?.touched, 'is-valid': Funcion?.errors && Funcion?.touched}">
+            <label for="funcionNew">Funcion</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="periodo" placeholder="periodo"  formControlName="periodo" required [ngClass]="{'is-invalid': Periodo?.errors && Periodo?.touched, 'is-valid': Periodo?.errors && Periodo?.touched}">
-            <label for="funcion">Periodo</label>
+            <input type="text" class="form-control" id="periodoNew" placeholder="periodo"  formControlName="periodo" required [ngClass]="{'is-invalid': Periodo?.errors && Periodo?.touched, 'is-valid': Periodo?.errors && Periodo?.touched}">
+            <label for="periodoNew">Periodo</label>
           </div>
         </form>
       </div>
@@ -51,17 +51,17 @@
       <div class="modal-body">
         <form id="skillsNewModal" [formGroup]="skillsNewModal" class="form-floating needs-validation" novalidate (ngSubmit)="postNewSkillsBd(); resetForms()">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nombre" placeholder="Nombre"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreSkill?.errors && NombreSkill?.touched, 'is-valid': NombreSkill?.errors && NombreSkill?.touched}">
-            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombreNew" placeholder="Nombre"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreSkill?.errors && NombreSkill?.touched, 'is-valid': NombreSkill?.errors && NombreSkill?.touched}">
+            <label for="nombreNew">Nombre</label>
           </div>
           <div class="form-floating mb-3">
-            <select type="select" class="form-control" id="nivel" placeholder="Nivel" formControlName="nivel" required [ngClass]="{'is-invalid': NivelSkill?.errors && NivelSkill?.touched, 'is-valid': NivelSkill?.errors && NivelSkill?.touched}">
+            <select type="select" class="form-control" id="nivelNew" placeholder="Nivel" formControlName="nivel" required [ngClass]="{'is-invalid': NivelSkill?.errors && NivelSkill?.touched, 'is-valid': NivelSkill?.errors && NivelSkill?.touched}">
               <option value="Experto">Experto</option>
               <option value="Avanzado">Avanzado</option>
               <option value="Intermedio">Intermedio</option>
               <option value="Basico">Basico</option>
             </select>
-            <label for="nivel">Nivel</label>
+            <label for="nivelNew">Nivel</label>
           </div>
           <div class="mb-3">
             <label for="skillImg" class="form-label">Imagen</label>
@@ -115,12 +115,12 @@
       <div class="modal-body">
         <form id="languagesNewModal" [formGroup]="languagesNewModal" class="form-floating needs-validation" novalidate (ngSubmit)="postNewLanguagesBd(); resetForms()">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="languagesName" placeholder="languagesName"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreLanguages?.errors && NombreLanguages?.touched, 'is-valid': NombreLanguages?.errors && NombreLanguages?.touched}">
-            <label for="languagesName">Nombre</label>
+            <input type="text" class="form-control" id="languagesNameNew" placeholder="languagesName"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreLanguages?.errors && NombreLanguages?.touched, 'is-valid': NombreLanguages?.errors && NombreLanguages?.touched}">
+            <label for="languagesNameNew">Nombre</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="languagesLevel" placeholder="languagesLevel"  formControlName="nivel" required [ngClass]="{'is-invalid': NivelLanguages?.errors && NivelLanguages?.touched, 'is-valid': NivelLanguages?.errors && NivelLanguages?.touched}">
-            <label for="languagesLevel">Nivel</label>
+            <input type="text" class="form-control" id="languagesLevelNew" placeholder="languagesLevel"  formControlName="nivel" required [ngClass]="{'is-invalid': NivelLanguages?.errors && NivelLanguages?.touched, 'is-valid': NivelLanguages?.errors && NivelLanguages?.touched}">
+            <label for="languagesLevelNew">Nivel</label>
           </div>
         </form>
       </div>
@@ -144,8 +144,8 @@
       <div class="modal-body">
         <form id="newProjectsModal" [formGroup]="projectsNewModal" class="form-floating needs-validation" novalidate (ngSubmit)="postNewProjectsBd(); resetForms()">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="projectName" placeholder="Nombre"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreProject?.errors && NombreProject?.touched, 'is-valid': NombreProject?.errors && NombreProject?.touched}">
-            <label for="projectName">Nombre</label>
+            <input type="text" class="form-control" id="projectNameNew" placeholder="Nombre"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreProject?.errors && NombreProject?.touched, 'is-valid': NombreProject?.errors && NombreProject?.touched}">
+            <label for="projectNameNew">Nombre</label>
           </div>
           <div class="mb-3">
             <label for="projectImg" class="form-label">Imagen Principal</label>
@@ -153,28 +153,28 @@
             <button type="button" class="col-12 btn btn-secondary" (click)="resetFiles()">Eliminar Imagen</button>
           </div>
           <div class="mb-3">
-            <label for="projectDescription" class="form-label">Descripcion</label>
-            <textarea class="form-control" id="projectDescription" rows="2" formControlName="descripcion" required [ngClass]="{'is-invalid': Descripcion?.errors && Descripcion?.touched, 'is-valid': Descripcion?.errors && Descripcion?.touched}"></textarea>
+            <label for="projectDescriptionNew" class="form-label">Descripcion</label>
+            <textarea class="form-control" id="projectDescriptionNew" rows="2" formControlName="descripcion" required [ngClass]="{'is-invalid': Descripcion?.errors && Descripcion?.touched, 'is-valid': Descripcion?.errors && Descripcion?.touched}"></textarea>
           </div>
           <div class="mb-3">
-            <label for="projectStack" class="form-label">Stack</label>
-            <textarea class="form-control" id="projectStack" rows="2" formControlName="stack" required [ngClass]="{'is-invalid': Stack?.errors && Stack?.touched, 'is-valid': Stack?.errors && Stack?.touched}"></textarea>
+            <label for="projectStackNew" class="form-label">Stack</label>
+            <textarea class="form-control" id="projectStackNew" rows="2" formControlName="stack" required [ngClass]="{'is-invalid': Stack?.errors && Stack?.touched, 'is-valid': Stack?.errors && Stack?.touched}"></textarea>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="projectWeb" placeholder="Web"  formControlName="web" required [ngClass]="{'is-invalid': Web?.errors && Web?.touched, 'is-valid': Web?.errors && Web?.touched}">
-            <label for="projectWeb">Sitio Web</label>
+            <input type="text" class="form-control" id="projectWebNew" placeholder="Web"  formControlName="web" required [ngClass]="{'is-invalid': Web?.errors && Web?.touched, 'is-valid': Web?.errors && Web?.touched}">
+            <label for="projectWebNew">Sitio Web</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="projectGithub" placeholder="GitHub"  formControlName="github" required [ngClass]="{'is-invalid': Github?.errors && Github?.touched, 'is-valid': Github?.errors && Github?.touched}">
-            <label for="projectGithub">GitHub</label>
+            <input type="text" class="form-control" id="projectGithubNew" placeholder="GitHub"  formControlName="github" required [ngClass]="{'is-invalid': Github?.errors && Github?.touched, 'is-valid': Github?.errors && Github?.touched}">
+            <label for="projectGithubNew">GitHub</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="projectYear" placeholder="Año"  formControlName="año" required [ngClass]="{'is-invalid': Anio?.errors && Anio?.touched, 'is-valid': Anio?.errors && Anio?.touched}">
-            <label for="projectYear">Año</label>
+            <input type="number" class="form-control" id="projectYearNew" placeholder="Año"  formControlName="año" required [ngClass]="{'is-invalid': Anio?.errors && Anio?.touched, 'is-valid': Anio?.errors && Anio?.touched}">
+            <label for="projectYearNew">Año</label>
           </div>
           <div class="mb-3">
-            <label for="projectObservation" class="form-label">Observaciones</label>
-            <textarea class="form-control" id="projectObservation" rows="2" formControlName="observaciones"></textarea>
+            <label for="projectObservationNew" class="form-label">Observaciones</label>
+            <textarea class="form-control" id="projectObservationNew" rows="2" formControlName="observaciones"></textarea>
           </div>
           <div class="mb-3">
             <label for="projectImgExtra" class="form-label">Imagenes Extra</label>
@@ -203,20 +203,20 @@
       <div class="modal-body">
         <form id="newEducacionForm" [formGroup]="estudiosNewModal" class="form-floating needs-validation" (ngSubmit)="postNewEducacionBd(); resetForms()" novalidate>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="title" placeholder="Titulo"  formControlName="title" required [ngClass]="{'is-invalid': Title?.errors && Title?.touched, 'is-valid': Title?.errors && Title?.touched}">
-            <label for="title">Titulo</label>
+            <input type="text" class="form-control" id="titleNew" placeholder="Titulo"  formControlName="title" required [ngClass]="{'is-invalid': Title?.errors && Title?.touched, 'is-valid': Title?.errors && Title?.touched}">
+            <label for="titleNew">Titulo</label>
           </div>
           <div class="form-floating mb-3">
-            <select type="select" class="form-control" id="year" placeholder="Año" formControlName="year" required [ngClass]="{'is-invalid': Year?.errors && Year?.touched, 'is-valid': Year?.errors && Year?.touched}">
+            <select type="select" class="form-control" id="yearNew" placeholder="Año" formControlName="year" required [ngClass]="{'is-invalid': Year?.errors && Year?.touched, 'is-valid': Year?.errors && Year?.touched}">
               <option value="2022">2022</option>
               <option value="2021">2021</option>
               <option value="2015">2015</option>
             </select>
-            <label for="year">Año</label>
+            <label for="yearNew">Año</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="institute" placeholder="institute" formControlName="institute" required [ngClass]="{'is-invalid': Institute?.errors && Institute?.touched, 'is-valid': Institute?.errors && Institute?.touched}">
-            <label for="institute">Institucion</label>
+            <input type="text" class="form-control" id="instituteNew" placeholder="institute" formControlName="institute" required [ngClass]="{'is-invalid': Institute?.errors && Institute?.touched, 'is-valid': Institute?.errors && Institute?.touched}">
+            <label for="instituteNew">Institucion</label>
           </div>
           <div class="mb-3">
             <label for="instituteImg" class="form-label">Imagen</label>
@@ -224,8 +224,8 @@
             <button type="button" class="col-12 btn btn-secondary" (click)="resetFiles()">Eliminar Imagen</button>
           </div>
           <div class="mb-3">
-            <label for="time" class="form-label">Periodo</label>
-            <input class="form-control" id="time" formControlName="time">
+            <label for="timeNew" class="form-label">Periodo</label>
+            <input class="form-control" id="timeNew" formControlName="time">
           </div>
         </form>
       </div>

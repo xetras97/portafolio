@@ -14,7 +14,6 @@ var AutenticacionService = /** @class */ (function () {
     function AutenticacionService(http) {
         this.http = http;
         this.url = "https://portfolio-arg-programa-backend.herokuapp.com/auth/login";
-        console.log("esta corriendo");
         this.currentUserSubject = new rxjs_1.BehaviorSubject(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
     }
     AutenticacionService.prototype.iniciarSesion = function (credenciales) {
@@ -22,7 +21,6 @@ var AutenticacionService = /** @class */ (function () {
         return this.http.post(this.url, credenciales).pipe(operators_1.map(function (data) {
             sessionStorage.setItem('currentUser', JSON.stringify(data));
             _this.currentUserSubject.next(data);
-            console.log(_this.currentUserSubject);
             return data;
         }));
     };

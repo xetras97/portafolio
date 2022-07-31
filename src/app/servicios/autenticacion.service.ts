@@ -10,7 +10,6 @@ export class AutenticacionService {
   url="https://portfolio-arg-programa-backend.herokuapp.com/auth/login"
   currentUserSubject: BehaviorSubject<any>;
   constructor(private http:HttpClient) {
-    console.log("esta corriendo");
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser')||'{}'))
   }
 
@@ -18,7 +17,6 @@ export class AutenticacionService {
     return this.http.post(this.url, credenciales).pipe(map(data =>{
       sessionStorage.setItem('currentUser', JSON.stringify(data));
       this.currentUserSubject.next(data)
-      console.log(this.currentUserSubject);
       return data;
     }))
   }

@@ -17,7 +17,7 @@ var EducacionModalComponent = /** @class */ (function () {
         //Imagen Upload
         this.afuConfig = {
             uploadAPI: {
-                url: "http://localhost:8080/upload"
+                url: "https://portfolio-arg-programa-backend.herokuapp.com/upload"
             },
             theme: "dragNDrop",
             multiple: false,
@@ -99,13 +99,11 @@ var EducacionModalComponent = /** @class */ (function () {
             this.filesDeleteList = [];
         }
         this.fileName = undefined;
-        console.log(this.fileName);
     };
     EducacionModalComponent.prototype.fileSelected = function (evento) {
         this.single = false;
         this.fileName = evento.target.files[0].name;
         this.filesDeleteList.push(evento.target.files[0].name);
-        console.log(this.filesDeleteList);
     };
     EducacionModalComponent.prototype.postEducacionBd = function () {
         var id = this.educacion.id;
@@ -119,11 +117,10 @@ var EducacionModalComponent = /** @class */ (function () {
             "periodo": formData.time
         };
         if (this.fileName != undefined) {
-            data.img = 'http://localhost:8080/files/' + this.fileName;
+            data.img = 'https://portfolio-arg-programa-backend.herokuapp.com/files/' + this.fileName;
         }
         var dataToSend = data;
         this.filesDeleteList = [];
-        console.log(dataToSend);
         return this.educacion.enviarDatos("estudios", dataToSend).subscribe();
     };
     EducacionModalComponent = __decorate([

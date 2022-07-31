@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
   onEnviar(event:Event){
     event.preventDefault;
     this.autenticacionService.iniciarSesion(this.form.value).subscribe(data => {
-      console.log("DATA:" + JSON.stringify(data));
       window.location.reload();
     }
     )

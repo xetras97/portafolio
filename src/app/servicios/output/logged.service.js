@@ -19,7 +19,6 @@ var LoggedService = /** @class */ (function () {
         else {
             this.loggedIn = false;
         }
-        console.log(this.loggedIn);
     };
     LoggedService.prototype.logOut = function () {
         sessionStorage.clear();

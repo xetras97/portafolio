@@ -40,11 +40,9 @@ export class ApiService {
 
   obtenerId(idNumber:number){
     this.id=idNumber;
-    console.log(this.id)
   }
 
   obtenerComponente(componente:string){
     this.componente=componente;
-    console.log(this.componente);
   }
 }
