@@ -90,8 +90,8 @@
       <div class="modal-body">
         <form id="softSkillsNewModal" [formGroup]="softSkillsNewModal" class="form-floating needs-validation" novalidate (ngSubmit)="postNewSoftBd(); resetForms()">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="softName" placeholder="softName"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreSoft?.errors && NombreSoft?.touched, 'is-valid': NombreSoft?.errors && NombreSoft?.touched}">
-            <label for="softName">Nombre</label>
+            <input type="text" class="form-control" id="softNameNew" placeholder="softName"  formControlName="nombre" required [ngClass]="{'is-invalid': NombreSoft?.errors && NombreSoft?.touched, 'is-valid': NombreSoft?.errors && NombreSoft?.touched}">
+            <label for="softNameNew">Nombre</label>
           </div>
         </form>
       </div>
